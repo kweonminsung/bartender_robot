@@ -1,6 +1,5 @@
 #include "api.hpp"
 #include "httplib.hpp"
-#include <cstdlib>
 
 ApiServer::ApiServer()
 {

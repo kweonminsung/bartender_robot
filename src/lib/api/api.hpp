@@ -1,4 +1,5 @@
 #include <iostream>
+#include <cstdlib>
 #include <nlohmann/json.hpp>
 #include "httplib.hpp"
 

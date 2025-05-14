@@ -1,5 +1,5 @@
 #include "pca9685_servo.hpp"
-#include <cstdlib>
+#include "i2c.hpp"
 
 PCA9685Servo::PCA9685Servo()
 {
@@ -8,7 +8,14 @@ PCA9685Servo::PCA9685Servo()
 
     if (i2c_device == nullptr)
     {
-        i2c_device = "/dev/i2c-1"; // 기본 I2C 장치 경로
+        std::cerr << "I2C_DEVICE environment variable not set." << std::endl;
+        exit(EXIT_FAILURE);
+    }
+
+    // I2C 장치 스캔
+    for (int channel : scan_i2c_bus_channel(i2c_device, i2c_address))
+    {
+        std::cout << "Found PCA9685 channel: " << channel << std::endl;
     }
 
     this->pca9685 = new PiPCA9685::PCA9685(i2c_device, i2c_address);

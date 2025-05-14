@@ -4,6 +4,7 @@
 #include <sys/ioctl.h>
 #include <linux/i2c-dev.h>
 #include <vector>
+#include <cstdlib>
 
 #define PCA9685_CHANNEL_BASE 0x06
 #define CHANNEL_COUNT 16
@@ -46,14 +47,14 @@ inline std::vector<int> scan_i2c_bus_channel(const char *i2c_device, int i2c_add
     if ((file = open(i2c_device, O_RDWR)) < 0)
     {
         std::cerr << "Failed to open I2C bus: " << i2c_device << std::endl;
-        return found_channels;
+        exit(EXIT_FAILURE);
     }
 
     if (ioctl(file, I2C_SLAVE, i2c_address) < 0)
     {
         std::cerr << "Failed to set I2C address: " << i2c_address << std::endl;
         close(file);
-        return found_channels;
+        exit(EXIT_FAILURE);
     }
 
     for (int channel = 0; channel < CHANNEL_COUNT; ++channel)

@@ -1,6 +1,8 @@
 #include <PCA9685/PCA9685.hpp>
 #include <chrono>
 #include <thread>
+#include <iostream>
+#include <cstdlib>
 
 class PCA9685Servo
 {
