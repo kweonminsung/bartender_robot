@@ -1,5 +1,7 @@
 # Bartender Robot
 
+<img src="public/concepts.png" width="420px" height="212x">
+
 ### Roles
 - I2C Controller
 - HTTP Server
