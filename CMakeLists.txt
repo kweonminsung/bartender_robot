@@ -4,9 +4,9 @@ project(bartender_robot)
 set(CMAKE_CXX_STANDARD 17)
 
 # 하위 라이브러리 추가(빌드 포함)
-add_subdirectory(
-    # include/PCA9685
-)
+# add_subdirectory(
+#     include/PCA9685
+# )
 
 add_library(nlohmann_json
     INTERFACE
@@ -15,7 +15,7 @@ add_library(nlohmann_json
 add_executable(bartender_robot
     src/main.cpp
     src/lib/api/api.cpp
-    src/lib/motor/pca9685_servo.cpp
+    # src/lib/motor/pca9685_servo.cpp
 )
 
 # include path 설정

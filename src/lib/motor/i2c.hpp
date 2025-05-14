@@ -9,35 +9,35 @@
 #define PCA9685_CHANNEL_BASE 0x06
 #define CHANNEL_COUNT 16
 
-inline std::vector<int> scan_i2c_bus(const char *i2c_device)
-{
-    int file;
-    std::vector<int> found_bus;
+// inline std::vector<int> scan_i2c_bus(const char *i2c_device)
+// {
+//     int file;
+//     std::vector<int> found_bus;
 
-    if ((file = open(i2c_device, O_RDWR)) < 0)
-    {
-        std::cerr << "Failed to open I2C bus: " << i2c_device << std::endl;
-        return found_bus;
-    }
+//     if ((file = open(i2c_device, O_RDWR)) < 0)
+//     {
+//         std::cerr << "Failed to open I2C bus: " << i2c_device << std::endl;
+//         return found_bus;
+//     }
 
-    for (int addr = 0x03; addr <= 0x77; ++addr)
-    {
-        if (ioctl(file, I2C_SLAVE, addr) < 0)
-        {
-            continue; // Unable to set device address
-        }
+//     for (int addr = 0x03; addr <= 0x77; ++addr)
+//     {
+//         if (ioctl(file, I2C_SLAVE, addr) < 0)
+//         {
+//             continue; // Unable to set device address
+//         }
 
-        // Try a dummy write (zero-length) to check if device responds
-        unsigned char buf[1] = {0};
-        if (write(file, buf, 1) == 1)
-        {
-            found_bus.push_back(addr);
-        }
-    }
+//         // Try a dummy write (zero-length) to check if device responds
+//         unsigned char buf[1] = {0};
+//         if (write(file, buf, 1) == 1)
+//         {
+//             found_bus.push_back(addr);
+//         }
+//     }
 
-    close(file);
-    return found_bus;
-}
+//     close(file);
+//     return found_bus;
+// }
 
 inline std::vector<int> scan_i2c_bus_channel(const char *i2c_device, int i2c_address)
 {
