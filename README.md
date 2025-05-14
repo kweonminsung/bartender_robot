@@ -1,15 +1,32 @@
+# Bartender Robot
+
+### Roles
+- I2C Controller
+- HTTP Server
+
+### How to Build
 ```bash
-mkdir build # build 폴더가 없을 경우
+$ mkdir build # if build directory not exists
 
-cd build
-cmake ..
-make
-
-source ../env && ./bartender_robot
+$ cd build
+$ cmake ..
+$ make
 ```
 
-fatal error: i2c/smbus.h: No such file or directory 에러 발생 시
-
+### Run
 ```bash
-$ apt install libi2c-dev
+$ source ../env && ./bartender_robot
 ```
+
+### Dependencies
+- [CMake](https://cmake.org/)
+- [nlohmann_json](https://github.com/nlohmann/json)
+- [cpp-httplib](https://github.com/yhirose/cpp-httplib)
+
+
+### Etc
+- **fatal error: i2c/smbus.h: No such file or directory 에러 발생 시
+
+    ```bash
+    $ apt install libi2c-dev
+    ```
