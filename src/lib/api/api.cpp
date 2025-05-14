@@ -1,18 +1,17 @@
-#include <iostream>
-#include <cstdlib>
 #include "api.hpp"
 #include "httplib.hpp"
+#include <cstdlib>
 
-ApiServer::ApiServer() {
+ApiServer::ApiServer()
+{
     this->svr = new httplib::Server();
 
-    this->svr->Get("/", [this](Req &req, Res &res) {
-        this->get_hello(req, res);
-    });
+    this->svr->Get("/test", [this](Req &req, Res &res)
+                   { this->get_test(req, res); });
 
-    
     int api_port = std::getenv("API_PORT") ? std::atoi(std::getenv("API_PORT")) : 8080;
-    if (api_port <= 0 || api_port > 65535) {
+    if (api_port <= 0 || api_port > 65535)
+    {
         std::cerr << "Invalid API_PORT value. Using default port 8080." << std::endl;
         api_port = 8080;
     }
@@ -21,11 +20,16 @@ ApiServer::ApiServer() {
     this->svr->listen("localhost", api_port);
 }
 
-ApiServer::~ApiServer() {
+ApiServer::~ApiServer()
+{
     delete this->svr;
 }
 
+void ApiServer::get_test(Req &req, Res &res)
+{
+    json response_json;
+    response_json["message"] = "success";
 
-void ApiServer::get_hello(Req &req, Res &res) {
-    res.set_content("Hello, World!", "text/plain");
+    res.set_content(response_json.dump(), "application/json");
+    res.status = 200;
 }
