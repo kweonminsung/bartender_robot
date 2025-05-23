@@ -1,5 +1,4 @@
 #include "api.hpp"
-#include "httplib.hpp"
 
 ApiServer::ApiServer()
 {
@@ -42,11 +41,6 @@ ApiServer::ApiServer()
 
     std::cout << "API server listening on port " << api_port << std::endl;
     this->svr->listen("localhost", api_port);
-}
-
-ApiServer::~ApiServer()
-{
-    delete this->svr;
 }
 
 void ApiServer::get_test(Req &req, Res &res)

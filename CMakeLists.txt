@@ -8,13 +8,22 @@ set(CMAKE_CXX_STANDARD 17)
 #     include/PCA9685
 # )
 
+# OpenSSL 필요 (cpp-httplib SSL 지원)
+# find_package(OpenSSL REQUIRED)
+
 add_library(nlohmann_json
     INTERFACE
 )
+add_library(httplib
+    INTERFACE
+)
+# target_compile_definitions(httplib INTERFACE CPPHTTPLIB_OPENSSL_SUPPORT)
+# target_link_libraries(httplib INTERFACE OpenSSL::SSL OpenSSL::Crypto)
 
 add_executable(bartender_robot
     src/main.cpp
     src/lib/api/api.cpp
+    # src/lib/llm/llm.cpp
     # src/lib/motor/pca9685_servo.cpp
 )
 
@@ -29,6 +38,7 @@ target_include_directories(bartender_robot
 target_link_libraries(bartender_robot
     PRIVATE
         nlohmann_json
+        httplib
         # PCA9685
 )
 

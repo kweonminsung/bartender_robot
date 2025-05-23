@@ -1,7 +1,7 @@
 #include <iostream>
 #include <cstdlib>
 #include <nlohmann/json.hpp>
-#include "httplib.hpp"
+#include <httplib/httplib.hpp>
 
 using Req = const httplib::Request;
 using Res = httplib::Response;
@@ -17,5 +17,8 @@ private:
 
 public:
     ApiServer();
-    ~ApiServer();
+    ~ApiServer()
+    {
+        delete this->svr;
+    }
 };

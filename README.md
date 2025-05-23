@@ -32,3 +32,7 @@ $ source ../env && ./bartender_robot
     ```bash
     $ apt install libi2c-dev
     ```
+- Could NOT find OpenSSL 에러 발생 시
+    ```bash
+    $ apt install libssl-dev
+    ```
