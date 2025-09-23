@@ -5,7 +5,6 @@ set(CMAKE_CXX_STANDARD 17)
 
 # 하위 라이브러리 추가(빌드 포함)
 # add_subdirectory(
-#     include/PCA9685
 # )
 
 # OpenSSL 필요 (cpp-httplib SSL 지원)
@@ -24,7 +23,6 @@ add_executable(bartender_robot
     src/main.cpp
     src/lib/api/api.cpp
     # src/lib/llm/llm.cpp
-    # src/lib/motor/pca9685_servo.cpp
 )
 
 # include path 설정
@@ -39,6 +37,5 @@ target_link_libraries(bartender_robot
     PRIVATE
         nlohmann_json
         httplib
-        # PCA9685
 )
 
