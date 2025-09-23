@@ -16,6 +16,9 @@ add_library(dynamixel_sdk STATIC
     src/dynamixel_sdk/protocol2_packet_handler.cpp
 )
 
-target_include_directories(dynamixel_sdk PUBLIC
-    ${CMAKE_CURRENT_SOURCE_DIR}/include/dynamixel_sdk
+target_include_directories(dynamixel_sdk
+    PUBLIC
+        ${CMAKE_CURRENT_SOURCE_DIR}/include
+    PRIVATE
+        ${CMAKE_CURRENT_SOURCE_DIR}/include/dynamixel_sdk
 )

@@ -10,44 +10,50 @@
 using namespace std::chrono_literals;
 
 // Control table address
-#define ADDR_MX_TORQUE_ENABLE           24
-#define ADDR_MX_GOAL_POSITION           30
-#define ADDR_MX_PRESENT_POSITION        36
+#define ADDR_MX_TORQUE_ENABLE 24
+#define ADDR_MX_GOAL_POSITION 30
+#define ADDR_MX_PRESENT_POSITION 36
 
 // Protocol version
-#define PROTOCOL_VERSION                1.0
+#define PROTOCOL_VERSION 1.0
 
 // Default setting
-#define DXL_ID                          1
-#define BAUDRATE                        1000000
-#define DEVICENAME                      "/dev/ttyUSB0"
+#define DXL_ID 1
+#define BAUDRATE 1000000
+#define DEVICENAME "/dev/ttyUSB0"
 
-#define TORQUE_ENABLE                   1
-#define TORQUE_DISABLE                  0
+#define TORQUE_ENABLE 1
+#define TORQUE_DISABLE 0
 
 class JointStatePublisher : public rclcpp::Node
 {
 public:
   JointStatePublisher()
-  : Node("joint_state_publisher")
+      : Node("joint_state_publisher")
   {
     publisher_ = this->create_publisher<sensor_msgs::msg::JointState>("joint_states", 10);
     timer_ = this->create_wall_timer(
-      33ms, std::bind(&JointStatePublisher::timer_callback, this));
+        33ms, std::bind(&JointStatePublisher::timer_callback, this));
 
     portHandler_ = dynamixel::PortHandler::getPortHandler(DEVICENAME);
     packetHandler_ = dynamixel::PacketHandler::getPacketHandler(PROTOCOL_VERSION);
 
-    if (portHandler_->openPort()) {
+    if (portHandler_->openPort())
+    {
       RCLCPP_INFO(this->get_logger(), "Succeeded to open the port!");
-    } else {
+    }
+    else
+    {
       RCLCPP_ERROR(this->get_logger(), "Failed to open the port!");
       rclcpp::shutdown();
     }
 
-    if (portHandler_->setBaudRate(BAUDRATE)) {
+    if (portHandler_->setBaudRate(BAUDRATE))
+    {
       RCLCPP_INFO(this->get_logger(), "Succeeded to change the baudrate!");
-    } else {
+    }
+    else
+    {
       RCLCPP_ERROR(this->get_logger(), "Failed to change the baudrate!");
       rclcpp::shutdown();
     }
@@ -82,7 +88,7 @@ private:
   dynamixel::PacketHandler *packetHandler_;
 };
 
-int main(int argc, char * argv[])
+int main(int argc, char *argv[])
 {
   rclcpp::init(argc, argv);
   rclcpp::spin(std::make_shared<JointStatePublisher>());
