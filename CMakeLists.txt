@@ -52,26 +52,10 @@ target_link_libraries(bartender_robot
 )
 
 # --------------------------
-# Visualizer Executable
-# --------------------------
-add_executable(visualizer src/joint_state_publisher.cpp)
-
-ament_target_dependencies(visualizer
-  rclcpp
-  sensor_msgs
-  urdf
-)
-
-target_link_libraries(visualizer
-  dynamixel_sdk
-)
-
-# --------------------------
 # Install rules
 # --------------------------
 install(TARGETS
   bartender_robot
-  visualizer
   DESTINATION lib/${PROJECT_NAME}
 )
 
