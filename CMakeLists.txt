@@ -3,9 +3,8 @@ project(bartender_robot)
 
 set(CMAKE_CXX_STANDARD 17)
 
-# 하위 라이브러리 추가(빌드 포함)
-# add_subdirectory(
-# )
+# Dynamixel SDK
+add_subdirectory(third_party/dynamixel_sdk)
 
 # OpenSSL 필요 (cpp-httplib SSL 지원)
 # find_package(OpenSSL REQUIRED)
@@ -37,5 +36,5 @@ target_link_libraries(bartender_robot
     PRIVATE
         nlohmann_json
         httplib
+        dynamixel_sdk
 )
-
