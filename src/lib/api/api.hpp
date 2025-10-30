@@ -13,7 +13,6 @@ private:
     httplib::Server *svr;
 
     void get_test(Req &req, Res &res);
-    void post_test_motor_pca9685(Req &req, Res &res);
 
 public:
     ApiServer();

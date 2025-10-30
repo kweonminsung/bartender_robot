@@ -1,6 +1,1 @@
 export API_PORT="4000"
-export I2C_DEVICE="/dev/i2c-1"
-export I2C_ADDRESS="64"
-# export LLM_SERVER_HOST="https://api.openai.com"
-# export LLM_MODEL_NAME="gpt-4.1-nano"
-# export LLM_API_KEY="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"
