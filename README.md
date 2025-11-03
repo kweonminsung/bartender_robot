@@ -10,6 +10,7 @@
 
     ```bash
     $ cd bartender_robot
+    <!-- $ rm -rf log build install -->
     $ colcon build --symlink-install
     ```
 
@@ -31,7 +32,7 @@
 4. Spawn the robot in Gazebo
 
     ```bash
-    $ ros2 launch bartender_robot spawn_gazebo.launch.py
+    $ ros2 launch bartender_robot gz_sim.launch.py
     ```
 
 ## System dependencies
@@ -46,9 +47,15 @@ $ sudo apt install \
     ros-rolling-joint-state-publisher \
     ros-rolling-joint-state-publisher-gui \
     ros-rolling-robot-state-publisher \
-    ros-rolling-rviz2 \
-    ros-rolling-gazebo-ros
+    ros-rolling-rviz2
+
+# Install Gazebo and ROS-Gazebo bridge
+$ sudo apt install \
+    ros-rolling-ros-gz \
+    ros-rolling-ros-gz-sim \
+    ros-rolling-ros-gz-bridge
 ```
+
 
 ## Full executable including HTTP server
 

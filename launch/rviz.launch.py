@@ -13,7 +13,7 @@ def generate_launch_description():
     robot_description = {'robot_description': Command(['xacro ', xacro_file])}
 
     # start joint_state_publisher (provides joint_states for robot model)
-    joint_state_pub = Node(
+    joint_state_publisher = Node(
         package='joint_state_publisher',
         executable='joint_state_publisher',
         name='joint_state_publisher',
@@ -43,7 +43,7 @@ def generate_launch_description():
     )
 
     return LaunchDescription([
-        joint_state_pub,
+        joint_state_publisher,
         robot_state_publisher,
         rviz,
     ])
