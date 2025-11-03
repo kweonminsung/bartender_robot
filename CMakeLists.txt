@@ -13,9 +13,10 @@ file(GLOB_RECURSE SOURCES
 
 add_executable(bartender_robot ${SOURCES})
 
-ament_target_dependencies(bartender_robot
-  "rclcpp"
-  "std_msgs")
+target_link_libraries(bartender_robot PUBLIC
+      ${std_msgs_TARGETS}
+      rclcpp::rclcpp
+    )
 
 # Link include directories
 target_include_directories(bartender_robot PUBLIC
