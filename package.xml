@@ -8,8 +8,17 @@
 
   <buildtool_depend>ament_cmake</buildtool_depend>
 
+  <!-- runtime / build dependencies for viewing model in RViz and spawning in Gazebo -->
+  <build_depend>xacro</build_depend>
+  <build_depend>ament_index_python</build_depend>
+
   <depend>rclcpp</depend>
   <depend>std_msgs</depend>
+  <depend>robot_state_publisher</depend>
+  <depend>joint_state_publisher</depend>
+  <depend>joint_state_publisher_gui</depend>
+  <depend>rviz2</depend>
+  <depend>gazebo_ros</depend>
 
   <export>
     <build_type>ament_cmake</build_type>

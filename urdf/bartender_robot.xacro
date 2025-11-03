@@ -1,9 +1,9 @@
 <?xml version="1.0" ?>
-<robot name="test_assembly3" xmlns:xacro="http://www.ros.org/wiki/xacro">
+<robot name="bartender_robot" xmlns:xacro="http://www.ros.org/wiki/xacro">
 
-<xacro:include filename="$(find test_assembly3_description)/urdf/materials.xacro" />
-<xacro:include filename="$(find test_assembly3_description)/urdf/test_assembly3.trans" />
-<xacro:include filename="$(find test_assembly3_description)/urdf/test_assembly3.gazebo" />
+<xacro:include filename="$(find bartender_robot)/urdf/materials.xacro" />
+<xacro:include filename="$(find bartender_robot)/urdf/bartender_robot.trans" />
+<xacro:include filename="$(find bartender_robot)/urdf/bartender_robot.gazebo" />
 <link name="base_link">
   <inertial>
     <origin xyz="-0.00040810804018468253 -3.552713678800501e-17 0.016706580181223032" rpy="0 0 0"/>
@@ -13,14 +13,14 @@
   <visual>
     <origin xyz="0 0 0" rpy="0 0 0"/>
     <geometry>
-      <mesh filename="package://test_assembly3_description/meshes/base_link.stl" scale="0.001 0.001 0.001"/>
+  <mesh filename="package://bartender_robot/meshes/base_link.stl" scale="0.001 0.001 0.001"/>
     </geometry>
     <material name="silver"/>
   </visual>
   <collision>
     <origin xyz="0 0 0" rpy="0 0 0"/>
     <geometry>
-      <mesh filename="package://test_assembly3_description/meshes/base_link.stl" scale="0.001 0.001 0.001"/>
+      <mesh filename="package://bartender_robot/meshes/base_link.stl" scale="0.001 0.001 0.001"/>
     </geometry>
   </collision>
 </link>
@@ -34,14 +34,14 @@
   <visual>
     <origin xyz="0.0 0.0 -0.015" rpy="0 0 0"/>
     <geometry>
-      <mesh filename="package://test_assembly3_description/meshes/motor_base_1.stl" scale="0.001 0.001 0.001"/>
+  <mesh filename="package://bartender_robot/meshes/motor_base_1.stl" scale="0.001 0.001 0.001"/>
     </geometry>
     <material name="silver"/>
   </visual>
   <collision>
     <origin xyz="0.0 0.0 -0.015" rpy="0 0 0"/>
     <geometry>
-      <mesh filename="package://test_assembly3_description/meshes/motor_base_1.stl" scale="0.001 0.001 0.001"/>
+      <mesh filename="package://bartender_robot/meshes/motor_base_1.stl" scale="0.001 0.001 0.001"/>
     </geometry>
   </collision>
 </link>
@@ -55,14 +55,14 @@
   <visual>
     <origin xyz="0.0 0.0 -0.041" rpy="0 0 0"/>
     <geometry>
-      <mesh filename="package://test_assembly3_description/meshes/base_upperplate_1.stl" scale="0.001 0.001 0.001"/>
+  <mesh filename="package://bartender_robot/meshes/base_upperplate_1.stl" scale="0.001 0.001 0.001"/>
     </geometry>
     <material name="silver"/>
   </visual>
   <collision>
     <origin xyz="0.0 0.0 -0.041" rpy="0 0 0"/>
     <geometry>
-      <mesh filename="package://test_assembly3_description/meshes/base_upperplate_1.stl" scale="0.001 0.001 0.001"/>
+      <mesh filename="package://bartender_robot/meshes/base_upperplate_1.stl" scale="0.001 0.001 0.001"/>
     </geometry>
   </collision>
 </link>
@@ -76,14 +76,14 @@
   <visual>
     <origin xyz="0.0 0.0 -0.0475" rpy="0 0 0"/>
     <geometry>
-      <mesh filename="package://test_assembly3_description/meshes/motor_horn_base_1.stl" scale="0.001 0.001 0.001"/>
+  <mesh filename="package://bartender_robot/meshes/motor_horn_base_1.stl" scale="0.001 0.001 0.001"/>
     </geometry>
     <material name="silver"/>
   </visual>
   <collision>
     <origin xyz="0.0 0.0 -0.0475" rpy="0 0 0"/>
     <geometry>
-      <mesh filename="package://test_assembly3_description/meshes/motor_horn_base_1.stl" scale="0.001 0.001 0.001"/>
+      <mesh filename="package://bartender_robot/meshes/motor_horn_base_1.stl" scale="0.001 0.001 0.001"/>
     </geometry>
   </collision>
 </link>
@@ -97,14 +97,14 @@
   <visual>
     <origin xyz="0.0 0.0 -0.051" rpy="0 0 0"/>
     <geometry>
-      <mesh filename="package://test_assembly3_description/meshes/link1_1.stl" scale="0.001 0.001 0.001"/>
+      <mesh filename="package://bartender_robot/meshes/link1_1.stl" scale="0.001 0.001 0.001"/>
     </geometry>
     <material name="silver"/>
   </visual>
   <collision>
     <origin xyz="0.0 0.0 -0.051" rpy="0 0 0"/>
     <geometry>
-      <mesh filename="package://test_assembly3_description/meshes/link1_1.stl" scale="0.001 0.001 0.001"/>
+      <mesh filename="package://bartender_robot/meshes/link1_1.stl" scale="0.001 0.001 0.001"/>
     </geometry>
   </collision>
 </link>
@@ -118,14 +118,14 @@
   <visual>
     <origin xyz="0.023374 0.016412 -0.15725" rpy="0 0 0"/>
     <geometry>
-      <mesh filename="package://test_assembly3_description/meshes/motor_fix_link1_1.stl" scale="0.001 0.001 0.001"/>
+      <mesh filename="package://bartender_robot/meshes/motor_fix_link1_1.stl" scale="0.001 0.001 0.001"/>
     </geometry>
     <material name="silver"/>
   </visual>
   <collision>
     <origin xyz="0.023374 0.016412 -0.15725" rpy="0 0 0"/>
     <geometry>
-      <mesh filename="package://test_assembly3_description/meshes/motor_fix_link1_1.stl" scale="0.001 0.001 0.001"/>
+      <mesh filename="package://bartender_robot/meshes/motor_fix_link1_1.stl" scale="0.001 0.001 0.001"/>
     </geometry>
   </collision>
 </link>
@@ -139,14 +139,14 @@
   <visual>
     <origin xyz="0.023584 0.01518 -0.149" rpy="0 0 0"/>
     <geometry>
-      <mesh filename="package://test_assembly3_description/meshes/motor_link1_1.stl" scale="0.001 0.001 0.001"/>
+      <mesh filename="package://bartender_robot/meshes/motor_link1_1.stl" scale="0.001 0.001 0.001"/>
     </geometry>
     <material name="silver"/>
   </visual>
   <collision>
     <origin xyz="0.023584 0.01518 -0.149" rpy="0 0 0"/>
     <geometry>
-      <mesh filename="package://test_assembly3_description/meshes/motor_link1_1.stl" scale="0.001 0.001 0.001"/>
+      <mesh filename="package://bartender_robot/meshes/motor_link1_1.stl" scale="0.001 0.001 0.001"/>
     </geometry>
   </collision>
 </link>
@@ -160,14 +160,14 @@
   <visual>
     <origin xyz="0.024152 0.004118 -0.141" rpy="0 0 0"/>
     <geometry>
-      <mesh filename="package://test_assembly3_description/meshes/motor_horn_link1_1.stl" scale="0.001 0.001 0.001"/>
+      <mesh filename="package://bartender_robot/meshes/motor_horn_link1_1.stl" scale="0.001 0.001 0.001"/>
     </geometry>
     <material name="silver"/>
   </visual>
   <collision>
     <origin xyz="0.024152 0.004118 -0.141" rpy="0 0 0"/>
     <geometry>
-      <mesh filename="package://test_assembly3_description/meshes/motor_horn_link1_1.stl" scale="0.001 0.001 0.001"/>
+      <mesh filename="package://bartender_robot/meshes/motor_horn_link1_1.stl" scale="0.001 0.001 0.001"/>
     </geometry>
   </collision>
 </link>
@@ -181,14 +181,14 @@
   <visual>
     <origin xyz="0.020701 0.003529 -0.141" rpy="0 0 0"/>
     <geometry>
-      <mesh filename="package://test_assembly3_description/meshes/link2_1.stl" scale="0.001 0.001 0.001"/>
+      <mesh filename="package://bartender_robot/meshes/link2_1.stl" scale="0.001 0.001 0.001"/>
     </geometry>
     <material name="silver"/>
   </visual>
   <collision>
     <origin xyz="0.020701 0.003529 -0.141" rpy="0 0 0"/>
     <geometry>
-      <mesh filename="package://test_assembly3_description/meshes/link2_1.stl" scale="0.001 0.001 0.001"/>
+      <mesh filename="package://bartender_robot/meshes/link2_1.stl" scale="0.001 0.001 0.001"/>
     </geometry>
   </collision>
 </link>
@@ -202,14 +202,14 @@
   <visual>
     <origin xyz="0.015263 -0.018122 -0.147219" rpy="0 0 0"/>
     <geometry>
-      <mesh filename="package://test_assembly3_description/meshes/motor_link2_1.stl" scale="0.001 0.001 0.001"/>
+      <mesh filename="package://bartender_robot/meshes/motor_link2_1.stl" scale="0.001 0.001 0.001"/>
     </geometry>
     <material name="silver"/>
   </visual>
   <collision>
     <origin xyz="0.015263 -0.018122 -0.147219" rpy="0 0 0"/>
     <geometry>
-      <mesh filename="package://test_assembly3_description/meshes/motor_link2_1.stl" scale="0.001 0.001 0.001"/>
+      <mesh filename="package://bartender_robot/meshes/motor_link2_1.stl" scale="0.001 0.001 0.001"/>
     </geometry>
   </collision>
 </link>
@@ -223,14 +223,14 @@
   <visual>
     <origin xyz="0.004083 -0.017997 -0.139365" rpy="0 0 0"/>
     <geometry>
-      <mesh filename="package://test_assembly3_description/meshes/motor_horn_link2_1.stl" scale="0.001 0.001 0.001"/>
+      <mesh filename="package://bartender_robot/meshes/motor_horn_link2_1.stl" scale="0.001 0.001 0.001"/>
     </geometry>
     <material name="silver"/>
   </visual>
   <collision>
     <origin xyz="0.004083 -0.017997 -0.139365" rpy="0 0 0"/>
     <geometry>
-      <mesh filename="package://test_assembly3_description/meshes/motor_horn_link2_1.stl" scale="0.001 0.001 0.001"/>
+      <mesh filename="package://bartender_robot/meshes/motor_horn_link2_1.stl" scale="0.001 0.001 0.001"/>
     </geometry>
   </collision>
 </link>
@@ -244,14 +244,14 @@
   <visual>
     <origin xyz="0.003497 -0.014561 -0.139674" rpy="0 0 0"/>
     <geometry>
-      <mesh filename="package://test_assembly3_description/meshes/link3_1.stl" scale="0.001 0.001 0.001"/>
+      <mesh filename="package://bartender_robot/meshes/link3_1.stl" scale="0.001 0.001 0.001"/>
     </geometry>
     <material name="silver"/>
   </visual>
   <collision>
     <origin xyz="0.003497 -0.014561 -0.139674" rpy="0 0 0"/>
     <geometry>
-      <mesh filename="package://test_assembly3_description/meshes/link3_1.stl" scale="0.001 0.001 0.001"/>
+      <mesh filename="package://bartender_robot/meshes/link3_1.stl" scale="0.001 0.001 0.001"/>
     </geometry>
   </collision>
 </link>
@@ -265,14 +265,14 @@
   <visual>
     <origin xyz="-0.023288 0.142546 -0.153815" rpy="0 0 0"/>
     <geometry>
-      <mesh filename="package://test_assembly3_description/meshes/motor_fix_link3_1.stl" scale="0.001 0.001 0.001"/>
+      <mesh filename="package://bartender_robot/meshes/motor_fix_link3_1.stl" scale="0.001 0.001 0.001"/>
     </geometry>
     <material name="silver"/>
   </visual>
   <collision>
     <origin xyz="-0.023288 0.142546 -0.153815" rpy="0 0 0"/>
     <geometry>
-      <mesh filename="package://test_assembly3_description/meshes/motor_fix_link3_1.stl" scale="0.001 0.001 0.001"/>
+      <mesh filename="package://bartender_robot/meshes/motor_fix_link3_1.stl" scale="0.001 0.001 0.001"/>
     </geometry>
   </collision>
 </link>
@@ -286,14 +286,14 @@
   <visual>
     <origin xyz="-0.015046 0.148117 -0.164112" rpy="0 0 0"/>
     <geometry>
-      <mesh filename="package://test_assembly3_description/meshes/motor_link3_1.stl" scale="0.001 0.001 0.001"/>
+      <mesh filename="package://bartender_robot/meshes/motor_link3_1.stl" scale="0.001 0.001 0.001"/>
     </geometry>
     <material name="silver"/>
   </visual>
   <collision>
     <origin xyz="-0.015046 0.148117 -0.164112" rpy="0 0 0"/>
     <geometry>
-      <mesh filename="package://test_assembly3_description/meshes/motor_link3_1.stl" scale="0.001 0.001 0.001"/>
+      <mesh filename="package://bartender_robot/meshes/motor_link3_1.stl" scale="0.001 0.001 0.001"/>
     </geometry>
   </collision>
 </link>
@@ -307,14 +307,14 @@
   <visual>
     <origin xyz="-0.036587 0.15797 -0.175077" rpy="0 0 0"/>
     <geometry>
-      <mesh filename="package://test_assembly3_description/meshes/motor_horn_link3_1.stl" scale="0.001 0.001 0.001"/>
+      <mesh filename="package://bartender_robot/meshes/motor_horn_link3_1.stl" scale="0.001 0.001 0.001"/>
     </geometry>
     <material name="silver"/>
   </visual>
   <collision>
     <origin xyz="-0.036587 0.15797 -0.175077" rpy="0 0 0"/>
     <geometry>
-      <mesh filename="package://test_assembly3_description/meshes/motor_horn_link3_1.stl" scale="0.001 0.001 0.001"/>
+      <mesh filename="package://bartender_robot/meshes/motor_horn_link3_1.stl" scale="0.001 0.001 0.001"/>
     </geometry>
   </collision>
 </link>
@@ -328,14 +328,14 @@
   <visual>
     <origin xyz="-0.03989 0.15732 -0.176033" rpy="0 0 0"/>
     <geometry>
-      <mesh filename="package://test_assembly3_description/meshes/link4_1.stl" scale="0.001 0.001 0.001"/>
+      <mesh filename="package://bartender_robot/meshes/link4_1.stl" scale="0.001 0.001 0.001"/>
     </geometry>
     <material name="silver"/>
   </visual>
   <collision>
     <origin xyz="-0.03989 0.15732 -0.176033" rpy="0 0 0"/>
     <geometry>
-      <mesh filename="package://test_assembly3_description/meshes/link4_1.stl" scale="0.001 0.001 0.001"/>
+      <mesh filename="package://bartender_robot/meshes/link4_1.stl" scale="0.001 0.001 0.001"/>
     </geometry>
   </collision>
 </link>
@@ -349,14 +349,14 @@
   <visual>
     <origin xyz="-0.060395 0.332013 -0.17623" rpy="0 0 0"/>
     <geometry>
-      <mesh filename="package://test_assembly3_description/meshes/motor_link4_1.stl" scale="0.001 0.001 0.001"/>
+      <mesh filename="package://bartender_robot/meshes/motor_link4_1.stl" scale="0.001 0.001 0.001"/>
     </geometry>
     <material name="silver"/>
   </visual>
   <collision>
     <origin xyz="-0.060395 0.332013 -0.17623" rpy="0 0 0"/>
     <geometry>
-      <mesh filename="package://test_assembly3_description/meshes/motor_link4_1.stl" scale="0.001 0.001 0.001"/>
+      <mesh filename="package://bartender_robot/meshes/motor_link4_1.stl" scale="0.001 0.001 0.001"/>
     </geometry>
   </collision>
 </link>
@@ -370,14 +370,14 @@
   <visual>
     <origin xyz="-0.056813 0.327062 -0.163282" rpy="0 0 0"/>
     <geometry>
-      <mesh filename="package://test_assembly3_description/meshes/motor_fix_link4_1.stl" scale="0.001 0.001 0.001"/>
+      <mesh filename="package://bartender_robot/meshes/motor_fix_link4_1.stl" scale="0.001 0.001 0.001"/>
     </geometry>
     <material name="silver"/>
   </visual>
   <collision>
     <origin xyz="-0.056813 0.327062 -0.163282" rpy="0 0 0"/>
     <geometry>
-      <mesh filename="package://test_assembly3_description/meshes/motor_fix_link4_1.stl" scale="0.001 0.001 0.001"/>
+      <mesh filename="package://bartender_robot/meshes/motor_fix_link4_1.stl" scale="0.001 0.001 0.001"/>
     </geometry>
   </collision>
 </link>
@@ -391,14 +391,14 @@
   <visual>
     <origin xyz="-0.071249 0.344576 -0.182036" rpy="0 0 0"/>
     <geometry>
-      <mesh filename="package://test_assembly3_description/meshes/motor_horn_link4_1.stl" scale="0.001 0.001 0.001"/>
+      <mesh filename="package://bartender_robot/meshes/motor_horn_link4_1.stl" scale="0.001 0.001 0.001"/>
     </geometry>
     <material name="silver"/>
   </visual>
   <collision>
     <origin xyz="-0.071249 0.344576 -0.182036" rpy="0 0 0"/>
     <geometry>
-      <mesh filename="package://test_assembly3_description/meshes/motor_horn_link4_1.stl" scale="0.001 0.001 0.001"/>
+      <mesh filename="package://bartender_robot/meshes/motor_horn_link4_1.stl" scale="0.001 0.001 0.001"/>
     </geometry>
   </collision>
 </link>

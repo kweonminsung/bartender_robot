@@ -6,6 +6,9 @@ find_package(ament_cmake REQUIRED)
 find_package(rclcpp REQUIRED)
 find_package(std_msgs REQUIRED)
 
+# Note: this package contains URDF/xacro and meshes for visualization.
+# Install the urdf, meshes and launch files into share/<pkg>
+
 # Main Executable
 file(GLOB_RECURSE SOURCES
   src/*.cpp
@@ -27,6 +30,15 @@ target_include_directories(bartender_robot PUBLIC
 install(TARGETS
   bartender_robot
   DESTINATION lib/${PROJECT_NAME}
+)
+
+# Install resources so launch files can find them via ament index
+install(DIRECTORY
+  urdf
+  meshes
+  launch
+  rviz
+  DESTINATION share/${PROJECT_NAME}
 )
 
 ament_package()
