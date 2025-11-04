@@ -2,8 +2,6 @@
 <robot name="bartender_robot" xmlns:xacro="http://www.ros.org/wiki/xacro">
 
 <xacro:include filename="$(find bartender_robot)/urdf/materials.xacro" />
-<xacro:include filename="$(find bartender_robot)/urdf/bartender_robot.trans" />
-<xacro:include filename="$(find bartender_robot)/urdf/bartender_robot.gazebo" />
 <link name="base_link">
   <inertial>
     <origin xyz="-0.00040810804018468253 -3.552713678800501e-17 0.016706580181223032" rpy="0 0 0"/>
@@ -403,113 +401,113 @@
   </collision>
 </link>
 
-<joint name="Rigid 1" type="fixed">
+<joint name="Rigid_1" type="fixed">
   <origin xyz="0.0 0.0 0.015" rpy="0 0 0"/>
   <parent link="base_link"/>
   <child link="motor_base_1"/>
 </joint>
 
-<joint name="Rigid 2" type="fixed">
+<joint name="Rigid_2" type="fixed">
   <origin xyz="0.0 0.0 0.041" rpy="0 0 0"/>
   <parent link="base_link"/>
   <child link="base_upperplate_1"/>
 </joint>
 
-<joint name="Revolute 3" type="continuous">
+<joint name="revolute_3" type="continuous">
   <origin xyz="0.0 0.0 0.0325" rpy="0 0 0"/>
   <parent link="motor_base_1"/>
   <child link="motor_horn_base_1"/>
   <axis xyz="0.0 0.0 1.0"/>
 </joint>
 
-<joint name="Rigid 4" type="fixed">
+<joint name="Rigid_4" type="fixed">
   <origin xyz="0.0 0.0 0.0035" rpy="0 0 0"/>
   <parent link="motor_horn_base_1"/>
   <child link="link1_1"/>
 </joint>
 
-<joint name="Rigid 5" type="fixed">
+<joint name="Rigid_5" type="fixed">
   <origin xyz="-0.023374 -0.016412 0.10625" rpy="0 0 0"/>
   <parent link="link1_1"/>
   <child link="motor_fix_link1_1"/>
 </joint>
 
-<joint name="Rigid 6" type="fixed">
+<joint name="Rigid_6" type="fixed">
   <origin xyz="-0.00021 0.001232 -0.00825" rpy="0 0 0"/>
   <parent link="motor_fix_link1_1"/>
   <child link="motor_link1_1"/>
 </joint>
 
-<joint name="Revolute 7" type="continuous">
+<joint name="revolute_7" type="continuous">
   <origin xyz="-0.000568 0.011062 -0.008" rpy="0 0 0"/>
   <parent link="motor_link1_1"/>
   <child link="motor_horn_link1_1"/>
   <axis xyz="0.985776 0.168066 0.0"/>
 </joint>
 
-<joint name="Rigid 8" type="fixed">
+<joint name="Rigid_8" type="fixed">
   <origin xyz="0.003451 0.000589 0.0" rpy="0 0 0"/>
   <parent link="motor_horn_link1_1"/>
   <child link="link2_1"/>
 </joint>
 
-<joint name="Rigid 9" type="fixed">
+<joint name="Rigid_9" type="fixed">
   <origin xyz="0.005438 0.021651 0.006219" rpy="0 0 0"/>
   <parent link="link2_1"/>
   <child link="motor_link2_1"/>
 </joint>
 
-<joint name="Revolute 10" type="continuous">
+<joint name="revolute_10" type="continuous">
   <origin xyz="0.01118 -0.000125 -0.007854" rpy="0 0 0"/>
   <parent link="motor_link2_1"/>
   <child link="motor_horn_link2_1"/>
   <axis xyz="0.167408 -0.981919 0.088377"/>
 </joint>
 
-<joint name="Rigid 12" type="fixed">
+<joint name="Rigid_12" type="fixed">
   <origin xyz="0.000586 -0.003436 0.000309" rpy="0 0 0"/>
   <parent link="motor_horn_link2_1"/>
   <child link="link3_1"/>
 </joint>
 
-<joint name="Rigid 13" type="fixed">
+<joint name="Rigid_13" type="fixed">
   <origin xyz="0.026785 -0.157107 0.014141" rpy="0 0 0"/>
   <parent link="link3_1"/>
   <child link="motor_fix_link3_1"/>
 </joint>
 
-<joint name="Rigid 14" type="fixed">
+<joint name="Rigid_14" type="fixed">
   <origin xyz="-0.008242 -0.005571 0.010297" rpy="0 0 0"/>
   <parent link="motor_fix_link3_1"/>
   <child link="motor_link3_1"/>
 </joint>
 
-<joint name="Revolute 15" type="continuous">
+<joint name="revolute_15" type="continuous">
   <origin xyz="0.021541 -0.009853 0.010965" rpy="0 0 0"/>
   <parent link="motor_link3_1"/>
   <child link="motor_horn_link3_1"/>
   <axis xyz="0.943896 0.185516 0.27321"/>
 </joint>
 
-<joint name="Rigid 16" type="fixed">
+<joint name="Rigid_16" type="fixed">
   <origin xyz="0.003303 0.00065 0.000956" rpy="0 0 0"/>
   <parent link="motor_horn_link3_1"/>
   <child link="link4_1"/>
 </joint>
 
-<joint name="Rigid 18" type="fixed">
+<joint name="Rigid_18" type="fixed">
   <origin xyz="0.003582 -0.004951 0.012948" rpy="0 0 0"/>
   <parent link="motor_fix_link4_1"/>
   <child link="motor_link4_1"/>
 </joint>
 
-<joint name="Rigid 19" type="fixed">
+<joint name="Rigid_19" type="fixed">
   <origin xyz="0.016923 -0.169742 -0.012751" rpy="0 0 0"/>
   <parent link="link4_1"/>
   <child link="motor_fix_link4_1"/>
 </joint>
 
-<joint name="Revolute 20" type="continuous">
+<joint name="revolute_20" type="continuous">
   <origin xyz="0.010854 -0.012563 0.005806" rpy="0 0 0"/>
   <parent link="motor_link4_1"/>
   <child link="motor_horn_link4_1"/>

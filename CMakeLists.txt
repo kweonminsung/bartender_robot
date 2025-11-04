@@ -5,6 +5,7 @@ project(bartender_robot)
 find_package(ament_cmake REQUIRED)
 find_package(rclcpp REQUIRED)
 find_package(std_msgs REQUIRED)
+find_package(trajectory_msgs REQUIRED)
 
 # Note: this package contains URDF/xacro and meshes for visualization.
 # Install the urdf, meshes and launch files into share/<pkg>
@@ -18,6 +19,7 @@ add_executable(bartender_robot ${SOURCES})
 
 target_link_libraries(bartender_robot PUBLIC
       ${std_msgs_TARGETS}
+      ${trajectory_msgs_TARGETS}
       rclcpp::rclcpp
     )
 
@@ -38,6 +40,7 @@ install(DIRECTORY
   meshes
   launch
   rviz
+  config
   DESTINATION share/${PROJECT_NAME}
 )
 

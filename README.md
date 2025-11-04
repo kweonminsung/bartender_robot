@@ -2,7 +2,7 @@
 
 <!-- <img src="public/concepts.png" width="420px" height="212x"> -->
 
-## Getting started
+## Getting started (simulation only)
 
 0. Install System dependencies (see below)
 
@@ -10,7 +10,7 @@
 
     ```bash
     $ cd bartender_robot
-    <!-- $ rm -rf log build install -->
+    $ rm -rf log build install # Clean previous builds
     $ colcon build --symlink-install
     ```
 
@@ -53,7 +53,10 @@ $ sudo apt install \
 $ sudo apt install \
     ros-rolling-ros-gz \
     ros-rolling-ros-gz-sim \
-    ros-rolling-ros-gz-bridge
+    ros-rolling-ros-gz-bridge \
+    ros-rolling-ros2-control \
+    ros-rolling-ros2-controllers \
+    ros-rolling-gz-ros2-control
 ```
 
 
@@ -81,7 +84,14 @@ The above will build the native `bartender_robot` executable located in `build/`
 ### Run
 
 ```bash
-source ../env && ./bartender_robot
+# $ source ../env && ros2 run bartender_robot bartender_robot # for environment variables
+
+$ ros2 run bartender_robot bartender_robot --ros-args -p joints:="[revolute_3,revolute_7,revolute_10,revolute_15,revolute_20]"
+
+# or with custom step size
+$ ros2 run bartender_robot bartender_robot --ros-args \
+  -p joints:="[revolute_3,revolute_7,revolute_10,revolute_15,revolute_20]" \
+  -p step:=0.5
 ```
 
 ### Dependencies

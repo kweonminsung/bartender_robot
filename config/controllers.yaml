@@ -1,0 +1,47 @@
+controller_manager:
+  ros__parameters:
+    update_rate: 100
+    
+    joint_state_broadcaster:
+      type: joint_state_broadcaster/JointStateBroadcaster
+
+    joint_trajectory_controller:
+      type: joint_trajectory_controller/JointTrajectoryController
+
+joint_trajectory_controller:
+  ros__parameters:
+    joints:
+      - revolute_3
+      - revolute_7
+      - revolute_10
+      - revolute_15
+      - revolute_20
+    command_interfaces:
+      - position
+    state_interfaces:
+      - position
+      - velocity
+    gains:
+      revolute_3:
+        p: 100.0
+        d: 10.0
+        i: 0.0
+      revolute_7:
+        p: 100.0
+        d: 10.0
+        i: 0.0
+      revolute_10:
+        p: 100.0
+        d: 10.0
+        i: 0.0
+      revolute_15:
+        p: 100.0
+        d: 10.0
+        i: 0.0
+      revolute_20:
+        p: 100.0
+        d: 10.0
+        i: 0.0
+    constraints:
+      goal_time: 0.2
+      stopped_velocity_tolerance: 0.05

@@ -1,26 +1,22 @@
 from launch import LaunchDescription
-from launch.actions import IncludeLaunchDescription
+from launch.actions import DeclareLaunchArgument, IncludeLaunchDescription, RegisterEventHandler
+from launch.event_handlers import OnProcessExit
 from launch.launch_description_sources import PythonLaunchDescriptionSource
 from launch_ros.actions import Node
-from launch.substitutions import Command, FindExecutable
+from launch.substitutions import Command, LaunchConfiguration, PathJoinSubstitution
 from ament_index_python.packages import get_package_share_directory
 import os
 
 
 def generate_launch_description():
+    # Launch Arguments
+    use_sim_time = LaunchConfiguration('use_sim_time', default=True)
+
     pkg_share = get_package_share_directory('bartender_robot')
     xacro_file = os.path.join(pkg_share, 'urdf', 'bartender_robot.gazebo.xacro')
 
     # generate robot_description from xacro at runtime
     robot_description = {'robot_description': Command(['xacro ', xacro_file])}
-
-    # start joint_state_publisher (provides joint_states for robot model)
-    joint_state_publisher = Node(
-        package='joint_state_publisher',
-        executable='joint_state_publisher',
-        name='joint_state_publisher',
-        output='screen'
-    )
 
     # start robot_state_publisher so TF is available
     robot_state_publisher = Node(
@@ -28,6 +24,18 @@ def generate_launch_description():
         executable='robot_state_publisher',
         output='screen',
         parameters=[robot_description],
+    )
+
+    joint_state_broadcaster_spawner = Node(
+        package='controller_manager',
+        executable='spawner',
+        arguments=['joint_state_broadcaster'],
+    )
+
+    joint_trajectory_controller_spawner = Node(
+        package='controller_manager',
+        executable='spawner',
+        arguments=['joint_trajectory_controller'],
     )
 
     # spawn entity in running Gazebo (assumes Gazebo is already running)
@@ -41,6 +49,14 @@ def generate_launch_description():
         output='screen'
     )
 
+    # Bridge for clock
+    bridge = Node(
+        package='ros_gz_bridge',
+        executable='parameter_bridge',
+        arguments=['/clock@rosgraph_msgs/msg/Clock[gz.msgs.Clock'],
+        output='screen'
+    )
+
     # Gazebo Launch
     gz = IncludeLaunchDescription(
         PythonLaunchDescriptionSource(
@@ -50,19 +66,27 @@ def generate_launch_description():
         launch_arguments={'gz_args': '-r empty.sdf'}.items(),
     )
 
-    # bridge = Node(
-    #     package='ros_gz_bridge',
-    #     executable='parameter_bridge',
-    #     arguments=[
-    #         '/joint_states@sensor_msgs/msg/JointState@gz.msgs.Model'
-    #     ],
-    # )
-
     return LaunchDescription([
         gz,
-        joint_state_publisher,
+        RegisterEventHandler(
+            event_handler=OnProcessExit(
+                target_action=spawn_entity,
+                on_exit=[joint_state_broadcaster_spawner],
+            )
+        ),
+        RegisterEventHandler(
+            event_handler=OnProcessExit(
+                target_action=joint_state_broadcaster_spawner,
+                on_exit=[joint_trajectory_controller_spawner],
+            )
+        ),
+        bridge,
         robot_state_publisher,
         spawn_entity,
-        # bridge
+        # Launch Arguments
+        DeclareLaunchArgument(
+            'use_sim_time',
+            default_value=use_sim_time,
+            description='If true, use simulated clock'),
     ])
 
