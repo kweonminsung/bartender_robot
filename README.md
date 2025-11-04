@@ -37,11 +37,20 @@
 
 ## System dependencies
 
-Install the packages below(adjust for your ROS 2 distribution) if they are not already available:
+Install ROS 2 Rolling according to the official instructions:  
+(or your desired ROS 2 distribution)
+https://docs.ros.org/en/rolling/Installation.html  
+
+Install the packages below if they are not already available:  
+(adjust for your ROS 2 distribution)
 
 ```bash
-# Install ROS2 before running this
 $ sudo apt update
+
+# Install Dynamixel SDK
+$ sudo apt-get install ros-$ROS_DISTRO-dynamixel-sdk
+
+# Install basic robot state publisher and RViz
 $ sudo apt install \
     ros-rolling-xacro \
     ros-rolling-joint-state-publisher \
