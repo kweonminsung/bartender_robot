@@ -33,7 +33,7 @@ KeyboardJointTeleop::KeyboardJointTeleop()
 {
   // declare parameters
   this->declare_parameter<std::vector<std::string>>("joints", std::vector<std::string>{});
-  this->declare_parameter<double>("step", 0.2);
+  this->declare_parameter<double>("step", 0.05);
 
   this->declare_parameter<std::string>("controller_name", "joint_trajectory_controller");
 
@@ -88,8 +88,8 @@ void KeyboardJointTeleop::publishJointCommand()
   for (const auto &j : joints_) {
     point.positions.push_back(positions_[j]);
   }
-  // 더 빠른 반응을 위해 시간을 짧게 설정
-  point.time_from_start = rclcpp::Duration::from_seconds(0.05);
+  // 그 포인트에 도달해야 하는 목표 시간
+  point.time_from_start = rclcpp::Duration::from_seconds(0.1);
   
   msg.points.push_back(point);
   
