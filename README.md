@@ -95,11 +95,11 @@ The above will build the native `bartender_robot` executable located in `build/`
 ```bash
 # $ source ../env && ros2 run bartender_robot bartender_robot # for environment variables
 
-$ ros2 run bartender_robot bartender_robot --ros-args -p joints:="[revolute_2,revolute_8,revolute_15,revolute_19,revolute_25,revolute_50,revolute_51,revolute_53,revolute_62,revolute_65,revolute_67,revolute_70]"
+$ ros2 run bartender_robot bartender_robot --ros-args -p joints:="[revolute_101,revolute_102,revolute_103,revolute_104,revolute_301,revolute_302,revolute_303,revolute_304,revolute_401,revolute_402,revolute_403,revolute_404]"
 
 # or with custom step size
 $ ros2 run bartender_robot bartender_robot --ros-args \
-  -p joints:="[revolute_2,revolute_8,revolute_15,revolute_19,revolute_25,revolute_50,revolute_51,revolute_53,revolute_62,revolute_65,revolute_67,revolute_70]" \
+  -p joints:="[revolute_101,revolute_102,revolute_103,revolute_104,revolute_301,revolute_302,revolute_303,revolute_304,revolute_401,revolute_402,revolute_403,revolute_404]" \
   -p step:=0.5
 ```
 

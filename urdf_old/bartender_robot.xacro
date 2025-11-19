@@ -2,517 +2,1227 @@
 <robot name="bartender_robot" xmlns:xacro="http://www.ros.org/wiki/xacro">
 
 <xacro:include filename="$(find bartender_robot)/urdf/materials.xacro" />
-<xacro:include filename="$(find bartender_robot)/urdf/bartender_robot.trans.xacro" />
+<xacro:include filename="$(find bartender_robot)/urdf/bartender_robot.trans" />
+<xacro:include filename="$(find bartender_robot)/urdf/bartender_robot.gazebo" />
 <link name="base_link">
   <inertial>
-    <origin xyz="-0.00040810804018468253 -3.552713678800501e-17 0.016706580181223032" rpy="0 0 0"/>
-    <mass value="6.935188631739772"/>
-    <inertia ixx="0.028142" iyy="0.028238" izz="0.054243" ixy="-0.0" iyz="-0.0" ixz="2.5e-05"/>
+    <origin xyz="-0.0005423501666184372 1.724031462449871e-05 0.021705683642274386" rpy="0 0 0"/>
+    <mass value="1.8079552496262552"/>
+    <inertia ixx="0.006993" iyy="0.007027" izz="0.013194" ixy="0.0" iyz="-0.0" ixz="3e-06"/>
   </inertial>
   <visual>
     <origin xyz="0 0 0" rpy="0 0 0"/>
     <geometry>
-  <mesh filename="package://bartender_robot/meshes/base_link.stl" scale="0.001 0.001 0.001"/>
+      <mesh filename="$(find bartender_robot)/meshes/base_link.stl" scale="0.001 0.001 0.001"/>
     </geometry>
     <material name="silver"/>
   </visual>
   <collision>
     <origin xyz="0 0 0" rpy="0 0 0"/>
     <geometry>
-      <mesh filename="package://bartender_robot/meshes/base_link.stl" scale="0.001 0.001 0.001"/>
+      <mesh filename="$(find bartender_robot)/meshes/base_link.stl" scale="0.001 0.001 0.001"/>
     </geometry>
   </collision>
 </link>
 
-<link name="motor_base_1">
+<link name="horn_base_1">
   <inertial>
-    <origin xyz="-0.011944616237443872 -1.1102230246251566e-17 0.016403799171755752" rpy="0 0 0"/>
-    <mass value="0.343534365338019"/>
-    <inertia ixx="5.5e-05" iyy="9.2e-05" izz="8.2e-05" ixy="-0.0" iyz="0.0" ixz="2e-06"/>
+    <origin xyz="2.0834753222763892e-07 4.1573239855107635e-07 0.0019563297468164972" rpy="0 0 0"/>
+    <mass value="0.009818206481012393"/>
+    <inertia ixx="0.0" iyy="0.0" izz="0.0" ixy="-0.0" iyz="0.0" ixz="0.0"/>
   </inertial>
   <visual>
-    <origin xyz="0.0 0.0 -0.015" rpy="0 0 0"/>
+    <origin xyz="-0.0 -0.0 -0.0475" rpy="0 0 0"/>
     <geometry>
-  <mesh filename="package://bartender_robot/meshes/motor_base_1.stl" scale="0.001 0.001 0.001"/>
+      <mesh filename="$(find bartender_robot)/meshes/horn_base_1.stl" scale="0.001 0.001 0.001"/>
     </geometry>
     <material name="silver"/>
   </visual>
   <collision>
-    <origin xyz="0.0 0.0 -0.015" rpy="0 0 0"/>
+    <origin xyz="-0.0 -0.0 -0.0475" rpy="0 0 0"/>
     <geometry>
-      <mesh filename="package://bartender_robot/meshes/motor_base_1.stl" scale="0.001 0.001 0.001"/>
+      <mesh filename="$(find bartender_robot)/meshes/horn_base_1.stl" scale="0.001 0.001 0.001"/>
     </geometry>
   </collision>
 </link>
 
-<link name="base_upperplate_1">
+<link name="shoulder_base_1">
   <inertial>
-    <origin xyz="-1.6172448750803435e-16 -3.676205142934621e-17 0.004999999999999949" rpy="0 0 0"/>
-    <mass value="1.9420933085410403"/>
-    <inertia ixx="0.007942" iyy="0.007942" izz="0.015852" ixy="-0.0" iyz="0.0" ixz="0.0"/>
+    <origin xyz="2.0834756958203033e-07 4.1573239849430243e-07 0.005013968553832557" rpy="0 0 0"/>
+    <mass value="0.38517204561220847"/>
+    <inertia ixx="0.000968" iyy="0.000958" izz="0.00192" ixy="0.0" iyz="0.0" ixz="-0.0"/>
   </inertial>
   <visual>
-    <origin xyz="0.0 0.0 -0.041" rpy="0 0 0"/>
+    <origin xyz="-0.0 -0.0 -0.051" rpy="0 0 0"/>
     <geometry>
-  <mesh filename="package://bartender_robot/meshes/base_upperplate_1.stl" scale="0.001 0.001 0.001"/>
+      <mesh filename="$(find bartender_robot)/meshes/shoulder_base_1.stl" scale="0.001 0.001 0.001"/>
     </geometry>
     <material name="silver"/>
   </visual>
   <collision>
-    <origin xyz="0.0 0.0 -0.041" rpy="0 0 0"/>
+    <origin xyz="-0.0 -0.0 -0.051" rpy="0 0 0"/>
     <geometry>
-      <mesh filename="package://bartender_robot/meshes/base_upperplate_1.stl" scale="0.001 0.001 0.001"/>
+      <mesh filename="$(find bartender_robot)/meshes/shoulder_base_1.stl" scale="0.001 0.001 0.001"/>
     </geometry>
   </collision>
 </link>
 
-<link name="motor_horn_base_1">
+<link name="shoulder_rotation_1">
   <inertial>
-    <origin xyz="3.138091383686708e-14 5.3428299048114016e-15 0.0019561696415957355" rpy="0 0 0"/>
+    <origin xyz="-0.05629580148894291 4.1573239737157185e-07 0.05395727792919584" rpy="0 0 0"/>
+    <mass value="0.6894316761075353"/>
+    <inertia ixx="0.0017" iyy="0.000998" izz="0.00091" ixy="-0.0" iyz="0.0" ixz="-3e-05"/>
+  </inertial>
+  <visual>
+    <origin xyz="-0.0 -0.0 -0.061" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="$(find bartender_robot)/meshes/shoulder_rotation_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+    <material name="silver"/>
+  </visual>
+  <collision>
+    <origin xyz="-0.0 -0.0 -0.061" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="$(find bartender_robot)/meshes/shoulder_rotation_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+  </collision>
+</link>
+
+<link name="shoulder_motor_1">
+  <inertial>
+    <origin xyz="0.056143385192364115 4.1573239833766036e-07 0.0530113004236914" rpy="0 0 0"/>
+    <mass value="0.6358704484213904"/>
+    <inertia ixx="0.001679" iyy="0.000976" izz="0.0009" ixy="-0.0" iyz="0.0" ixz="3.3e-05"/>
+  </inertial>
+  <visual>
+    <origin xyz="-0.0 -0.0 -0.061" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="$(find bartender_robot)/meshes/shoulder_motor_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+    <material name="silver"/>
+  </visual>
+  <collision>
+    <origin xyz="-0.0 -0.0 -0.061" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="$(find bartender_robot)/meshes/shoulder_motor_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+  </collision>
+</link>
+
+<link name="shoulder_motor_fix_1">
+  <inertial>
+    <origin xyz="-0.0019997916524318246 -0.01224958426760502 -0.028249839894760903" rpy="0 0 0"/>
+    <mass value="0.009751151497809021"/>
+    <inertia ixx="8e-06" iyy="5e-06" izz="3e-06" ixy="-0.0" iyz="0.0" ixz="-0.0"/>
+  </inertial>
+  <visual>
+    <origin xyz="-0.036 -0.01225 -0.15725" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="$(find bartender_robot)/meshes/shoulder_motor_fix_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+    <material name="silver"/>
+  </visual>
+  <collision>
+    <origin xyz="-0.036 -0.01225 -0.15725" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="$(find bartender_robot)/meshes/shoulder_motor_fix_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+  </collision>
+</link>
+
+<link name="XL_430_shoulder_1">
+  <inertial>
+    <origin xyz="0.014797165121873311 0.011000415732398234 -0.019917442213197245" rpy="0 0 0"/>
+    <mass value="0.34309933643690577"/>
+    <inertia ixx="8.2e-05" iyy="9.2e-05" izz="5.5e-05" ixy="-0.0" iyz="0.0" ixz="-2e-06"/>
+  </inertial>
+  <visual>
+    <origin xyz="-0.036 0.011 -0.149" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="$(find bartender_robot)/meshes/XL_430_shoulder_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+    <material name="silver"/>
+  </visual>
+  <collision>
+    <origin xyz="-0.036 0.011 -0.149" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="$(find bartender_robot)/meshes/XL_430_shoulder_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+  </collision>
+</link>
+
+<link name="horn_shoulder_1">
+  <inertial>
+    <origin xyz="-0.0019559612940275445 4.15732398126384e-07 1.6010520997866706e-07" rpy="0 0 0"/>
+    <mass value="0.009818206481012393"/>
+    <inertia ixx="0.0" iyy="0.0" izz="0.0" ixy="0.0" iyz="0.0" ixz="-0.0"/>
+  </inertial>
+  <visual>
+    <origin xyz="-0.0347 -0.0 -0.141" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="$(find bartender_robot)/meshes/horn_shoulder_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+    <material name="silver"/>
+  </visual>
+  <collision>
+    <origin xyz="-0.0347 -0.0 -0.141" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="$(find bartender_robot)/meshes/horn_shoulder_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+  </collision>
+</link>
+
+<link name="bearing_shoulder_1">
+  <inertial>
+    <origin xyz="0.0050002083475592166 4.157323989105617e-07 1.6010525652476737e-07" rpy="0 0 0"/>
+    <mass value="0.05186930462450643"/>
+    <inertia ixx="8e-06" iyy="4e-06" izz="4e-06" ixy="-0.0" iyz="0.0" ixz="0.0"/>
+  </inertial>
+  <visual>
+    <origin xyz="0.046 -0.0 -0.141" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="$(find bartender_robot)/meshes/bearing_shoulder_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+    <material name="silver"/>
+  </visual>
+  <collision>
+    <origin xyz="0.046 -0.0 -0.141" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="$(find bartender_robot)/meshes/bearing_shoulder_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+  </collision>
+</link>
+
+<link name="upper_arm_motor_1">
+  <inertial>
+    <origin xyz="-0.006254330001201239 -0.00447064321285894 -0.007926623449302533" rpy="0 0 0"/>
+    <mass value="0.0240331833914053"/>
+    <inertia ixx="1.5e-05" iyy="6e-06" izz="9e-06" ixy="-0.0" iyz="-0.0" ixz="-0.0"/>
+  </inertial>
+  <visual>
+    <origin xyz="-0.0312 -0.0 -0.141" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="$(find bartender_robot)/meshes/upper_arm_motor_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+    <material name="silver"/>
+  </visual>
+  <collision>
+    <origin xyz="-0.0312 -0.0 -0.141" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="$(find bartender_robot)/meshes/upper_arm_motor_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+  </collision>
+</link>
+
+<link name="XL_430_upper_1">
+  <inertial>
+    <origin xyz="0.008000208347564024 -0.006596541041906951 0.023332557786802058" rpy="0 0 0"/>
+    <mass value="0.34309933643690577"/>
+    <inertia ixx="9.2e-05" iyy="8.2e-05" izz="5.5e-05" ixy="0.0" iyz="2e-06" ixz="-0.0"/>
+  </inertial>
+  <visual>
+    <origin xyz="0.0108 0.011 -0.10575" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="$(find bartender_robot)/meshes/XL_430_upper_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+    <material name="silver"/>
+  </visual>
+  <collision>
+    <origin xyz="0.0108 0.011 -0.10575" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="$(find bartender_robot)/meshes/XL_430_upper_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+  </collision>
+</link>
+
+<link name="upper_arm_ceiling_1">
+  <inertial>
+    <origin xyz="-0.025125063257797613 0.013892544383116098 -0.005582375265069439" rpy="0 0 0"/>
+    <mass value="0.1422344344680632"/>
+    <inertia ixx="0.000112" iyy="0.0001" izz="0.000104" ixy="-0.0" iyz="1.2e-05" ixz="-0.0"/>
+  </inertial>
+  <visual>
+    <origin xyz="-0.0222 0.018 -0.1425" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="$(find bartender_robot)/meshes/upper_arm_ceiling_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+    <material name="silver"/>
+  </visual>
+  <collision>
+    <origin xyz="-0.0222 0.018 -0.1425" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="$(find bartender_robot)/meshes/upper_arm_ceiling_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+  </collision>
+</link>
+
+<link name="upper_arm_bottom_1">
+  <inertial>
+    <origin xyz="-0.019749791652436222 0.022437636497284773 -0.0024708843427511257" rpy="0 0 0"/>
+    <mass value="0.024228655065312372"/>
+    <inertia ixx="1e-05" iyy="7e-06" izz="1.7e-05" ixy="-0.0" iyz="0.0" ixz="-0.0"/>
+  </inertial>
+  <visual>
+    <origin xyz="-0.01695 0.0275 -0.10575" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="$(find bartender_robot)/meshes/upper_arm_bottom_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+    <material name="silver"/>
+  </visual>
+  <collision>
+    <origin xyz="-0.01695 0.0275 -0.10575" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="$(find bartender_robot)/meshes/upper_arm_bottom_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+  </collision>
+</link>
+
+<link name="upper_arm_rotation_1">
+  <inertial>
+    <origin xyz="-0.0032317171336496524 0.03138932874999876 -0.011105987225358105" rpy="0 0 0"/>
+    <mass value="0.024156673189919837"/>
+    <inertia ixx="1.4e-05" iyy="6e-06" izz="9e-06" ixy="0.0" iyz="0.0" ixz="0.0"/>
+  </inertial>
+  <visual>
+    <origin xyz="0.0278 0.035 -0.1445" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="$(find bartender_robot)/meshes/upper_arm_rotation_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+    <material name="silver"/>
+  </visual>
+  <collision>
+    <origin xyz="0.0278 0.035 -0.1445" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="$(find bartender_robot)/meshes/upper_arm_rotation_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+  </collision>
+</link>
+
+<link name="horn_upper_1">
+  <inertial>
+    <origin xyz="2.0834753190063227e-07 0.001956585373994231 1.601052418143123e-07" rpy="0 0 0"/>
+    <mass value="0.009818206481012393"/>
+    <inertia ixx="0.0" iyy="0.0" izz="0.0" ixy="0.0" iyz="0.0" ixz="-0.0"/>
+  </inertial>
+  <visual>
+    <origin xyz="0.0028 0.0015 -0.141" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="$(find bartender_robot)/meshes/horn_upper_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+    <material name="silver"/>
+  </visual>
+  <collision>
+    <origin xyz="0.0028 0.0015 -0.141" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="$(find bartender_robot)/meshes/horn_upper_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+  </collision>
+</link>
+
+<link name="lower_arm1_upper_1">
+  <inertial>
+    <origin xyz="2.0834756397610302e-07 0.03542471696835489 1.6010521958209623e-07" rpy="0 0 0"/>
+    <mass value="0.09144869846484324"/>
+    <inertia ixx="5.8e-05" iyy="2.2e-05" izz="5.7e-05" ixy="-0.0" iyz="-0.0" ixz="0.0"/>
+  </inertial>
+  <visual>
+    <origin xyz="0.0028 -0.002 -0.141" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="$(find bartender_robot)/meshes/lower_arm1_upper_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+    <material name="silver"/>
+  </visual>
+  <collision>
+    <origin xyz="0.0028 -0.002 -0.141" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="$(find bartender_robot)/meshes/lower_arm1_upper_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+  </collision>
+</link>
+
+<link name="lower_arm1_lower2_1">
+  <inertial>
+    <origin xyz="0.016058321676160184 0.02717349462624645 -0.003950697024313138" rpy="0 0 0"/>
+    <mass value="0.07223595422977765"/>
+    <inertia ixx="4.1e-05" iyy="1.9e-05" izz="3.1e-05" ixy="-0.0" iyz="-0.0" ixz="0.0"/>
+  </inertial>
+  <visual>
+    <origin xyz="0.018812 -0.082 -0.144951" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="$(find bartender_robot)/meshes/lower_arm1_lower2_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+    <material name="silver"/>
+  </visual>
+  <collision>
+    <origin xyz="0.018812 -0.082 -0.144951" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="$(find bartender_robot)/meshes/lower_arm1_lower2_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+  </collision>
+</link>
+
+<link name="XL_430_lower1_1">
+  <inertial>
+    <origin xyz="0.0065529356146676095 -0.007917186586020197 0.014270785373014377" rpy="0 0 0"/>
+    <mass value="0.34309933643690577"/>
+    <inertia ixx="8.2e-05" iyy="5.5e-05" izz="9.2e-05" ixy="-2e-06" iyz="-0.0" ixz="-0.0"/>
+  </inertial>
+  <visual>
+    <origin xyz="0.008505 -0.15325 -0.126482" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="$(find bartender_robot)/meshes/XL_430_lower1_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+    <material name="silver"/>
+  </visual>
+  <collision>
+    <origin xyz="0.008505 -0.15325 -0.126482" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="$(find bartender_robot)/meshes/XL_430_lower1_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+  </collision>
+</link>
+
+<link name="horn_lower_1">
+  <inertial>
+    <origin xyz="-0.0019561041547161463 4.1573241729708776e-07 -6.1473861436289745e-06" rpy="0 0 0"/>
+    <mass value="0.009818206481012393"/>
+    <inertia ixx="0.0" iyy="0.0" izz="0.0" ixy="0.0" iyz="0.0" ixz="0.0"/>
+  </inertial>
+  <visual>
+    <origin xyz="0.018049 -0.15725 -0.140703" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="$(find bartender_robot)/meshes/horn_lower_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+    <material name="silver"/>
+  </visual>
+  <collision>
+    <origin xyz="0.018049 -0.15725 -0.140703" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="$(find bartender_robot)/meshes/horn_lower_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+  </collision>
+</link>
+
+<link name="lower_arm2_1">
+  <inertial>
+    <origin xyz="0.019000374765659613 0.05173743236192557 5.8917430570348817e-05" rpy="0 0 0"/>
+    <mass value="0.11907239711344811"/>
+    <inertia ixx="0.000123" iyy="3.1e-05" izz="0.000136" ixy="-0.0" iyz="0.0" ixz="-0.0"/>
+  </inertial>
+  <visual>
+    <origin xyz="0.021549 -0.15725 -0.140692" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="$(find bartender_robot)/meshes/lower_arm2_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+    <material name="silver"/>
+  </visual>
+  <collision>
+    <origin xyz="0.021549 -0.15725 -0.140692" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="$(find bartender_robot)/meshes/lower_arm2_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+  </collision>
+</link>
+
+<link name="gripper_back2_1">
+  <inertial>
+    <origin xyz="-1.8294523552748326e-08 0.002335589158385387 -6.413706096775051e-08" rpy="0 0 0"/>
+    <mass value="0.025590820080844547"/>
+    <inertia ixx="5e-06" iyy="8e-06" izz="5e-06" ixy="-0.0" iyz="0.0" ixz="0.0"/>
+  </inertial>
+  <visual>
+    <origin xyz="0.002549 -0.26225 -0.140751" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="$(find bartender_robot)/meshes/gripper_back2_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+    <material name="silver"/>
+  </visual>
+  <collision>
+    <origin xyz="0.002549 -0.26225 -0.140751" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="$(find bartender_robot)/meshes/gripper_back2_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+  </collision>
+</link>
+
+<link name="horn_gripper_1">
+  <inertial>
+    <origin xyz="-5.672368323080337e-06 4.157324166587095e-07 0.001956573423129826" rpy="0 0 0"/>
     <mass value="0.009818206481012393"/>
     <inertia ixx="0.0" iyy="0.0" izz="0.0" ixy="-0.0" iyz="-0.0" ixz="-0.0"/>
   </inertial>
   <visual>
-    <origin xyz="0.0 0.0 -0.0475" rpy="0 0 0"/>
+    <origin xyz="-0.012453 -0.3227 -0.139997" rpy="0 0 0"/>
     <geometry>
-  <mesh filename="package://bartender_robot/meshes/motor_horn_base_1.stl" scale="0.001 0.001 0.001"/>
+      <mesh filename="$(find bartender_robot)/meshes/horn_gripper_1.stl" scale="0.001 0.001 0.001"/>
     </geometry>
     <material name="silver"/>
   </visual>
   <collision>
-    <origin xyz="0.0 0.0 -0.0475" rpy="0 0 0"/>
+    <origin xyz="-0.012453 -0.3227 -0.139997" rpy="0 0 0"/>
     <geometry>
-      <mesh filename="package://bartender_robot/meshes/motor_horn_base_1.stl" scale="0.001 0.001 0.001"/>
+      <mesh filename="$(find bartender_robot)/meshes/horn_gripper_1.stl" scale="0.001 0.001 0.001"/>
     </geometry>
   </collision>
 </link>
 
-<link name="link1_1">
+<link name="gripper_back1_1">
   <inertial>
-    <origin xyz="0.0025732999778083376 0.0004387244111267232 0.056987216077853876" rpy="0 0 0"/>
-    <mass value="18.830511805272366"/>
-    <inertia ixx="0.058102" iyy="0.093565" izz="0.09509" ixy="-0.006227" iyz="-0.00017" ixz="-0.000995"/>
+    <origin xyz="2.5389188390899462e-05 0.005016651633123592 -0.00820066619243251" rpy="0 0 0"/>
+    <mass value="0.04902589408164234"/>
+    <inertia ixx="1.5e-05" iyy="3.5e-05" izz="2e-05" ixy="-0.0" iyz="0.0" ixz="-0.0"/>
   </inertial>
   <visual>
-    <origin xyz="0.0 0.0 -0.051" rpy="0 0 0"/>
+    <origin xyz="0.002549 -0.27225 -0.140751" rpy="0 0 0"/>
     <geometry>
-      <mesh filename="package://bartender_robot/meshes/link1_1.stl" scale="0.001 0.001 0.001"/>
+      <mesh filename="$(find bartender_robot)/meshes/gripper_back1_1.stl" scale="0.001 0.001 0.001"/>
     </geometry>
     <material name="silver"/>
   </visual>
   <collision>
-    <origin xyz="0.0 0.0 -0.051" rpy="0 0 0"/>
+    <origin xyz="0.002549 -0.27225 -0.140751" rpy="0 0 0"/>
     <geometry>
-      <mesh filename="package://bartender_robot/meshes/link1_1.stl" scale="0.001 0.001 0.001"/>
+      <mesh filename="$(find bartender_robot)/meshes/gripper_back1_1.stl" scale="0.001 0.001 0.001"/>
     </geometry>
   </collision>
 </link>
 
-<link name="motor_fix_link1_1">
+<link name="Motor_Casing_1">
   <inertial>
-    <origin xyz="0.00030684703129734217 0.012479258727237364 -0.028250000006648762" rpy="0 0 0"/>
-    <mass value="0.0746710896046194"/>
-    <inertia ixx="5.7e-05" iyy="3.7e-05" izz="2.1e-05" ixy="3e-06" iyz="-0.0" ixz="0.0"/>
+    <origin xyz="-0.021964319005339843 0.028401140152671922 -0.013046238591958678" rpy="0 0 0"/>
+    <mass value="0.11813806096554776"/>
+    <inertia ixx="4.9e-05" iyy="5.9e-05" izz="8.2e-05" ixy="1e-06" iyz="-1e-06" ixz="2e-06"/>
   </inertial>
   <visual>
-    <origin xyz="0.023374 0.016412 -0.15725" rpy="0 0 0"/>
+    <origin xyz="-0.012477 -0.28225 -0.132497" rpy="0 0 0"/>
     <geometry>
-      <mesh filename="package://bartender_robot/meshes/motor_fix_link1_1.stl" scale="0.001 0.001 0.001"/>
+      <mesh filename="$(find bartender_robot)/meshes/Motor_Casing_1.stl" scale="0.001 0.001 0.001"/>
     </geometry>
     <material name="silver"/>
   </visual>
   <collision>
-    <origin xyz="0.023374 0.016412 -0.15725" rpy="0 0 0"/>
+    <origin xyz="-0.012477 -0.28225 -0.132497" rpy="0 0 0"/>
     <geometry>
-      <mesh filename="package://bartender_robot/meshes/motor_fix_link1_1.stl" scale="0.001 0.001 0.001"/>
+      <mesh filename="$(find bartender_robot)/meshes/Motor_Casing_1.stl" scale="0.001 0.001 0.001"/>
     </geometry>
   </collision>
 </link>
 
-<link name="motor_link1_1">
+<link name="XL_430_gripper_1">
   <inertial>
-    <origin xyz="-0.01643475104619082 0.008357164343897322 -0.019944616237441898" rpy="0 0 0"/>
-    <mass value="0.343534365338019"/>
-    <inertia ixx="8.2e-05" iyy="9.2e-05" izz="5.5e-05" ixy="-2e-06" iyz="0.0" ixz="2e-06"/>
+    <origin xyz="-5.0739609172073194e-05 -0.011917186586000272 0.01640253365374364" rpy="0 0 0"/>
+    <mass value="0.34309933643690577"/>
+    <inertia ixx="9.2e-05" iyy="5.5e-05" izz="8.2e-05" ixy="-0.0" iyz="2e-06" ixz="0.0"/>
   </inertial>
   <visual>
-    <origin xyz="0.023584 0.01518 -0.149" rpy="0 0 0"/>
+    <origin xyz="-0.012554 -0.3227 -0.107498" rpy="0 0 0"/>
     <geometry>
-      <mesh filename="package://bartender_robot/meshes/motor_link1_1.stl" scale="0.001 0.001 0.001"/>
+      <mesh filename="$(find bartender_robot)/meshes/XL_430_gripper_1.stl" scale="0.001 0.001 0.001"/>
     </geometry>
     <material name="silver"/>
   </visual>
   <collision>
-    <origin xyz="0.023584 0.01518 -0.149" rpy="0 0 0"/>
+    <origin xyz="-0.012554 -0.3227 -0.107498" rpy="0 0 0"/>
     <geometry>
-      <mesh filename="package://bartender_robot/meshes/motor_link1_1.stl" scale="0.001 0.001 0.001"/>
+      <mesh filename="$(find bartender_robot)/meshes/XL_430_gripper_1.stl" scale="0.001 0.001 0.001"/>
     </geometry>
   </collision>
 </link>
 
-<link name="motor_horn_link1_1">
+<link name="Main_Frame_Top_1">
   <inertial>
-    <origin xyz="0.001928838316534058 0.00032915162363787026 -2.9781732635569824e-14" rpy="0 0 0"/>
-    <mass value="0.009818206481012393"/>
-    <inertia ixx="0.0" iyy="0.0" izz="0.0" ixy="0.0" iyz="-0.0" ixz="0.0"/>
+    <origin xyz="0.03450839243918207 0.02389843291760979 0.0011648406855989113" rpy="0 0 0"/>
+    <mass value="0.030390423796622358"/>
+    <inertia ixx="5e-06" iyy="1.3e-05" izz="1.6e-05" ixy="-0.0" iyz="-0.0" ixz="-0.0"/>
   </inertial>
   <visual>
-    <origin xyz="0.024152 0.004118 -0.141" rpy="0 0 0"/>
+    <origin xyz="0.036973 -0.329124 -0.132344" rpy="0 0 0"/>
     <geometry>
-      <mesh filename="package://bartender_robot/meshes/motor_horn_link1_1.stl" scale="0.001 0.001 0.001"/>
+      <mesh filename="$(find bartender_robot)/meshes/Main_Frame_Top_1.stl" scale="0.001 0.001 0.001"/>
     </geometry>
     <material name="silver"/>
   </visual>
   <collision>
-    <origin xyz="0.024152 0.004118 -0.141" rpy="0 0 0"/>
+    <origin xyz="0.036973 -0.329124 -0.132344" rpy="0 0 0"/>
     <geometry>
-      <mesh filename="package://bartender_robot/meshes/motor_horn_link1_1.stl" scale="0.001 0.001 0.001"/>
+      <mesh filename="$(find bartender_robot)/meshes/Main_Frame_Top_1.stl" scale="0.001 0.001 0.001"/>
     </geometry>
   </collision>
 </link>
 
-<link name="link2_1">
+<link name="Main_Frame_Bot_1">
   <inertial>
-    <origin xyz="0.019445684169900824 0.0049421246241596346 -0.007216194487520228" rpy="0 0 0"/>
-    <mass value="0.7710253547086547"/>
-    <inertia ixx="0.000627" iyy="0.000555" izz="0.000342" ixy="1.3e-05" iyz="-2.8e-05" ixz="5e-06"/>
+    <origin xyz="0.034524678776509506 0.031075233429296523 -0.002611696400446284" rpy="0 0 0"/>
+    <mass value="0.03935618682743888"/>
+    <inertia ixx="7e-06" iyy="1.8e-05" izz="2.3e-05" ixy="-0.0" iyz="0.0" ixz="-0.0"/>
   </inertial>
   <visual>
-    <origin xyz="0.020701 0.003529 -0.141" rpy="0 0 0"/>
+    <origin xyz="0.036911 -0.320124 -0.112344" rpy="0 0 0"/>
     <geometry>
-      <mesh filename="package://bartender_robot/meshes/link2_1.stl" scale="0.001 0.001 0.001"/>
+      <mesh filename="$(find bartender_robot)/meshes/Main_Frame_Bot_1.stl" scale="0.001 0.001 0.001"/>
     </geometry>
     <material name="silver"/>
   </visual>
   <collision>
-    <origin xyz="0.020701 0.003529 -0.141" rpy="0 0 0"/>
+    <origin xyz="0.036911 -0.320124 -0.112344" rpy="0 0 0"/>
     <geometry>
-      <mesh filename="package://bartender_robot/meshes/link2_1.stl" scale="0.001 0.001 0.001"/>
+      <mesh filename="$(find bartender_robot)/meshes/Main_Frame_Bot_1.stl" scale="0.001 0.001 0.001"/>
     </geometry>
   </collision>
 </link>
 
-<link name="motor_link2_1">
+<link name="C_E604ZZ_LT_1">
   <inertial>
-    <origin xyz="0.008662950578340189 0.014639969529453012 -0.021174389295863544" rpy="0 0 0"/>
-    <mass value="0.343534365338019"/>
-    <inertia ixx="9.2e-05" iyy="8.2e-05" izz="5.6e-05" ixy="2e-06" iyz="-4e-06" ixz="1e-06"/>
+    <origin xyz="-6.60669924805804e-06 4.1573257369975636e-07 0.0019997448610589996" rpy="0 0 0"/>
+    <mass value="0.002931287675532821"/>
+    <inertia ixx="0.0" iyy="0.0" izz="0.0" ixy="0.0" iyz="-0.0" ixz="-0.0"/>
   </inertial>
   <visual>
-    <origin xyz="0.015263 -0.018122 -0.147219" rpy="0 0 0"/>
+    <origin xyz="0.01746 -0.3627 -0.144405" rpy="0 0 0"/>
     <geometry>
-      <mesh filename="package://bartender_robot/meshes/motor_link2_1.stl" scale="0.001 0.001 0.001"/>
+      <mesh filename="$(find bartender_robot)/meshes/C_E604ZZ_LT_1.stl" scale="0.001 0.001 0.001"/>
     </geometry>
     <material name="silver"/>
   </visual>
   <collision>
-    <origin xyz="0.015263 -0.018122 -0.147219" rpy="0 0 0"/>
+    <origin xyz="0.01746 -0.3627 -0.144405" rpy="0 0 0"/>
     <geometry>
-      <mesh filename="package://bartender_robot/meshes/motor_link2_1.stl" scale="0.001 0.001 0.001"/>
+      <mesh filename="$(find bartender_robot)/meshes/C_E604ZZ_LT_1.stl" scale="0.001 0.001 0.001"/>
     </geometry>
   </collision>
 </link>
 
-<link name="motor_horn_link2_1">
+<link name="C_E604ZZ_RT_1">
   <inertial>
-    <origin xyz="0.00032765071508794597 -0.0019203725058804764 0.00017290455466656418" rpy="0 0 0"/>
-    <mass value="0.009818206481012393"/>
-    <inertia ixx="0.0" iyy="0.0" izz="0.0" ixy="-0.0" iyz="-0.0" ixz="0.0"/>
+    <origin xyz="-5.750685136462e-06 4.1573257425486787e-07 0.001999691796406411" rpy="0 0 0"/>
+    <mass value="0.002931287675532821"/>
+    <inertia ixx="0.0" iyy="0.0" izz="0.0" ixy="0.0" iyz="-0.0" ixz="-0.0"/>
   </inertial>
   <visual>
-    <origin xyz="0.004083 -0.017997 -0.139365" rpy="0 0 0"/>
+    <origin xyz="-0.012539 -0.3627 -0.144498" rpy="0 0 0"/>
     <geometry>
-      <mesh filename="package://bartender_robot/meshes/motor_horn_link2_1.stl" scale="0.001 0.001 0.001"/>
+      <mesh filename="$(find bartender_robot)/meshes/C_E604ZZ_RT_1.stl" scale="0.001 0.001 0.001"/>
     </geometry>
     <material name="silver"/>
   </visual>
   <collision>
-    <origin xyz="0.004083 -0.017997 -0.139365" rpy="0 0 0"/>
+    <origin xyz="-0.012539 -0.3627 -0.144498" rpy="0 0 0"/>
     <geometry>
-      <mesh filename="package://bartender_robot/meshes/motor_horn_link2_1.stl" scale="0.001 0.001 0.001"/>
+      <mesh filename="$(find bartender_robot)/meshes/C_E604ZZ_RT_1.stl" scale="0.001 0.001 0.001"/>
     </geometry>
   </collision>
 </link>
 
-<link name="link3_1">
+<link name="C_E604ZZ_LB_1">
   <inertial>
-    <origin xyz="0.013239975355927275 -0.07765762547143412 0.0069898533176015465" rpy="0 0 0"/>
-    <mass value="0.5987936073400725"/>
-    <inertia ixx="0.001339" iyy="0.000182" izz="0.001364" ixy="0.000203" iyz="0.000107" ixz="-1.8e-05"/>
+    <origin xyz="-6.5615327224620434e-06 4.157325746989571e-07 0.0019998936464731" rpy="0 0 0"/>
+    <mass value="0.002931287675532821"/>
+    <inertia ixx="0.0" iyy="0.0" izz="0.0" ixy="-0.0" iyz="-0.0" ixz="-0.0"/>
   </inertial>
   <visual>
-    <origin xyz="0.003497 -0.014561 -0.139674" rpy="0 0 0"/>
+    <origin xyz="0.017364 -0.3627 -0.113405" rpy="0 0 0"/>
     <geometry>
-      <mesh filename="package://bartender_robot/meshes/link3_1.stl" scale="0.001 0.001 0.001"/>
+      <mesh filename="$(find bartender_robot)/meshes/C_E604ZZ_LB_1.stl" scale="0.001 0.001 0.001"/>
     </geometry>
     <material name="silver"/>
   </visual>
   <collision>
-    <origin xyz="0.003497 -0.014561 -0.139674" rpy="0 0 0"/>
+    <origin xyz="0.017364 -0.3627 -0.113405" rpy="0 0 0"/>
     <geometry>
-      <mesh filename="package://bartender_robot/meshes/link3_1.stl" scale="0.001 0.001 0.001"/>
+      <mesh filename="$(find bartender_robot)/meshes/C_E604ZZ_LB_1.stl" scale="0.001 0.001 0.001"/>
     </geometry>
   </collision>
 </link>
 
-<link name="motor_fix_link3_1">
+<link name="C_E604ZZ_RB_1">
   <inertial>
-    <origin xyz="0.0004189395772044094 -0.0024550470280885195 0.00022061953423679892" rpy="0 0 0"/>
-    <mass value="0.04869876038361437"/>
-    <inertia ixx="5e-06" iyy="1e-05" izz="5e-06" ixy="-1e-06" iyz="-0.0" ixz="0.0"/>
+    <origin xyz="-5.705518610730695e-06 4.1573257486549053e-07 0.0019998405818207193" rpy="0 0 0"/>
+    <mass value="0.002931287675532821"/>
+    <inertia ixx="0.0" iyy="0.0" izz="0.0" ixy="0.0" iyz="-0.0" ixz="-0.0"/>
   </inertial>
   <visual>
-    <origin xyz="-0.023288 0.142546 -0.153815" rpy="0 0 0"/>
+    <origin xyz="-0.012635 -0.3627 -0.113498" rpy="0 0 0"/>
     <geometry>
-      <mesh filename="package://bartender_robot/meshes/motor_fix_link3_1.stl" scale="0.001 0.001 0.001"/>
+      <mesh filename="$(find bartender_robot)/meshes/C_E604ZZ_RB_1.stl" scale="0.001 0.001 0.001"/>
     </geometry>
     <material name="silver"/>
   </visual>
   <collision>
-    <origin xyz="-0.023288 0.142546 -0.153815" rpy="0 0 0"/>
+    <origin xyz="-0.012635 -0.3627 -0.113498" rpy="0 0 0"/>
     <geometry>
-      <mesh filename="package://bartender_robot/meshes/motor_fix_link3_1.stl" scale="0.001 0.001 0.001"/>
+      <mesh filename="$(find bartender_robot)/meshes/C_E604ZZ_RB_1.stl" scale="0.001 0.001 0.001"/>
     </geometry>
   </collision>
 </link>
 
-<link name="motor_link3_1">
+<link name="Left_hand_1">
   <inertial>
-    <origin xyz="0.009747847862622745 -0.013288975421585802 -0.004874357044772154" rpy="0 0 0"/>
-    <mass value="0.343534365338019"/>
-    <inertia ixx="7.9e-05" iyy="9.2e-05" izz="5.9e-05" ixy="-2e-06" iyz="-2e-06" ixz="9e-06"/>
+    <origin xyz="0.07203771574557985 -0.24501718919054727 -0.1409372451787847" rpy="0 0 0"/>
+    <mass value="0.17963186948361368"/>
+    <inertia ixx="0.000297" iyy="5.8e-05" izz="0.000268" ixy="-3.7e-05" iyz="-4e-06" ixz="-0.0"/>
   </inertial>
   <visual>
-    <origin xyz="-0.015046 0.148117 -0.164112" rpy="0 0 0"/>
+    <origin xyz="0.135057 -0.645518 -0.28139" rpy="0 0 0"/>
     <geometry>
-      <mesh filename="package://bartender_robot/meshes/motor_link3_1.stl" scale="0.001 0.001 0.001"/>
+      <mesh filename="$(find bartender_robot)/meshes/Left_hand_1.stl" scale="0.001 0.001 0.001"/>
     </geometry>
     <material name="silver"/>
   </visual>
   <collision>
-    <origin xyz="-0.015046 0.148117 -0.164112" rpy="0 0 0"/>
+    <origin xyz="0.135057 -0.645518 -0.28139" rpy="0 0 0"/>
     <geometry>
-      <mesh filename="package://bartender_robot/meshes/motor_link3_1.stl" scale="0.001 0.001 0.001"/>
+      <mesh filename="$(find bartender_robot)/meshes/Left_hand_1.stl" scale="0.001 0.001 0.001"/>
     </geometry>
   </collision>
 </link>
 
-<link name="motor_horn_link3_1">
+<link name="Hinge_pin_LF_1">
   <inertial>
-    <origin xyz="0.001846190741949083 0.0003631136075204211 0.0005343164895944552" rpy="0 0 0"/>
-    <mass value="0.009818206481012393"/>
-    <inertia ixx="0.0" iyy="0.0" izz="0.0" ixy="0.0" iyz="0.0" ixz="0.0"/>
+    <origin xyz="-0.012527977906692384 -0.3226786451910325 -0.1517392345462402" rpy="0 0 0"/>
+    <mass value="0.008862110862529615"/>
+    <inertia ixx="2e-06" iyy="2e-06" izz="0.0" ixy="-0.0" iyz="0.0" ixz="0.0"/>
   </inertial>
   <visual>
-    <origin xyz="-0.036587 0.15797 -0.175077" rpy="0 0 0"/>
+    <origin xyz="0.054952 -0.685379 -0.292639" rpy="0 0 0"/>
     <geometry>
-      <mesh filename="package://bartender_robot/meshes/motor_horn_link3_1.stl" scale="0.001 0.001 0.001"/>
+      <mesh filename="$(find bartender_robot)/meshes/Hinge_pin_LF_1.stl" scale="0.001 0.001 0.001"/>
     </geometry>
     <material name="silver"/>
   </visual>
   <collision>
-    <origin xyz="-0.036587 0.15797 -0.175077" rpy="0 0 0"/>
+    <origin xyz="0.054952 -0.685379 -0.292639" rpy="0 0 0"/>
     <geometry>
-      <mesh filename="package://bartender_robot/meshes/motor_horn_link3_1.stl" scale="0.001 0.001 0.001"/>
+      <mesh filename="$(find bartender_robot)/meshes/Hinge_pin_LF_1.stl" scale="0.001 0.001 0.001"/>
     </geometry>
   </collision>
 </link>
 
-<link name="link4_1">
+<link name="Right_hand_1">
   <inertial>
-    <origin xyz="-0.0077543681654866844 -0.05206543157132765 -0.0073986661691151645" rpy="0 0 0"/>
-    <mass value="1.2762304594175278"/>
-    <inertia ixx="0.00437" iyy="0.001044" izz="0.004624" ixy="0.000731" iyz="-0.00017" ixz="2e-06"/>
+    <origin xyz="-0.06674646524002864 -0.24477485366632679 -0.14177069804127823" rpy="0 0 0"/>
+    <mass value="0.1796318694836131"/>
+    <inertia ixx="0.000298" iyy="5.8e-05" izz="0.000268" ixy="3.6e-05" iyz="-4e-06" ixz="1e-06"/>
   </inertial>
   <visual>
-    <origin xyz="-0.03989 0.15732 -0.176033" rpy="0 0 0"/>
+    <origin xyz="-0.12494 -0.645291 -0.282599" rpy="0 0 0"/>
     <geometry>
-      <mesh filename="package://bartender_robot/meshes/link4_1.stl" scale="0.001 0.001 0.001"/>
+      <mesh filename="$(find bartender_robot)/meshes/Right_hand_1.stl" scale="0.001 0.001 0.001"/>
     </geometry>
     <material name="silver"/>
   </visual>
   <collision>
-    <origin xyz="-0.03989 0.15732 -0.176033" rpy="0 0 0"/>
+    <origin xyz="-0.12494 -0.645291 -0.282599" rpy="0 0 0"/>
     <geometry>
-      <mesh filename="package://bartender_robot/meshes/link4_1.stl" scale="0.001 0.001 0.001"/>
+      <mesh filename="$(find bartender_robot)/meshes/Right_hand_1.stl" scale="0.001 0.001 0.001"/>
     </geometry>
   </collision>
 </link>
 
-<link name="motor_link4_1">
+<link name="Hinge_pin_RF_1">
   <inertial>
-    <origin xyz="-0.0012473361103707906 -0.014378100181126507 -0.010070029629298621" rpy="0 0 0"/>
-    <mass value="0.343534365338019"/>
-    <inertia ixx="8e-05" iyy="9.2e-05" izz="5.9e-05" ixy="-3e-06" iyz="3e-06" ixz="8e-06"/>
+    <origin xyz="-0.012526601845556665 -0.32237864519102977 -0.1521414644930898" rpy="0 0 0"/>
+    <mass value="0.008862110862529615"/>
+    <inertia ixx="2e-06" iyy="2e-06" izz="0.0" ixy="-0.0" iyz="0.0" ixz="0.0"/>
   </inertial>
   <visual>
-    <origin xyz="-0.060395 0.332013 -0.17623" rpy="0 0 0"/>
+    <origin xyz="-0.075046 -0.685079 -0.293444" rpy="0 0 0"/>
     <geometry>
-      <mesh filename="package://bartender_robot/meshes/motor_link4_1.stl" scale="0.001 0.001 0.001"/>
+      <mesh filename="$(find bartender_robot)/meshes/Hinge_pin_RF_1.stl" scale="0.001 0.001 0.001"/>
     </geometry>
     <material name="silver"/>
   </visual>
   <collision>
-    <origin xyz="-0.060395 0.332013 -0.17623" rpy="0 0 0"/>
+    <origin xyz="-0.075046 -0.685079 -0.293444" rpy="0 0 0"/>
     <geometry>
-      <mesh filename="package://bartender_robot/meshes/motor_link4_1.stl" scale="0.001 0.001 0.001"/>
+      <mesh filename="$(find bartender_robot)/meshes/Hinge_pin_RF_1.stl" scale="0.001 0.001 0.001"/>
     </geometry>
   </collision>
 </link>
 
-<link name="motor_fix_link4_1">
+<link name="gripper_gear_right_1">
   <inertial>
-    <origin xyz="0.0005128437509933706 -0.0024438967841333703 -0.00011117173261870894" rpy="0 0 0"/>
-    <mass value="0.04869876038361437"/>
-    <inertia ixx="5e-06" iyy="1e-05" izz="5e-06" ixy="-1e-06" iyz="0.0" ixz="-0.0"/>
+    <origin xyz="0.007787921326736166 4.1573243642067936e-07 0.012219746814921634" rpy="0 0 0"/>
+    <mass value="0.12312914965470415"/>
+    <inertia ixx="8e-06" iyy="3.6e-05" izz="3.8e-05" ixy="0.0" iyz="0.0" ixz="-3e-06"/>
   </inertial>
   <visual>
-    <origin xyz="-0.056813 0.327062 -0.163282" rpy="0 0 0"/>
+    <origin xyz="-0.012443 -0.3227 -0.143497" rpy="0 0 0"/>
     <geometry>
-      <mesh filename="package://bartender_robot/meshes/motor_fix_link4_1.stl" scale="0.001 0.001 0.001"/>
+      <mesh filename="$(find bartender_robot)/meshes/gripper_gear_right_1.stl" scale="0.001 0.001 0.001"/>
     </geometry>
     <material name="silver"/>
   </visual>
   <collision>
-    <origin xyz="-0.056813 0.327062 -0.163282" rpy="0 0 0"/>
+    <origin xyz="-0.012443 -0.3227 -0.143497" rpy="0 0 0"/>
     <geometry>
-      <mesh filename="package://bartender_robot/meshes/motor_fix_link4_1.stl" scale="0.001 0.001 0.001"/>
+      <mesh filename="$(find bartender_robot)/meshes/gripper_gear_right_1.stl" scale="0.001 0.001 0.001"/>
     </geometry>
   </collision>
 </link>
 
-<link name="motor_horn_link4_1">
+<link name="C_E604ZZ_gear_1">
   <inertial>
-    <origin xyz="0.0018460148745002847 0.00036338533989188626 0.0005339532463921881" rpy="0 0 0"/>
-    <mass value="0.009818206481012393"/>
-    <inertia ixx="0.0" iyy="0.0" izz="0.0" ixy="0.0" iyz="0.0" ixz="0.0"/>
+    <origin xyz="-6.507988116976476e-06 4.157325696474423e-07 0.002000439837468615" rpy="0 0 0"/>
+    <mass value="0.002931287675532821"/>
+    <inertia ixx="0.0" iyy="0.0" izz="0.0" ixy="-0.0" iyz="0.0" ixz="-0.0"/>
   </inertial>
   <visual>
-    <origin xyz="-0.071249 0.344576 -0.182036" rpy="0 0 0"/>
+    <origin xyz="0.017557 -0.3227 -0.143404" rpy="0 0 0"/>
     <geometry>
-      <mesh filename="package://bartender_robot/meshes/motor_horn_link4_1.stl" scale="0.001 0.001 0.001"/>
+      <mesh filename="$(find bartender_robot)/meshes/C_E604ZZ_gear_1.stl" scale="0.001 0.001 0.001"/>
     </geometry>
     <material name="silver"/>
   </visual>
   <collision>
-    <origin xyz="-0.071249 0.344576 -0.182036" rpy="0 0 0"/>
+    <origin xyz="0.017557 -0.3227 -0.143404" rpy="0 0 0"/>
     <geometry>
-      <mesh filename="package://bartender_robot/meshes/motor_horn_link4_1.stl" scale="0.001 0.001 0.001"/>
+      <mesh filename="$(find bartender_robot)/meshes/C_E604ZZ_gear_1.stl" scale="0.001 0.001 0.001"/>
     </geometry>
   </collision>
 </link>
 
-<joint name="Rigid_1" type="fixed">
-  <origin xyz="0.0 0.0 0.015" rpy="0 0 0"/>
-  <parent link="base_link"/>
-  <child link="motor_base_1"/>
+<link name="gripper_gear_left_1">
+  <inertial>
+    <origin xyz="-0.008024822795745276 4.1573243653170167e-07 0.01236896152736941" rpy="0 0 0"/>
+    <mass value="0.12066299942163651"/>
+    <inertia ixx="8e-06" iyy="3.6e-05" izz="3.8e-05" ixy="0.0" iyz="0.0" ixz="2e-06"/>
+  </inertial>
+  <visual>
+    <origin xyz="0.017557 -0.3227 -0.143404" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="$(find bartender_robot)/meshes/gripper_gear_left_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+    <material name="silver"/>
+  </visual>
+  <collision>
+    <origin xyz="0.017557 -0.3227 -0.143404" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="$(find bartender_robot)/meshes/gripper_gear_left_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+  </collision>
+</link>
+
+<link name="Hinge_pin_RR_1">
+  <inertial>
+    <origin xyz="6.98951780016624e-05 4.157324362541459e-07 -0.022449680310369563" rpy="0 0 0"/>
+    <mass value="0.008862110862529615"/>
+    <inertia ixx="2e-06" iyy="2e-06" izz="0.0" ixy="-0.0" iyz="0.0" ixz="0.0"/>
+  </inertial>
+  <visual>
+    <origin xyz="-0.06238 -0.3227 -0.163652" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="$(find bartender_robot)/meshes/Hinge_pin_RR_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+    <material name="silver"/>
+  </visual>
+  <collision>
+    <origin xyz="-0.06238 -0.3227 -0.163652" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="$(find bartender_robot)/meshes/Hinge_pin_RR_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+  </collision>
+</link>
+
+<link name="Gripper_Link_Top_R_1">
+  <inertial>
+    <origin xyz="-0.026654399200919665 3.5480898341599953e-07 -0.010454664468814073" rpy="0 0 0"/>
+    <mass value="0.0070611338726744065"/>
+    <inertia ixx="0.0" iyy="2e-06" izz="2e-06" ixy="-0.0" iyz="0.0" ixz="-0.0"/>
+  </inertial>
+  <visual>
+    <origin xyz="-0.062434 -0.3627 -0.168802" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="$(find bartender_robot)/meshes/Gripper_Link_Top_R_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+    <material name="silver"/>
+  </visual>
+  <collision>
+    <origin xyz="-0.062434 -0.3627 -0.168802" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="$(find bartender_robot)/meshes/Gripper_Link_Top_R_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+  </collision>
+</link>
+
+<link name="Hinge_pin_LR_1">
+  <inertial>
+    <origin xyz="6.951911686231549e-05 4.1573243902970347e-07 -0.022449450363531798" rpy="0 0 0"/>
+    <mass value="0.008862110862529615"/>
+    <inertia ixx="2e-06" iyy="2e-06" izz="0.0" ixy="-0.0" iyz="0.0" ixz="0.0"/>
+  </inertial>
+  <visual>
+    <origin xyz="0.067619 -0.3227 -0.163249" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="$(find bartender_robot)/meshes/Hinge_pin_LR_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+    <material name="silver"/>
+  </visual>
+  <collision>
+    <origin xyz="0.067619 -0.3227 -0.163249" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="$(find bartender_robot)/meshes/Hinge_pin_LR_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+  </collision>
+</link>
+
+<link name="Gripper_Link_Top_L_1">
+  <inertial>
+    <origin xyz="0.02671868914178996 3.5480895177464333e-07 -0.010290070396804463" rpy="0 0 0"/>
+    <mass value="0.0070611338726744065"/>
+    <inertia ixx="0.0" iyy="2e-06" izz="2e-06" ixy="-0.0" iyz="-0.0" ixz="0.0"/>
+  </inertial>
+  <visual>
+    <origin xyz="0.067565 -0.3627 -0.1684" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="$(find bartender_robot)/meshes/Gripper_Link_Top_L_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+    <material name="silver"/>
+  </visual>
+  <collision>
+    <origin xyz="0.067565 -0.3627 -0.1684" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="$(find bartender_robot)/meshes/Gripper_Link_Top_L_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+  </collision>
+</link>
+
+<link name="Gripper_Link_Bot_L_1">
+  <inertial>
+    <origin xyz="0.02667552155919673 3.548089704819013e-07 0.0075254942629475186" rpy="0 0 0"/>
+    <mass value="0.022361918307373087"/>
+    <inertia ixx="0.0" iyy="6e-06" izz="6e-06" ixy="0.0" iyz="-0.0" ixz="0.0"/>
+  </inertial>
+  <visual>
+    <origin xyz="0.067395 -0.3627 -0.1134" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="$(find bartender_robot)/meshes/Gripper_Link_Bot_L_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+    <material name="silver"/>
+  </visual>
+  <collision>
+    <origin xyz="0.067395 -0.3627 -0.1134" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="$(find bartender_robot)/meshes/Gripper_Link_Bot_L_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+  </collision>
+</link>
+
+<link name="Gripper_Link_Bot_R_1">
+  <inertial>
+    <origin xyz="-0.02672181833542498 3.5480896709572107e-07 0.00735982815187311" rpy="0 0 0"/>
+    <mass value="0.022361918307373087"/>
+    <inertia ixx="0.0" iyy="6e-06" izz="6e-06" ixy="-0.0" iyz="0.0" ixz="-0.0"/>
+  </inertial>
+  <visual>
+    <origin xyz="-0.062605 -0.3627 -0.113803" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="$(find bartender_robot)/meshes/Gripper_Link_Bot_R_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+    <material name="silver"/>
+  </visual>
+  <collision>
+    <origin xyz="-0.062605 -0.3627 -0.113803" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="$(find bartender_robot)/meshes/Gripper_Link_Bot_R_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+  </collision>
+</link>
+
+<link name="XL_430_base_1">
+  <inertial>
+    <origin xyz="-0.011917393970872223 4.1573239858427866e-07 0.018403203330917252" rpy="0 0 0"/>
+    <mass value="0.34309933643690577"/>
+    <inertia ixx="5.5e-05" iyy="9.2e-05" izz="8.2e-05" ixy="-0.0" iyz="-0.0" ixz="2e-06"/>
+  </inertial>
+  <visual>
+    <origin xyz="-0.0 -0.0 -0.013" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="$(find bartender_robot)/meshes/XL_430_base_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+    <material name="silver"/>
+  </visual>
+  <collision>
+    <origin xyz="-0.0 -0.0 -0.013" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="$(find bartender_robot)/meshes/XL_430_base_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+  </collision>
+</link>
+
+<joint name="revolute_101" type="continuous">
+  <origin xyz="0.0 0.0 0.0345" rpy="0 0 0"/>
+  <parent link="XL_430_base_1"/>
+  <child link="horn_base_1"/>
+  <axis xyz="-0.0 0.0 1.0"/>
 </joint>
 
-<joint name="Rigid_2" type="fixed">
-  <origin xyz="0.0 0.0 0.041" rpy="0 0 0"/>
-  <parent link="base_link"/>
-  <child link="base_upperplate_1"/>
-</joint>
-
-<joint name="revolute_3" type="continuous">
-  <origin xyz="0.0 0.0 0.0325" rpy="0 0 0"/>
-  <parent link="motor_base_1"/>
-  <child link="motor_horn_base_1"/>
-  <axis xyz="0.0 0.0 1.0"/>
-</joint>
-
-<joint name="Rigid_4" type="fixed">
+<joint name="Rigid 3" type="fixed">
   <origin xyz="0.0 0.0 0.0035" rpy="0 0 0"/>
-  <parent link="motor_horn_base_1"/>
-  <child link="link1_1"/>
+  <parent link="horn_base_1"/>
+  <child link="shoulder_base_1"/>
 </joint>
 
-<joint name="Rigid_5" type="fixed">
-  <origin xyz="-0.023374 -0.016412 0.10625" rpy="0 0 0"/>
-  <parent link="link1_1"/>
-  <child link="motor_fix_link1_1"/>
+<joint name="Rigid 4" type="fixed">
+  <origin xyz="0.0 0.0 0.01" rpy="0 0 0"/>
+  <parent link="shoulder_base_1"/>
+  <child link="shoulder_rotation_1"/>
 </joint>
 
-<joint name="Rigid_6" type="fixed">
-  <origin xyz="-0.00021 0.001232 -0.00825" rpy="0 0 0"/>
-  <parent link="motor_fix_link1_1"/>
-  <child link="motor_link1_1"/>
+<joint name="Rigid 5" type="fixed">
+  <origin xyz="0.0 0.0 0.01" rpy="0 0 0"/>
+  <parent link="shoulder_base_1"/>
+  <child link="shoulder_motor_1"/>
 </joint>
 
-<joint name="revolute_7" type="continuous">
-  <origin xyz="-0.000568 0.011062 -0.008" rpy="0 0 0"/>
-  <parent link="motor_link1_1"/>
-  <child link="motor_horn_link1_1"/>
-  <axis xyz="0.985776 0.168066 0.0"/>
+<joint name="Rigid 6" type="fixed">
+  <origin xyz="0.036 0.01225 0.09625" rpy="0 0 0"/>
+  <parent link="shoulder_motor_1"/>
+  <child link="shoulder_motor_fix_1"/>
 </joint>
 
-<joint name="Rigid_8" type="fixed">
-  <origin xyz="0.003451 0.000589 0.0" rpy="0 0 0"/>
-  <parent link="motor_horn_link1_1"/>
-  <child link="link2_1"/>
+<joint name="Rigid 7" type="fixed">
+  <origin xyz="0.0 -0.02325 -0.00825" rpy="0 0 0"/>
+  <parent link="shoulder_motor_fix_1"/>
+  <child link="XL_430_shoulder_1"/>
 </joint>
 
-<joint name="Rigid_9" type="fixed">
-  <origin xyz="0.005438 0.021651 0.006219" rpy="0 0 0"/>
-  <parent link="link2_1"/>
-  <child link="motor_link2_1"/>
+<joint name="revolute_103" type="continuous">
+  <origin xyz="-0.0013 0.011 -0.008" rpy="0 0 0"/>
+  <parent link="XL_430_shoulder_1"/>
+  <child link="horn_shoulder_1"/>
+  <axis xyz="-1.0 0.0 -0.0"/>
 </joint>
 
-<joint name="revolute_10" type="continuous">
-  <origin xyz="0.01118 -0.000125 -0.007854" rpy="0 0 0"/>
-  <parent link="motor_link2_1"/>
-  <child link="motor_horn_link2_1"/>
-  <axis xyz="0.167408 -0.981919 0.088377"/>
+<joint name="Rigid 9" type="fixed">
+  <origin xyz="-0.046 0.0 0.08" rpy="0 0 0"/>
+  <parent link="shoulder_rotation_1"/>
+  <child link="bearing_shoulder_1"/>
 </joint>
 
-<joint name="Rigid_12" type="fixed">
-  <origin xyz="0.000586 -0.003436 0.000309" rpy="0 0 0"/>
-  <parent link="motor_horn_link2_1"/>
-  <child link="link3_1"/>
+<joint name="Rigid 10" type="fixed">
+  <origin xyz="-0.0035 0.0 0.0" rpy="0 0 0"/>
+  <parent link="horn_shoulder_1"/>
+  <child link="upper_arm_motor_1"/>
 </joint>
 
-<joint name="Rigid_13" type="fixed">
-  <origin xyz="0.026785 -0.157107 0.014141" rpy="0 0 0"/>
-  <parent link="link3_1"/>
-  <child link="motor_fix_link3_1"/>
+<joint name="Rigid 11" type="fixed">
+  <origin xyz="-0.02775 0.0165 0.0" rpy="0 0 0"/>
+  <parent link="upper_arm_bottom_1"/>
+  <child link="XL_430_upper_1"/>
 </joint>
 
-<joint name="Rigid_14" type="fixed">
-  <origin xyz="-0.008242 -0.005571 0.010297" rpy="0 0 0"/>
-  <parent link="motor_fix_link3_1"/>
-  <child link="motor_link3_1"/>
+<joint name="Rigid 12" type="fixed">
+  <origin xyz="-0.009 -0.018 0.0015" rpy="0 0 0"/>
+  <parent link="upper_arm_motor_1"/>
+  <child link="upper_arm_ceiling_1"/>
 </joint>
 
-<joint name="revolute_15" type="continuous">
-  <origin xyz="0.021541 -0.009853 0.010965" rpy="0 0 0"/>
-  <parent link="motor_link3_1"/>
-  <child link="motor_horn_link3_1"/>
-  <axis xyz="0.943896 0.185516 0.27321"/>
+<joint name="Rigid 13" type="fixed">
+  <origin xyz="-0.00525 -0.0095 -0.03675" rpy="0 0 0"/>
+  <parent link="upper_arm_ceiling_1"/>
+  <child link="upper_arm_bottom_1"/>
 </joint>
 
-<joint name="Rigid_16" type="fixed">
-  <origin xyz="0.003303 0.00065 0.000956" rpy="0 0 0"/>
-  <parent link="motor_horn_link3_1"/>
-  <child link="link4_1"/>
+<joint name="Rigid 14" type="fixed">
+  <origin xyz="-0.05 -0.017 0.002" rpy="0 0 0"/>
+  <parent link="upper_arm_ceiling_1"/>
+  <child link="upper_arm_rotation_1"/>
 </joint>
 
-<joint name="Rigid_18" type="fixed">
-  <origin xyz="0.003582 -0.004951 0.012948" rpy="0 0 0"/>
-  <parent link="motor_fix_link4_1"/>
-  <child link="motor_link4_1"/>
+<joint name="revolute_102" type="continuous">
+  <origin xyz="0.008 0.0095 0.03525" rpy="0 0 0"/>
+  <parent link="XL_430_upper_1"/>
+  <child link="horn_upper_1"/>
+  <axis xyz="0.0 1.0 0.0"/>
 </joint>
 
-<joint name="Rigid_19" type="fixed">
-  <origin xyz="0.016923 -0.169742 -0.012751" rpy="0 0 0"/>
-  <parent link="link4_1"/>
-  <child link="motor_fix_link4_1"/>
+<joint name="Rigid 16" type="fixed">
+  <origin xyz="0.0 0.0035 0.0" rpy="0 0 0"/>
+  <parent link="horn_upper_1"/>
+  <child link="lower_arm1_upper_1"/>
 </joint>
 
-<joint name="revolute_20" type="continuous">
-  <origin xyz="0.010854 -0.012563 0.005806" rpy="0 0 0"/>
-  <parent link="motor_link4_1"/>
-  <child link="motor_horn_link4_1"/>
-  <axis xyz="0.943896 0.185516 0.27321"/>
+<joint name="Rigid 17" type="fixed">
+  <origin xyz="-0.016012 0.08 0.003951" rpy="0 0 0"/>
+  <parent link="lower_arm1_upper_1"/>
+  <child link="lower_arm1_lower2_1"/>
+</joint>
+
+<joint name="Rigid 18" type="fixed">
+  <origin xyz="0.010307 0.07125 -0.018469" rpy="0 0 0"/>
+  <parent link="lower_arm1_lower2_1"/>
+  <child link="XL_430_lower1_1"/>
+</joint>
+
+<joint name="revolute_104" type="continuous">
+  <origin xyz="-0.009544 0.004 0.014221" rpy="0 0 0"/>
+  <parent link="XL_430_lower1_1"/>
+  <child link="horn_lower_1"/>
+  <axis xyz="-0.999995 0.0 -0.003098"/>
+</joint>
+
+<joint name="Rigid 20" type="fixed">
+  <origin xyz="-0.0035 0.0 -1.1e-05" rpy="0 0 0"/>
+  <parent link="horn_lower_1"/>
+  <child link="lower_arm2_1"/>
+</joint>
+
+<joint name="Rigid 21" type="fixed">
+  <origin xyz="0.019 0.105 5.9e-05" rpy="0 0 0"/>
+  <parent link="lower_arm2_1"/>
+  <child link="gripper_back2_1"/>
+</joint>
+
+<joint name="revolute_401" type="continuous">
+  <origin xyz="-0.000101 0.0 0.032499" rpy="0 0 0"/>
+  <parent link="XL_430_gripper_1"/>
+  <child link="horn_gripper_1"/>
+  <axis xyz="-0.003098 -0.0 0.999995"/>
+</joint>
+
+<joint name="Rigid 27" type="fixed">
+  <origin xyz="0.0 0.01 0.0" rpy="0 0 0"/>
+  <parent link="gripper_back2_1"/>
+  <child link="gripper_back1_1"/>
+</joint>
+
+<joint name="Rigid 29" type="fixed">
+  <origin xyz="0.015026 0.01 -0.008254" rpy="0 0 0"/>
+  <parent link="gripper_back1_1"/>
+  <child link="Motor_Casing_1"/>
+</joint>
+
+<joint name="Rigid 30" type="fixed">
+  <origin xyz="7.7e-05 0.04045 -0.024999" rpy="0 0 0"/>
+  <parent link="Motor_Casing_1"/>
+  <child link="XL_430_gripper_1"/>
+</joint>
+
+<joint name="Rigid 31" type="fixed">
+  <origin xyz="-0.04945 0.046874 -0.000153" rpy="0 0 0"/>
+  <parent link="Motor_Casing_1"/>
+  <child link="Main_Frame_Top_1"/>
+</joint>
+
+<joint name="Rigid 32" type="fixed">
+  <origin xyz="-0.049388 0.037874 -0.020153" rpy="0 0 0"/>
+  <parent link="Motor_Casing_1"/>
+  <child link="Main_Frame_Bot_1"/>
+</joint>
+
+<joint name="Rigid 33" type="fixed">
+  <origin xyz="0.019513 0.033576 0.012061" rpy="0 0 0"/>
+  <parent link="Main_Frame_Top_1"/>
+  <child link="C_E604ZZ_LT_1"/>
+</joint>
+
+<joint name="Rigid 34" type="fixed">
+  <origin xyz="0.049512 0.033576 0.012154" rpy="0 0 0"/>
+  <parent link="Main_Frame_Top_1"/>
+  <child link="C_E604ZZ_RT_1"/>
+</joint>
+
+<joint name="Rigid 35" type="fixed">
+  <origin xyz="0.019547 0.042576 0.001061" rpy="0 0 0"/>
+  <parent link="Main_Frame_Bot_1"/>
+  <child link="C_E604ZZ_LB_1"/>
+</joint>
+
+<joint name="Rigid 36" type="fixed">
+  <origin xyz="0.049546 0.042576 0.001154" rpy="0 0 0"/>
+  <parent link="Main_Frame_Bot_1"/>
+  <child link="C_E604ZZ_RB_1"/>
+</joint>
+
+<joint name="Rigid 55" type="fixed">
+  <origin xyz="-0.067438 0.322818 0.118141" rpy="0 0 0"/>
+  <parent link="Hinge_pin_LR_1"/>
+  <child link="Left_hand_1"/>
+</joint>
+
+<joint name="Rigid 56" type="fixed">
+  <origin xyz="0.080105 0.039861 0.011249" rpy="0 0 0"/>
+  <parent link="Left_hand_1"/>
+  <child link="Hinge_pin_LF_1"/>
+</joint>
+
+<joint name="Rigid 57" type="fixed">
+  <origin xyz="0.06256 0.322591 0.118947" rpy="0 0 0"/>
+  <parent link="Hinge_pin_RR_1"/>
+  <child link="Right_hand_1"/>
+</joint>
+
+<joint name="Rigid 58" type="fixed">
+  <origin xyz="-0.049894 0.039788 0.010845" rpy="0 0 0"/>
+  <parent link="Right_hand_1"/>
+  <child link="Hinge_pin_RF_1"/>
+</joint>
+
+<joint name="Rigid 61" type="fixed">
+  <origin xyz="-1e-05 0.0 0.0035" rpy="0 0 0"/>
+  <parent link="horn_gripper_1"/>
+  <child link="gripper_gear_right_1"/>
+</joint>
+
+<joint name="revolute_301" type="continuous">
+  <origin xyz="-0.030034 0.04045 0.010907" rpy="0 0 0"/>
+  <parent link="Motor_Casing_1"/>
+  <child link="C_E604ZZ_gear_1"/>
+  <axis xyz="-0.003098 -0.0 0.999995"/>
+</joint>
+
+<joint name="Rigid 68" type="fixed">
+  <origin xyz="0.0 0.0 0.0" rpy="0 0 0"/>
+  <parent link="C_E604ZZ_gear_1"/>
+  <child link="gripper_gear_left_1"/>
+</joint>
+
+<joint name="revolute_402" type="continuous">
+  <origin xyz="0.049937 0.0 0.020155" rpy="0 0 0"/>
+  <parent link="gripper_gear_right_1"/>
+  <child link="Hinge_pin_RR_1"/>
+  <axis xyz="-0.003098 -0.0 0.999995"/>
+</joint>
+
+<joint name="revolute_403" type="continuous">
+  <origin xyz="-0.012612 -0.322379 -0.124642" rpy="0 0 0"/>
+  <parent link="Hinge_pin_RF_1"/>
+  <child link="Gripper_Link_Top_R_1"/>
+  <axis xyz="-0.003098 -0.0 0.999995"/>
+</joint>
+
+<joint name="revolute_302" type="continuous">
+  <origin xyz="-0.050062 0.0 0.019845" rpy="0 0 0"/>
+  <parent link="gripper_gear_left_1"/>
+  <child link="Hinge_pin_LR_1"/>
+  <axis xyz="-0.003098 -0.0 0.999995"/>
+</joint>
+
+<joint name="revolute_303" type="continuous">
+  <origin xyz="-0.012613 -0.322679 -0.124239" rpy="0 0 0"/>
+  <parent link="Hinge_pin_LF_1"/>
+  <child link="Gripper_Link_Top_L_1"/>
+  <axis xyz="-0.003098 -0.0 0.999995"/>
+</joint>
+
+<joint name="revolute_304" type="continuous">
+  <origin xyz="-0.012443 -0.322679 -0.179239" rpy="0 0 0"/>
+  <parent link="Hinge_pin_LF_1"/>
+  <child link="Gripper_Link_Bot_L_1"/>
+  <axis xyz="0.003098 0.0 -0.999995"/>
+</joint>
+
+<joint name="revolute_404" type="continuous">
+  <origin xyz="-0.012441 -0.322379 -0.179641" rpy="0 0 0"/>
+  <parent link="Hinge_pin_RF_1"/>
+  <child link="Gripper_Link_Bot_R_1"/>
+  <axis xyz="0.003098 0.0 -0.999995"/>
+</joint>
+
+<joint name="Rigid 85" type="fixed">
+  <origin xyz="0.0 0.0 0.013" rpy="0 0 0"/>
+  <parent link="base_link"/>
+  <child link="XL_430_base_1"/>
 </joint>
 
 </robot>

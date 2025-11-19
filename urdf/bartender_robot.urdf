@@ -1,0 +1,556 @@
+<?xml version='1.0' encoding='utf-8'?>
+<robot name="bartender_robot">
+    <material name="silver">
+    <color rgba="0.700 0.700 0.700 1.000"/>
+    </material>
+
+    <link name="base_link">
+        <inertial>
+            <origin xyz="0.09945744148581741 0.10001682458222579 0.023705523537054084" rpy="0.0 0.0 0.0" />
+            <mass value="1.8079552496262556" />
+            <inertia ixx="0.006993321806260339" iyy="0.007027185964479018" izz="0.01319399506584172" ixy="3.4452822985085604e-07" iyz="-1.3237291269183003e-07" ixz="3.0767077177830104e-06" />
+        </inertial>
+        <visual name="base_link_visual">
+            <origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0" />
+            <geometry>
+                <mesh filename="package://bartender_robot/meshes/base_link.stl" scale="0.001 0.001 0.001" />
+            </geometry>
+            <material name="silver"/>
+        </visual>
+        <collision name="base_link_collision">
+            <origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0" />
+            <geometry>
+                <mesh filename="package://bartender_robot/meshes/base_link.stl" scale="0.001 0.001 0.001" />
+            </geometry>
+        </collision>
+    </link>
+    <link name="XL_430_base">
+        <inertial>
+            <origin xyz="-0.11191760231843628 -0.1 0.0164030432256969" rpy="0.0 -0.0 0.0" />
+            <mass value="0.34309933643690577" />
+            <inertia ixx="5.545123421166155e-05" iyy="9.220612052467044e-05" izz="8.151802144285173e-05" ixy="-9.286384351548087e-20" iyz="-4.7847784813530926e-20" ixz="1.8603025195028963e-06" />
+        </inertial>
+        <visual name="XL_430_base_visual">
+            <origin xyz="-0.13524999999999995 -0.11425000000000013 -1.5543122344752193e-17" rpy="-8.231348030731042e-17 -1.1102230246251559e-16 0.0" />
+            <geometry>
+                <mesh filename="package://bartender_robot/meshes/XL_430_base.stl" scale="0.001 0.001 0.001" />
+            </geometry>
+            <material name="silver"/>
+        </visual>
+        <collision name="XL_430_base_collision">
+            <origin xyz="-0.13524999999999995 -0.11425000000000013 -1.5543122344752193e-17" rpy="-8.231348030731042e-17 -1.1102230246251559e-16 0.0" />
+            <geometry>
+                <mesh filename="package://bartender_robot/meshes/XL_430_base.stl" scale="0.001 0.001 0.001" />
+            </geometry>
+        </collision>
+    </link>
+    <link name="horn_base">
+        <inertial>
+            <origin xyz="-3.198952135888692e-14 -1.509903313490213e-16 0.0019561696415955686" rpy="0.0 -2.736911063134409e-48 0.0" />
+            <mass value="0.009818206481012393" />
+            <inertia ixx="2.557195877085048e-07" iyy="2.5571958848310286e-07" izz="4.823771500382238e-07" ixy="-3.256172377629631e-23" iyz="3.271848005814438e-23" ixz="7.821379670043038e-19" />
+        </inertial>
+        <visual name="horn_base_visual">
+            <origin xyz="-5.329070518200751e-17 -1.509903313490213e-16 -7.105427357601002e-17" rpy="-3.702061473933996e-17 -6.938893903907207e-18 3.953324228711447e-81" />
+            <geometry>
+                <mesh filename="package://bartender_robot/meshes/horn_base.stl" scale="0.001 0.001 0.001" />
+            </geometry>
+            <material name="silver"/>
+        </visual>
+        <collision name="horn_base_collision">
+            <origin xyz="-5.329070518200751e-17 -1.509903313490213e-16 -7.105427357601002e-17" rpy="-3.702061473933996e-17 -6.938893903907207e-18 3.953324228711447e-81" />
+            <geometry>
+                <mesh filename="package://bartender_robot/meshes/horn_base.stl" scale="0.001 0.001 0.001" />
+            </geometry>
+        </collision>
+    </link>
+    <link name="shoulder_base">
+        <inertial>
+            <origin xyz="5.3162127723183564e-15 -1.3635046530674529e-16 0.05251380844861018" rpy="0.0 -0.0 0.0" />
+            <mass value="0.38517204561220847" />
+            <inertia ixx="0.0009684458769965048" iyy="0.0009578261931510788" izz="0.0019198597744425918" ixy="1.2459248764419126e-18" iyz="-3.573596685428409e-20" ixz="5.935505769170813e-19" />
+        </inertial>
+        <visual name="shoulder_base_visual">
+            <origin xyz="-7.105427357601002e-17 -1.509903313490213e-16 0.05749999999999995" rpy="3.141592653589793 -6.93889390390723e-18 1.3684555315672045e-48" />
+            <geometry>
+                <mesh filename="package://bartender_robot/meshes/shoulder_base.stl" scale="0.001 0.001 0.001" />
+            </geometry>
+            <material name="silver"/>
+        </visual>
+        <collision name="shoulder_base_collision">
+            <origin xyz="-7.105427357601002e-17 -1.509903313490213e-16 0.05749999999999995" rpy="3.141592653589793 -6.93889390390723e-18 1.3684555315672045e-48" />
+            <geometry>
+                <mesh filename="package://bartender_robot/meshes/shoulder_base.stl" scale="0.001 0.001 0.001" />
+            </geometry>
+        </collision>
+    </link>
+    <link name="shoulder_motor">
+        <inertial>
+            <origin xyz="0.05614317684479312 -1.8646213014068512e-16 0.11401114031845547" rpy="0.0 -0.0 0.0" />
+            <mass value="0.6358704484213904" />
+            <inertia ixx="0.0016788775413323093" iyy="0.000975788790350032" izz="0.0009003223615044955" ixy="-9.752670150932546e-19" iyz="1.5327305526996564e-18" ixz="3.314387802271293e-05" />
+        </inertial>
+        <visual name="shoulder_motor_visual">
+            <origin xyz="-7.105427357601002e-17 -1.509903313490213e-16 0.05099999999999994" rpy="-3.7020614739340015e-17 -6.93889390390723e-18 1.3684555315672045e-48" />
+            <geometry>
+                <mesh filename="package://bartender_robot/meshes/shoulder_motor.stl" scale="0.001 0.001 0.001" />
+            </geometry>
+            <material name="silver"/>
+        </visual>
+        <collision name="shoulder_motor_collision">
+            <origin xyz="-7.105427357601002e-17 -1.509903313490213e-16 0.05099999999999994" rpy="-3.7020614739340015e-17 -6.93889390390723e-18 1.3684555315672045e-48" />
+            <geometry>
+                <mesh filename="package://bartender_robot/meshes/shoulder_motor.stl" scale="0.001 0.001 0.001" />
+            </geometry>
+        </collision>
+    </link>
+    <link name="shoulder_rotation">
+        <inertial>
+            <origin xyz="-0.05629600983650023 -1.1922811372226483e-15 0.11495711782395984" rpy="0.0 -0.0 0.0" />
+            <mass value="0.6894316761075354" />
+            <inertia ixx="0.0016995259651908425" iyy="0.0009982886904826363" izz="0.0009100856224396768" ixy="-5.311485931672214e-18" iyz="1.7043014458523707e-17" ixz="-2.9848828613441604e-05" />
+        </inertial>
+        <visual name="shoulder_rotation_visual">
+            <origin xyz="1.0658141036401502e-16 -7.993605777301127e-17 0.05099999999999994" rpy="-3.7020614739339966e-17 -6.93889390390723e-18 1.3684555315672045e-48" />
+            <geometry>
+                <mesh filename="package://bartender_robot/meshes/shoulder_rotation.stl" scale="0.001 0.001 0.001" />
+            </geometry>
+            <material name="silver"/>
+        </visual>
+        <collision name="shoulder_rotation_collision">
+            <origin xyz="1.0658141036401502e-16 -7.993605777301127e-17 0.05099999999999994" rpy="-3.7020614739339966e-17 -6.93889390390723e-18 1.3684555315672045e-48" />
+            <geometry>
+                <mesh filename="package://bartender_robot/meshes/shoulder_rotation.stl" scale="0.001 0.001 0.001" />
+            </geometry>
+        </collision>
+    </link>
+    <link name="shoulder_motor_fix">
+        <inertial>
+            <origin xyz="-0.0020000000000000907 -0.012250000000003692 0.022749999999999916" rpy="0.0 -0.0 0.0" />
+            <mass value="0.009751151497809021" />
+            <inertia ixx="7.549538339561465e-06" iyy="4.831502471790909e-06" izz="2.7440389384313565e-06" ixy="-2.520775451021953e-21" iyz="-5.282057584769744e-24" ixz="6.776263578034403e-21" />
+        </inertial>
+        <visual name="shoulder_motor_fix_visual">
+            <origin xyz="-0.004000000000000088 -0.03650000000000012 -0.010500000000000079" rpy="1.5707963267948966 -2.4211725218027676e-17 1.5707963267948968" />
+            <geometry>
+                <mesh filename="package://bartender_robot/meshes/shoulder_motor_fix.stl" scale="0.001 0.001 0.001" />
+            </geometry>
+            <material name="silver"/>
+        </visual>
+        <collision name="shoulder_motor_fix_collision">
+            <origin xyz="-0.004000000000000088 -0.03650000000000012 -0.010500000000000079" rpy="1.5707963267948966 -2.4211725218027676e-17 1.5707963267948968" />
+            <geometry>
+                <mesh filename="package://bartender_robot/meshes/shoulder_motor_fix.stl" scale="0.001 0.001 0.001" />
+            </geometry>
+        </collision>
+    </link>
+    <link name="XL_430_shoulder">
+        <inertial>
+            <origin xyz="0.015546956774302961 -0.05324999999999987 0.12508239768156376" rpy="0.0 -0.0 0.0" />
+            <mass value="0.34309933643690577" />
+            <inertia ixx="8.151802144285188e-05" iyy="9.220612052467016e-05" izz="5.545123421166133e-05" ixy="-3.206116691865787e-20" iyz="-2.5343889344005644e-19" ixz="-1.860302519503601e-06" />
+        </inertial>
+        <visual name="XL_430_shoulder_visual">
+            <origin xyz="0.031949999999999895 -0.06749999999999999 0.1017500000000001" rpy="-2.465190328815667e-32 -1.5707963267948963 0" />
+            <geometry>
+                <mesh filename="package://bartender_robot/meshes/XL_430_shoulder.stl" scale="0.001 0.001 0.001" />
+            </geometry>
+            <material name="silver"/>
+        </visual>
+        <collision name="XL_430_shoulder_collision">
+            <origin xyz="0.031949999999999895 -0.06749999999999999 0.1017500000000001" rpy="-2.465190328815667e-32 -1.5707963267948963 0" />
+            <geometry>
+                <mesh filename="package://bartender_robot/meshes/XL_430_shoulder.stl" scale="0.001 0.001 0.001" />
+            </geometry>
+        </collision>
+    </link>
+    <link name="horn_shoulder">
+        <inertial>
+            <origin xyz="-0.001956169641595764 -1.776356839399541e-17 -3.1938895972416504e-14" rpy="0.0 -0.0 0.0" />
+            <mass value="0.009818206481012393" />
+            <inertia ixx="4.82377150038196e-07" iyy="2.55719588483069e-07" izz="2.557195877085015e-07" ixy="-4.3576253716362845e-23" iyz="1.7199758253640835e-31" ixz="-7.724940478959218e-19" />
+        </inertial>
+        <visual name="horn_shoulder_visual">
+            <origin xyz="-1.2434497875801754e-16 -1.7763568394002505e-17 0.0" rpy="-2.465190328815668e-32 -1.5707963267948963 0" />
+            <geometry>
+                <mesh filename="package://bartender_robot/meshes/horn_shoulder.stl" scale="0.001 0.001 0.001" />
+            </geometry>
+            <material name="silver"/>
+        </visual>
+        <collision name="horn_shoulder_collision">
+            <origin xyz="-1.2434497875801754e-16 -1.7763568394002505e-17 0.0" rpy="-2.465190328815668e-32 -1.5707963267948963 0" />
+            <geometry>
+                <mesh filename="package://bartender_robot/meshes/horn_shoulder.stl" scale="0.001 0.001 0.001" />
+            </geometry>
+        </collision>
+    </link>
+    <link name="upper_arm_bottom">
+        <inertial>
+            <origin xyz="-0.013050000000000082 -0.005062779235112958 0.13077895555201616" rpy="0.0 -0.0 0.0" />
+            <mass value="0.024228655065312372" />
+            <inertia ixx="9.961860828754966e-06" iyy="7.217711027650937e-06" izz="1.7077709156553815e-05" ixy="-8.787966827763366e-21" iyz="6.625947784845762e-10" ixz="-2.541098841762901e-21" />
+        </inertial>
+        <visual name="upper_arm_bottom_visual">
+            <origin xyz="0.01694999999999992 -8.881784197001253e-17 0.13325000000000015" rpy="1.5707963267948963 -5.481726184086709e-16 -3.141592653589793" />
+            <geometry>
+                <mesh filename="package://bartender_robot/meshes/upper_arm_bottom.stl" scale="0.001 0.001 0.001" />
+            </geometry>
+            <material name="silver"/>
+        </visual>
+        <collision name="upper_arm_bottom_collision">
+            <origin xyz="0.01694999999999992 -8.881784197001253e-17 0.13325000000000015" rpy="1.5707963267948963 -5.481726184086709e-16 -3.141592653589793" />
+            <geometry>
+                <mesh filename="package://bartender_robot/meshes/upper_arm_bottom.stl" scale="0.001 0.001 0.001" />
+            </geometry>
+        </collision>
+    </link>
+    <link name="XL_430_upper">
+        <inertial>
+            <origin xyz="-0.04079999999999998 -0.01759695677430322 0.14008239768156375" rpy="0.0 -0.0 0.0" />
+            <mass value="0.34309933643690577" />
+            <inertia ixx="9.220612052466843e-05" iyy="8.151802144285101e-05" izz="5.545123421166178e-05" ixy="-3.049318610115481e-20" iyz="1.860302519502842e-06" ixz="-1.6263032587282567e-19" />
+        </inertial>
+        <visual name="XL_430_upper_visual">
+            <origin xyz="-0.05505000000000013 -0.03400000000000013 0.11675000000000006" rpy="-1.5707963267948966 -1.5707963267948961 0" />
+            <geometry>
+                <mesh filename="package://bartender_robot/meshes/XL_430_upper.stl" scale="0.001 0.001 0.001" />
+            </geometry>
+            <material name="silver"/>
+        </visual>
+        <collision name="XL_430_upper_collision">
+            <origin xyz="-0.05505000000000013 -0.03400000000000013 0.11675000000000006" rpy="-1.5707963267948966 -1.5707963267948961 0" />
+            <geometry>
+                <mesh filename="package://bartender_robot/meshes/XL_430_upper.stl" scale="0.001 0.001 0.001" />
+            </geometry>
+        </collision>
+    </link>
+    <link name="upper_arm_motor">
+        <inertial>
+            <origin xyz="0.024945461651231453 -0.004471058945256499 0.1295732164454576" rpy="0.0 -0.0 0.0" />
+            <mass value="0.0240331833914053" />
+            <inertia ixx="1.5032985133827e-05" iyy="5.7008583256951085e-06" izz="9.478911835998654e-06" ixy="-2.637578216804615e-08" iyz="-1.095984012510379e-09" ixz="-4.67618787527871e-08" />
+        </inertial>
+        <visual name="upper_arm_motor_visual">
+            <origin xyz="0.027199999999999846 1.7763568394002505e-17 0.10224999999999992" rpy="1.5707963267948963 6.938893903907204e-18 3.141592653589793" />
+            <geometry>
+                <mesh filename="package://bartender_robot/meshes/upper_arm_motor.stl" scale="0.001 0.001 0.001" />
+            </geometry>
+            <material name="silver"/>
+        </visual>
+        <collision name="upper_arm_motor_collision">
+            <origin xyz="0.027199999999999846 1.7763568394002505e-17 0.10224999999999992" rpy="1.5707963267948963 6.938893903907204e-18 3.141592653589793" />
+            <geometry>
+                <mesh filename="package://bartender_robot/meshes/upper_arm_motor.stl" scale="0.001 0.001 0.001" />
+            </geometry>
+        </collision>
+    </link>
+    <link name="upper_arm_ceiling">
+        <inertial>
+            <origin xyz="-0.007925271605361614 -0.04085787134928169 0.15491746462968997" rpy="0.0 -0.0 0.0" />
+            <mass value="0.1422344344680632" />
+            <inertia ixx="0.00011163387789043643" iyy="9.971924141082607e-05" izz="0.00010383506940890442" ixy="-3.595754659764621e-07" iyz="1.2145543688578289e-05" ixz="-1.7791064737366583e-07" />
+        </inertial>
+        <visual name="upper_arm_ceiling_visual">
+            <origin xyz="0.02219999999999981 -0.03675000000000003 0.12375" rpy="1.5707963267948963 6.938893903907204e-18 3.141592653589793" />
+            <geometry>
+                <mesh filename="package://bartender_robot/meshes/upper_arm_ceiling.stl" scale="0.001 0.001 0.001" />
+            </geometry>
+            <material name="silver"/>
+        </visual>
+        <collision name="upper_arm_ceiling_collision">
+            <origin xyz="0.02219999999999981 -0.03675000000000003 0.12375" rpy="1.5707963267948963 6.938893903907204e-18 3.141592653589793" />
+            <geometry>
+                <mesh filename="package://bartender_robot/meshes/upper_arm_ceiling.stl" scale="0.001 0.001 0.001" />
+            </geometry>
+        </collision>
+    </link>
+    <link name="upper_arm_rotation">
+        <inertial>
+            <origin xyz="-0.08603192548121022 -0.04236108698239912 0.16839385266940213" rpy="0.0 -0.0 0.0" />
+            <mass value="0.024156673189919837" />
+            <inertia ixx="1.4457130536600085e-05" iyy="5.756033037836725e-06" izz="9.173357392791104e-06" ixy="7.359802926057187e-08" iyz="6.4456848819169094e-09" ixz="1.3833941968402735e-07" />
+        </inertial>
+        <visual name="upper_arm_rotation_visual">
+            <origin xyz="-0.02780000000000012 -0.03875000000000011 0.14075000000000013" rpy="1.5707963267948963 6.938893903907204e-18 3.141592653589793" />
+            <geometry>
+                <mesh filename="package://bartender_robot/meshes/upper_arm_rotation.stl" scale="0.001 0.001 0.001" />
+            </geometry>
+            <material name="silver"/>
+        </visual>
+        <collision name="upper_arm_rotation_collision">
+            <origin xyz="-0.02780000000000012 -0.03875000000000011 0.14075000000000013" rpy="1.5707963267948963 6.938893903907204e-18 3.141592653589793" />
+            <geometry>
+                <mesh filename="package://bartender_robot/meshes/upper_arm_rotation.stl" scale="0.001 0.001 0.001" />
+            </geometry>
+        </collision>
+    </link>
+    <link name="horn_upper">
+        <inertial>
+            <origin xyz="-3.205435916697752e-14 0.0019561696415954393 1.5987211554602254e-16" rpy="0.0 -0.0 0.0" />
+            <mass value="0.009818206481012393" />
+            <inertia ixx="2.5571958770851506e-07" iyy="4.823771500382234e-07" izz="2.5571958848310064e-07" ixy="7.820959604464375e-19" iyz="-1.4023819754727362e-39" ixz="-4.4453635583725716e-51" />
+        </inertial>
+        <visual name="horn_upper_visual">
+            <origin xyz="-1.176836406102666e-16 -1.990074771640593e-16 1.5987211554602254e-16" rpy="-1.5707963267948961 3.204068247575297e-16 8.393340872553372e-17" />
+            <geometry>
+                <mesh filename="package://bartender_robot/meshes/horn_upper.stl" scale="0.001 0.001 0.001" />
+            </geometry>
+            <material name="silver"/>
+        </visual>
+        <collision name="horn_upper_collision">
+            <origin xyz="-1.176836406102666e-16 -1.990074771640593e-16 1.5987211554602254e-16" rpy="-1.5707963267948961 3.204068247575297e-16 8.393340872553372e-17" />
+            <geometry>
+                <mesh filename="package://bartender_robot/meshes/horn_upper.stl" scale="0.001 0.001 0.001" />
+            </geometry>
+        </collision>
+    </link>
+    <link name="lower_arm1_upper">
+        <inertial>
+            <origin xyz="-0.0028000000000001175 0.03742430123595189 0.1374999999999764" rpy="0.0 -0.0 0.0" />
+            <mass value="0.09144869846484324" />
+            <inertia ixx="5.7525804056308624e-05" iyy="2.1515943571842784e-05" izz="5.749412835454642e-05" ixy="1.6940658945086007e-21" iyz="-1.4907779871675686e-17" ixz="-2.0328790734103208e-20" />
+        </inertial>
+        <visual name="lower_arm1_upper_visual">
+            <origin xyz="-0.002800000000000118 0.04199999999999981 0.1375000000000002" rpy="-1.5707963267948968 1.5707963267948961 0" />
+            <geometry>
+                <mesh filename="package://bartender_robot/meshes/lower_arm1_upper.stl" scale="0.001 0.001 0.001" />
+            </geometry>
+            <material name="silver"/>
+        </visual>
+        <collision name="lower_arm1_upper_collision">
+            <origin xyz="-0.002800000000000118 0.04199999999999981 0.1375000000000002" rpy="-1.5707963267948968 1.5707963267948961 0" />
+            <geometry>
+                <mesh filename="package://bartender_robot/meshes/lower_arm1_upper.stl" scale="0.001 0.001 0.001" />
+            </geometry>
+        </collision>
+    </link>
+    <link name="lower_arm2_lower1">
+        <inertial>
+            <origin xyz="0.001233625402402435 0.09122723688282867 0.10100000000000364" rpy="0.0 -0.0 0.0" />
+            <mass value="0.059531004202055905" />
+            <inertia ixx="2.832880695778444e-05" iyy="1.2392190702994153e-05" izz="2.269375755866636e-05" ixy="-7.378512481834296e-08" iyz="1.6263032587282567e-18" ixz="-1.2637731573034161e-18" />
+        </inertial>
+        <visual name="lower_arm2_lower1_visual">
+            <origin xyz="-0.03880000000000005 0.025999999999999798 0.14100000000000015" rpy="-1.570796326794896 1.5707963267948961 0" />
+            <geometry>
+                <mesh filename="package://bartender_robot/meshes/lower_arm2_lower1.stl" scale="0.001 0.001 0.001" />
+            </geometry>
+            <material name="silver"/>
+        </visual>
+        <collision name="lower_arm2_lower1_collision">
+            <origin xyz="-0.03880000000000005 0.025999999999999798 0.14100000000000015" rpy="-1.570796326794896 1.5707963267948961 0" />
+            <geometry>
+                <mesh filename="package://bartender_robot/meshes/lower_arm2_lower1.stl" scale="0.001 0.001 0.001" />
+            </geometry>
+        </collision>
+    </link>
+    <link name="XL_430_lower">
+        <inertial>
+            <origin xyz="-0.027453043225697013 0.17958239768156353 0.030000000000000124" rpy="0.0 -0.0 0.0" />
+            <mass value="0.34309933643690577" />
+            <inertia ixx="8.151802144284841e-05" iyy="5.5451234211661114e-05" izz="9.220612052467016e-05" ixy="-1.8603025195028963e-06" iyz="8.673617379884035e-19" ixz="-1.3552527156068805e-20" />
+        </inertial>
+        <visual name="XL_430_lower_visual">
+            <origin xyz="-0.011050000000000101 0.1562499999999999 0.04425000000000024" rpy="-1.5707963267948963 -1.7469638680406446e-16 1.5707963267948968" />
+            <geometry>
+                <mesh filename="package://bartender_robot/meshes/XL_430_lower.stl" scale="0.001 0.001 0.001" />
+            </geometry>
+            <material name="silver"/>
+        </visual>
+        <collision name="XL_430_lower_collision">
+            <origin xyz="-0.011050000000000101 0.1562499999999999 0.04425000000000024" rpy="-1.5707963267948963 -1.7469638680406446e-16 1.5707963267948968" />
+            <geometry>
+                <mesh filename="package://bartender_robot/meshes/XL_430_lower.stl" scale="0.001 0.001 0.001" />
+            </geometry>
+        </collision>
+    </link>
+    <link name="horn_lower">
+        <inertial>
+            <origin xyz="-0.0019561696415956375 -1.7763568394002506e-16 -3.1654678878112464e-14" rpy="0.0 -0.0 0.0" />
+            <mass value="0.009818206481012393" />
+            <inertia ixx="4.823771500381963e-07" iyy="2.557195884830691e-07" izz="2.5571958770854216e-07" ixy="-6.776263578034403e-21" iyz="-2.710505431213761e-20" ixz="-7.826584432629735e-19" />
+        </inertial>
+        <visual name="horn_lower_visual">
+            <origin xyz="2.220446049250313e-18 -1.5987211554602254e-16 2.6645352591003756e-16" rpy="-9.031276681659533e-17 -1.5707963267948961 0" />
+            <geometry>
+                <mesh filename="package://bartender_robot/meshes/horn_lower.stl" scale="0.001 0.001 0.001" />
+            </geometry>
+            <material name="silver"/>
+        </visual>
+        <collision name="horn_lower_collision">
+            <origin xyz="2.220446049250313e-18 -1.5987211554602254e-16 2.6645352591003756e-16" rpy="-9.031276681659533e-17 -1.5707963267948961 0" />
+            <geometry>
+                <mesh filename="package://bartender_robot/meshes/horn_lower.stl" scale="0.001 0.001 0.001" />
+            </geometry>
+        </collision>
+    </link>
+    <link name="lower_arm2">
+        <inertial>
+            <origin xyz="-0.002550584854289144 0.19169220464748385 0.13775002924271457" rpy="0.0 -0.0 0.0" />
+            <mass value="0.0800123971134481" />
+            <inertia ixx="4.3303924290648103e-05" iyy="2.51300755286074e-05" izz="5.615791554778411e-05" ixy="1.4299701742335959e-09" iyz="-7.149850763527033e-11" ixz="2.9110359752609373e-13" />
+        </inertial>
+        <visual name="lower_arm2_visual">
+            <origin xyz="0.021450000000000014 0.1422499999999998 0.12275000000000026" rpy="1.5707963267948968 -2.302075380353221e-16 1.5707963267948963" />
+            <geometry>
+                <mesh filename="package://bartender_robot/meshes/lower_arm2.stl" scale="0.001 0.001 0.001" />
+            </geometry>
+            <material name="silver"/>
+        </visual>
+        <collision name="lower_arm2_collision">
+            <origin xyz="0.021450000000000014 0.1422499999999998 0.12275000000000026" rpy="1.5707963267948968 -2.302075380353221e-16 1.5707963267948963" />
+            <geometry>
+                <mesh filename="package://bartender_robot/meshes/lower_arm2.stl" scale="0.001 0.001 0.001" />
+            </geometry>
+        </collision>
+    </link>
+    <link name="back1">
+        <inertial>
+            <origin xyz="0.012450000000002135 0.2927162359006913 0.11674935858541793" rpy="0.0 -0.0 0.0" />
+            <mass value="0.04902589408164234" />
+            <inertia ixx="1.5274828454450023e-05" iyy="3.455734641045279e-05" izz="2.0090459709176493e-05" ixy="2.1006417091906648e-19" iyz="2.9413351506366384e-08" ixz="-8.504210790433175e-19" />
+        </inertial>
+        <visual name="back1_visual">
+            <origin xyz="0.027450000000000134 0.33814999999999984 0.10865000000000034" rpy="2.30207538035322e-16 2.6547051233678227e-16 2.6430724372030032e-17" />
+            <geometry>
+                <mesh filename="package://bartender_robot/meshes/back1.stl" scale="0.001 0.001 0.001" />
+            </geometry>
+            <material name="silver"/>
+        </visual>
+        <collision name="back1_collision">
+            <origin xyz="0.027450000000000134 0.33814999999999984 0.10865000000000034" rpy="2.30207538035322e-16 2.6547051233678227e-16 2.6430724372030032e-17" />
+            <geometry>
+                <mesh filename="package://bartender_robot/meshes/back1.stl" scale="0.001 0.001 0.001" />
+            </geometry>
+        </collision>
+    </link>
+    <link name="back2">
+        <inertial>
+            <origin xyz="-0.08754999999999996 0.21458517342595548 0.16525000000001036" rpy="0.0 -0.0 0.0" />
+            <mass value="0.025590820080844547" />
+            <inertia ixx="4.708290910312302e-06" iyy="7.947800725796117e-06" izz="4.708290908637209e-06" ixy="1.6940658945086007e-21" iyz="3.7947076036992655e-18" ixz="-8.470329472543003e-21" />
+        </inertial>
+        <visual name="back2_visual">
+            <origin xyz="-0.07254999999999988 0.27269999999999994 0.14895000000000036" rpy="2.3020753803532204e-16 2.654705123367823e-16 -1.956138805530011e-16" />
+            <geometry>
+                <mesh filename="package://bartender_robot/meshes/back2.stl" scale="0.001 0.001 0.001" />
+            </geometry>
+            <material name="silver"/>
+        </visual>
+        <collision name="back2_collision">
+            <origin xyz="-0.07254999999999988 0.27269999999999994 0.14895000000000036" rpy="2.3020753803532204e-16 2.654705123367823e-16 -1.956138805530011e-16" />
+            <geometry>
+                <mesh filename="package://bartender_robot/meshes/back2.stl" scale="0.001 0.001 0.001" />
+            </geometry>
+        </collision>
+    </link>
+    <joint name="base_link_Rigid-1" type="fixed">
+        <origin xyz="0.2 0.2000000000000002 0.015000000000000019" rpy="0.0 -0.0 0.0" />
+        <parent link="base_link" />
+        <child link="XL_430_base" />
+    </joint>
+    <joint name="horn_base_Rigid-3" type="fixed">
+        <origin xyz="6.779273404243071e-35 7.526505423619624e-51 -0.044000000000000004" rpy="-1.9031107694423617e-65 2.465190328815662e-32 4.21687917729221e-81" />
+        <parent link="horn_base" />
+        <child link="shoulder_base" />
+    </joint>
+    <joint name="shoulder_base_Rigid-4" type="fixed">
+        <origin xyz="0.0 0.0 -0.0034999999999999996" rpy="0.0 -0.0 0.0" />
+        <parent link="shoulder_base" />
+        <child link="shoulder_motor" />
+    </joint>
+    <joint name="shoulder_base_Rigid-5" type="fixed">
+        <origin xyz="0.0 0.0 -0.0034999999999999996" rpy="0.0 -0.0 0.0" />
+        <parent link="shoulder_base" />
+        <child link="shoulder_rotation" />
+    </joint>
+    <joint name="shoulder_motor_Rigid-6" type="fixed">
+        <origin xyz="0.036000000000000004 0.01225 0.10625" rpy="0.0 -0.0 0.0" />
+        <parent link="shoulder_motor" />
+        <child link="shoulder_motor_fix" />
+    </joint>
+    <joint name="shoulder_motor_fix_Rigid-7" type="fixed">
+        <origin xyz="-0.0007500000000000018 0.040999999999999995 -0.10225" rpy="0.0 -0.0 0.0" />
+        <parent link="shoulder_motor_fix" />
+        <child link="XL_430_shoulder" />
+    </joint>
+    <joint name="upper_arm_bottom_Rigid-9" type="fixed">
+        <origin xyz="0.02775 0.0 0.0165" rpy="0.0 -0.0 0.0" />
+        <parent link="upper_arm_bottom" />
+        <child link="XL_430_upper" />
+    </joint>
+    <joint name="horn_shoulder_Rigid-10" type="fixed">
+        <origin xyz="-0.03470000000000001 -3.528049417321699e-49 -0.1375" rpy="-5.633028738400835e-33 -0.0 0.0" />
+        <parent link="horn_shoulder" />
+        <child link="upper_arm_motor" />
+    </joint>
+    <joint name="upper_arm_motor_Rigid-11" type="fixed">
+        <origin xyz="0.005 0.03675 -0.0215" rpy="0.0 -0.0 0.0" />
+        <parent link="upper_arm_motor" />
+        <child link="upper_arm_ceiling" />
+    </joint>
+    <joint name="upper_arm_ceiling_Rigid-12" type="fixed">
+        <origin xyz="0.05 0.0020000000000000018 -0.017" rpy="0.0 -0.0 0.0" />
+        <parent link="upper_arm_ceiling" />
+        <child link="upper_arm_rotation" />
+    </joint>
+    <joint name="upper_arm_ceiling_Rigid-13" type="fixed">
+        <origin xyz="0.0052499999999999995 -0.03675 -0.0095" rpy="0.0 -0.0 0.0" />
+        <parent link="upper_arm_ceiling" />
+        <child link="upper_arm_bottom" />
+    </joint>
+    <joint name="horn_upper_Rigid-15" type="fixed">
+        <origin xyz="0.0028000000000000004 0.0015 -0.1375" rpy="-5.237794462926844e-33 2.582432050866296e-64 4.930380657631324e-32" />
+        <parent link="horn_upper" />
+        <child link="lower_arm1_upper" />
+    </joint>
+    <joint name="lower_arm1_upper_Rigid-16" type="fixed">
+        <origin xyz="-0.004 0.016 0.0365" rpy="0.0 -0.0 0.0" />
+        <parent link="lower_arm1_upper" />
+        <child link="lower_arm2_lower1" />
+    </joint>
+    <joint name="lower_arm2_lower1_Rigid-17" type="fixed">
+        <origin xyz="0.0295 -0.05025 0.07125000000000001" rpy="0.0 -0.0 0.0" />
+        <parent link="lower_arm2_lower1" />
+        <child link="XL_430_lower" />
+    </joint>
+    <joint name="horn_lower_Rigid-20" type="fixed">
+        <origin xyz="0.01805 -0.15725 -0.13775" rpy="4.930380657631324e-32 -4.026960529919923e-33 0.0" />
+        <parent link="horn_lower" />
+        <child link="lower_arm2" />
+    </joint>
+    <joint name="back2_Rigid-22" type="fixed">
+        <origin xyz="-0.1 -0.06545 0.040299999999999996" rpy="0.0 -0.0 0.0" />
+        <parent link="back2" />
+        <child link="back1" />
+    </joint>
+    <joint name="lower_arm2_Rigid-23" type="fixed">
+        <origin xyz="0.085 0.015 -0.0275" rpy="0.0 -0.0 0.0" />
+        <parent link="lower_arm2" />
+        <child link="back2" />
+    </joint>
+    <joint name="XL_430_base_Revolute-29" type="continuous">
+        <origin xyz="-0.1 -0.1 0.0325" rpy="0.0 -2.4651903288156624e-32 0.0" />
+        <parent link="XL_430_base" />
+        <child link="horn_base" />
+        <axis xyz="2.465190328815662e-32 0.0 1.0" />
+    </joint>
+    <joint name="XL_430_shoulder_Revolute-30" type="continuous">
+        <origin xyz="-0.0005499999999999972 -0.053250000000000006 0.13699999999999998" rpy="5.6330287384008345e-33 -0.0 0.0" />
+        <parent link="XL_430_shoulder" />
+        <child link="horn_shoulder" />
+        <axis xyz="-0.9999999999999999 -6.162975822039155e-33 -7.703719777548943e-34" />
+    </joint>
+    <joint name="XL_430_upper_Revolute-31" type="continuous">
+        <origin xyz="-0.0408 -0.0015 0.152" rpy="5.237794462926844e-33 -0.0 -4.930380657631324e-32" />
+        <parent link="XL_430_upper" />
+        <child link="horn_upper" />
+        <axis xyz="-4.930380657631324e-32 1.0 -5.683910649321166e-33" />
+    </joint>
+    <joint name="XL_430_lower_Revolute-32" type="continuous">
+        <origin xyz="-0.04355 0.1915 0.03" rpy="-4.930380657631324e-32 4.026960529919923e-33 0.0" />
+        <parent link="XL_430_lower" />
+        <child link="horn_lower" />
+        <axis xyz="-1.0 4.930380657631324e-32 1.284239679844363e-32" />
+    </joint>
+</robot>

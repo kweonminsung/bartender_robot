@@ -15,11 +15,11 @@ int main(int argc, char **argv)
 
     // Initialize ROS and spin the keyboard teleop node
     rclcpp::init(argc, argv);
-    auto node = std::make_shared<KeyboardJointTeleop>();
+    auto keyboard_node = std::make_shared<KeyboardJointTeleop>();
 
-    rclcpp::spin(node);
+    rclcpp::spin(keyboard_node);
 
-    node->stop();
+    keyboard_node->stop();
     rclcpp::shutdown();
 
     return 0;

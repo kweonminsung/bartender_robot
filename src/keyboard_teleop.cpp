@@ -98,7 +98,7 @@ void KeyboardJointTeleop::publishJointCommand()
   RCLCPP_INFO(this->get_logger(), "Joint names (%zu):", msg.joint_names.size());
   for (size_t i = 0; i < msg.joint_names.size(); ++i) {
     RCLCPP_INFO(this->get_logger(), "  [%zu] '%s' -> %.3f", 
-                i, msg.joint_names[i].c_str(), point.positions[i]);
+                i + 1, msg.joint_names[i].c_str(), point.positions[i]);
   }
   RCLCPP_INFO(this->get_logger(), "===================================");
   
@@ -134,13 +134,6 @@ void KeyboardJointTeleop::keyboardLoop()
           positions_[j] = 0.0;
           RCLCPP_INFO(this->get_logger(), "[DEBUG] Reset joint '%s' to 0.0", j.c_str());
           publishJointCommand();
-        }
-      } else if (c >= '1' && c <= '9') {
-        int idx = c - '1';
-        if (idx < static_cast<int>(joints_.size())) {
-          selected_idx = idx;
-          RCLCPP_INFO(this->get_logger(), "[DEBUG] Selected joint [%d]: '%s'", 
-                      selected_idx, joints_[selected_idx].c_str());
         }
       } else if (c == 'j' || c == 'J') {
         if (!joints_.empty()) {

@@ -1,16 +1,16 @@
+import os
+from ament_index_python.packages import get_package_share_directory
 from launch import LaunchDescription
 from launch_ros.actions import Node
-from ament_index_python.packages import get_package_share_directory
-from launch.substitutions import Command
-import os
+import xacro
 
 
 def generate_launch_description():
-    pkg_share = get_package_share_directory('bartender_robot')
-    xacro_file = os.path.join(pkg_share, 'urdf', 'bartender_robot.xacro')
+    pkg_path = get_package_share_directory('bartender_robot')
+    urdf_file_path = os.path.join(pkg_path, 'urdf', 'bartender_robot.urdf')
 
-    # generate robot_description from xacro at runtime
-    robot_description = {'robot_description': Command(['xacro ', xacro_file])}
+    with open(urdf_file_path, 'r') as f:
+        robot_description = f.read()
 
     # start joint_state_publisher (provides joint_states for robot model)
     joint_state_publisher = Node(
@@ -25,11 +25,11 @@ def generate_launch_description():
         package='robot_state_publisher',
         executable='robot_state_publisher',
         output='screen',
-        parameters=[robot_description],
+        parameters=[{'robot_description': robot_description}],
     )
 
     # start rviz and load the included rviz config if present
-    rviz_config = os.path.join(pkg_share, 'rviz', 'robot.rviz')
+    rviz_config = os.path.join(pkg_path, 'rviz', 'robot.rviz')
     rviz_args = []
     if os.path.exists(rviz_config):
         rviz_args = ['-d', rviz_config]
