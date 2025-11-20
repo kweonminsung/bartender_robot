@@ -6,20 +6,22 @@ find_package(ament_cmake REQUIRED)
 find_package(rclcpp REQUIRED)
 find_package(std_msgs REQUIRED)
 find_package(trajectory_msgs REQUIRED)
+find_package(sensor_msgs REQUIRED)
+find_package(dynamixel_sdk REQUIRED)
 
-# Note: this package contains URDF/xacro and meshes for visualization.
-# Install the urdf, meshes and launch files into share/<pkg>
-
-# Main Executable
-file(GLOB_RECURSE SOURCES
-  src/*.cpp
+# Main Executable (keyboard teleop)
+add_executable(bartender_robot 
+  src/main.cpp
+  src/keyboard_teleop.cpp
+  src/dynamixel_controller.cpp
+  src/api.cpp
 )
-
-add_executable(bartender_robot ${SOURCES})
 
 target_link_libraries(bartender_robot PUBLIC
       ${std_msgs_TARGETS}
       ${trajectory_msgs_TARGETS}
+      ${sensor_msgs_TARGETS}
+      dynamixel_sdk::dynamixel_sdk
       rclcpp::rclcpp
     )
 

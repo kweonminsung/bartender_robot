@@ -11,96 +11,40 @@ controller_manager:
 joint_trajectory_controller:
   ros__parameters:
     joints:
-      - revolute_101
-      - revolute_102
-      - revolute_103
-      - revolute_104
-      - revolute_301
-      - revolute_302
-      - revolute_303
-      - revolute_304
-      - revolute_401
-      - revolute_402
-      - revolute_403
-      - revolute_404
+      - XL_430_base_Revolute-29
+      - XL_430_shoulder_Revolute-30
+      - XL_430_upper_Revolute-31
+      - XL_430_lower_Revolute-32
     command_interfaces:
       - position
     state_interfaces:
       - position
       - velocity
     gains:
-      revolute_101:
-        p: 100.0
-        d: 10.0
+      XL_430_base_Revolute-29:
+        p: 5.0
         i: 0.0
-      revolute_102:
-        p: 100.0
-        d: 10.0
+        d: 1.0
+      XL_430_shoulder_Revolute-30:
+        p: 5.0
         i: 0.0
-      revolute_103:
-        p: 100.0
-        d: 10.0
+        d: 1.0
+      XL_430_upper_Revolute-31:
+        p: 5.0
         i: 0.0
-      revolute_104:
-        p: 100.0
-        d: 10.0
+        d: 1.0
+      XL_430_lower_Revolute-32:
+        p: 5.0
         i: 0.0
-      revolute_301:
-        p: 100.0
-        d: 10.0
-        i: 0.0
-      revolute_302:
-        p: 100.0
-        d: 10.0
-        i: 0.0
-      revolute_303:
-        p: 100.0
-        d: 10.0
-        i: 0.0
-      revolute_304:
-        p: 100.0
-        d: 10.0
-        i: 0.0
-      revolute_401:
-        p: 100.0
-        d: 10.0
-        i: 0.0
-      revolute_402:
-        p: 100.0
-        d: 10.0
-        i: 0.0
-      revolute_403:
-        p: 100.0
-        d: 10.0
-        i: 0.0
-      revolute_404:
-        p: 100.0
-        d: 10.0
-        i: 0.0
+        d: 1.0
     constraints:
       goal_time: 0.3
       stopped_velocity_tolerance: 0.01
-      revolute_101:
-        goal: 0.01
-      revolute_102:
-        goal: 0.01
-      revolute_103:
-        goal: 0.01
-      revolute_104:
-        goal: 0.01
-      revolute_301:
-        goal: 0.01
-      revolute_302:
-        goal: 0.01
-      revolute_303:
-        goal: 0.01
-      revolute_304:
-        goal: 0.01
-      revolute_401:
-        goal: 0.01
-      revolute_402:
-        goal: 0.01
-      revolute_403:
-        goal: 0.01
-      revolute_404:
-        goal: 0.01
+      XL_430_base_Revolute-29:
+        goal: 0.5
+      XL_430_shoulder_Revolute-30:
+        goal: 0.5
+      XL_430_upper_Revolute-31:
+        goal: 0.5
+      XL_430_lower_Revolute-32:
+        goal: 0.5

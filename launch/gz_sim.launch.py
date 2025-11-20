@@ -1,29 +1,29 @@
+import os
 from launch import LaunchDescription
 from launch.actions import DeclareLaunchArgument, IncludeLaunchDescription, RegisterEventHandler
 from launch.event_handlers import OnProcessExit
 from launch.launch_description_sources import PythonLaunchDescriptionSource
 from launch_ros.actions import Node
-from launch.substitutions import Command, LaunchConfiguration
+from launch.substitutions import LaunchConfiguration
 from ament_index_python.packages import get_package_share_directory
-import os
 
 
 def generate_launch_description():
     # Launch Arguments
     use_sim_time = LaunchConfiguration('use_sim_time', default=True)
 
-    pkg_share = get_package_share_directory('bartender_robot')
-    xacro_file = os.path.join(pkg_share, 'urdf', 'bartender_robot.xacro')
+    pkg_path = get_package_share_directory('bartender_robot')
+    urdf_file_path = os.path.join(pkg_path, 'urdf', 'bartender_robot.urdf')
 
-    # generate robot_description from xacro at runtime
-    robot_description = {'robot_description': Command(['xacro ', xacro_file])}
+    with open(urdf_file_path, 'r') as f:
+        robot_description = f.read()
 
     # start robot_state_publisher so TF is available
     robot_state_publisher = Node(
         package='robot_state_publisher',
         executable='robot_state_publisher',
         output='screen',
-        parameters=[robot_description],
+        parameters=[{'robot_description': robot_description}],
     )
 
     joint_state_broadcaster_spawner = Node(

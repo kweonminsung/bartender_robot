@@ -2,8 +2,9 @@ import os
 from ament_index_python.packages import get_package_share_directory
 from launch import LaunchDescription
 from launch_ros.actions import Node
-import xacro
 
+# Set false if using real robot
+USE_JOINT_STATE_PUBLISHER = False
 
 def generate_launch_description():
     pkg_path = get_package_share_directory('bartender_robot')
@@ -13,12 +14,13 @@ def generate_launch_description():
         robot_description = f.read()
 
     # start joint_state_publisher (provides joint_states for robot model)
-    joint_state_publisher = Node(
-        package='joint_state_publisher',
-        executable='joint_state_publisher',
-        name='joint_state_publisher',
-        output='screen'
-    )
+    if USE_JOINT_STATE_PUBLISHER:
+        joint_state_publisher = Node(
+            package='joint_state_publisher',
+            executable='joint_state_publisher',
+            name='joint_state_publisher',
+            output='screen'
+        )
 
     # start robot_state_publisher so TF is available
     robot_state_publisher = Node(
@@ -43,7 +45,7 @@ def generate_launch_description():
     )
 
     return LaunchDescription([
-        joint_state_publisher,
+        joint_state_publisher if USE_JOINT_STATE_PUBLISHER else
         robot_state_publisher,
         rviz,
     ])

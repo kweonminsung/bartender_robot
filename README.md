@@ -2,28 +2,41 @@
 
 <img src="public/concepts.png" height="212x">
 
-## Getting started (simulation only)
+## Overview
+
+### Nodes
+- `API Server`: Provides HTTP API for robot status and control
+- `Dynamixel Controller`: Controls Dynamixel motors based on received commands
+- `Keyboard Teleop`: Simple keyboard teleoperation for testing
+- `Joint State Publisher`: Publishes joint states (for simulation)
+- `Robot State Publisher`: Publishes robot state to TF (for simulation)
+- `RViz`: Visualization tool
+
+
+## Getting started
 
 0. Install System dependencies (see below)
 
 1. Build the workspace
 
     ```bash
+    # Source ROS 2 installation
+    $ source /opt/ros/rolling/setup.bash # (or your desired ROS 2 distribution)
+
     $ cd bartender_robot
     $ rm -rf log build install # Clean previous builds
     $ colcon build --symlink-install
     ```
 
-2. Source the ROS 2 and workspace overlays
+2. Source the workspace overlays
 
     ```bash
-    $ source /opt/ros/rolling/setup.bash
     $ source install/setup.bash
     ```
 
 3. View the robot in RViz
 
-    Starts the `joint_state_publisher` and `robot_state_publisher`, and opens RViz:
+    Starts the `robot_state_publisher` ans `joint_state_publisher(optional)`, and opens RViz:
 
     ```bash
     $ ros2 launch bartender_robot rviz.launch.py
@@ -33,6 +46,28 @@
 
     ```bash
     $ ros2 launch bartender_robot gz_sim.launch.py
+    ```
+
+5. Control real Dynamixel motors
+
+    **Important**: Before running, make sure to:
+    - Connect Dynamixel motors via USB (e.g., U2D2)
+    - Set correct device name in launch file (default: `/dev/ttyUSB0`)
+    - Configure correct Dynamixel IDs in launch file
+    - Give permission to the USB port: `sudo chmod 666 /dev/ttyUSB0`
+
+    ```bash
+    # Bind Joint IDs with Real Dynamixel IDs
+    $ ros2 run bartender_robot bartender_robot --ros-args \
+      -p joints:="['XL_430_base_Revolute-29','XL_430_shoulder_Revolute-30','XL_430_upper_Revolute-31','XL_430_lower_Revolute-32']" \
+      -p dynamixel_ids:="[1,2,3,4]"
+
+    # Or launch with more parameters
+    $ ros2 run bartender_robot bartender_robot --ros-args \
+      -p joints:="['XL_430_base_Revolute-29','XL_430_shoulder_Revolute-30','XL_430_upper_Revolute-31','XL_430_lower_Revolute-32']" \
+      -p dynamixel_ids:="[1,2,3,4]" \
+      -p baud_rate:=57600 \
+      -p step:=0.5
     ```
 
 ## System dependencies
@@ -50,60 +85,54 @@ $ sudo apt update
 # Install Dynamixel SDK
 $ sudo apt-get install ros-$ROS_DISTRO-dynamixel-sdk
 
+# Install sensor_msgs for joint states
+$ sudo apt install ros-$ROS_DISTRO-sensor-msgs
+
 # Install basic robot state publisher and RViz
 $ sudo apt install \
-    ros-rolling-xacro \
-    ros-rolling-joint-state-publisher \
-    ros-rolling-joint-state-publisher-gui \
-    ros-rolling-robot-state-publisher \
-    ros-rolling-rviz2
+    ros-$ROS_DISTRO-xacro \
+    ros-$ROS_DISTRO-joint-state-publisher \
+    ros-$ROS_DISTRO-joint-state-publisher-gui \
+    ros-$ROS_DISTRO-robot-state-publisher \
+    ros-$ROS_DISTRO-rviz2
 
 # Install Gazebo and ROS-Gazebo bridge
 $ sudo apt install \
-    ros-rolling-ros-gz \
-    ros-rolling-ros-gz-sim \
-    ros-rolling-ros-gz-bridge \
-    ros-rolling-ros2-control \
-    ros-rolling-ros2-controllers \
-    ros-rolling-gz-ros2-control
-```
-
-
-## Full executable including HTTP server
-
-### Roles
-- Dynamixel motor control
-- HTTP server (provides a simple HTTP API for status/control)
-
-### Getting started
-
-Make sure you have a working CMake toolchain and the required dependencies installed.
-From the repository root:
-
-```bash
-$ source /opt/ros/rolling/setup.bash
-$ mkdir -p build
-$ cd build
-$ cmake ..
-$ make
-```
-
-The above will build the native `bartender_robot` executable located in `build/`.
-
-### Run
-
-```bash
-# $ source ../env && ros2 run bartender_robot bartender_robot # for environment variables
-
-$ ros2 run bartender_robot bartender_robot --ros-args -p joints:="[revolute_101,revolute_102,revolute_103,revolute_104,revolute_301,revolute_302,revolute_303,revolute_304,revolute_401,revolute_402,revolute_403,revolute_404]"
-
-# or with custom step size
-$ ros2 run bartender_robot bartender_robot --ros-args \
-  -p joints:="[revolute_101,revolute_102,revolute_103,revolute_104,revolute_301,revolute_302,revolute_303,revolute_304,revolute_401,revolute_402,revolute_403,revolute_404]" \
-  -p step:=0.5
+    ros-$ROS_DISTRO-ros-gz \
+    ros-$ROS_DISTRO-ros-gz-sim \
+    ros-$ROS_DISTRO-ros-gz-bridge \
+    ros-$ROS_DISTRO-ros2-control \
+    ros-$ROS_DISTRO-ros2-controllers \
+    ros-$ROS_DISTRO-gz-ros2-control
 ```
 
 ### Dependencies
 - [CMake](https://cmake.org/)
 - [nlohmann_json](https://github.com/nlohmann/json)
 - [cpp-httplib](https://github.com/yhirose/cpp-httplib)
+
+### Note
+<details>
+<summary><b>USB settings for WSL2</b></summary>
+If you are using WSL2, you may need to set up USB passthrough to access the Dynamixel motors. <a href="https://learn.microsoft.com/ko-kr/windows/wsl/connect-usb">Instructions Link</a>
+
+1. Install `usbipd-win` on Windows:
+    https://github.com/dorssel/usbipd-win/releases
+
+2. Bind and attach USB device to WSL2:
+    ```powershell
+    # List available USB devices
+    usbipd list
+
+    # Bind the desired USB device (replace '1-2' with your device's bus ID)
+    usbipd bind --busid 1-2
+
+    # Attach the USB device to WSL
+    usbipd attach --wsl --busid 1-2
+    ```
+
+3. Verify USB device is available in WSL2:
+    ```bash
+    lsusb
+    ```
+</details>
