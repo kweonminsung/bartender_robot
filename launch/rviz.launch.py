@@ -4,7 +4,7 @@ from launch import LaunchDescription
 from launch_ros.actions import Node
 
 # Set false if using real robot
-USE_JOINT_STATE_PUBLISHER = False
+USE_JOINT_STATE_PUBLISHER = True
 
 def generate_launch_description():
     pkg_path = get_package_share_directory('bartender_robot')
@@ -44,8 +44,8 @@ def generate_launch_description():
         arguments=rviz_args,
     )
 
-    return LaunchDescription([
-        joint_state_publisher if USE_JOINT_STATE_PUBLISHER else
-        robot_state_publisher,
-        rviz,
-    ])
+    nodes = [robot_state_publisher, rviz]
+    if USE_JOINT_STATE_PUBLISHER:
+        nodes.insert(0, joint_state_publisher)
+    
+    return LaunchDescription(nodes)

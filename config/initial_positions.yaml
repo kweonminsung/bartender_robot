@@ -1,0 +1,7 @@
+# Default initial positions for bartender_robot's ros2_control fake system
+
+initial_positions:
+  XL_430_base_Revolute-29: 0
+  XL_430_lower_Revolute-32: 0
+  XL_430_shoulder_Revolute-30: 0
+  XL_430_upper_Revolute-31: 0

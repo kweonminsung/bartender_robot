@@ -20,11 +20,14 @@
 1. Build the workspace
 
     ```bash
-    # Source ROS 2 installation
-    $ source /opt/ros/rolling/setup.bash # (or your desired ROS 2 distribution)
+    # Source ROS 2 installation(adjust for your ROS 2 distribution)
+    $ source /opt/ros/rolling/setup.bash
 
     $ cd bartender_robot
-    $ rm -rf log build install # Clean previous builds
+    
+    # Clean previous builds
+    $ rm -rf log build install
+    
     $ colcon build --symlink-install
     ```
 
@@ -106,6 +109,9 @@ $ sudo apt install \
     ros-$ROS_DISTRO-ros2-control \
     ros-$ROS_DISTRO-ros2-controllers \
     ros-$ROS_DISTRO-gz-ros2-control
+
+# Install MoveIt 2 (optional, for motion planning)
+$ sudo apt install ros-$$ROS_DISTRO-moveit-configs-utils
 ```
 
 ### Dependencies

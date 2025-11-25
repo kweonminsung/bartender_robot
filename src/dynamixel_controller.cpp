@@ -32,7 +32,7 @@ DynamixelController::DynamixelController()
   for (size_t i = 0; i < joint_names_.size(); ++i) {
     joint_id_map_[joint_names_[i]] = static_cast<uint8_t>(dynamixel_ids[i]);
     joint_positions_[joint_names_[i]] = 0.0;
-    RCLCPP_INFO(this->get_logger(), "Joint '%s' mapped to Dynamixel ID %d", 
+    RCLCPP_INFO(this->get_logger(), "Joint '%s' mapped to Dynamixel ID %ld", 
                 joint_names_[i].c_str(), dynamixel_ids[i]);
   }
 
