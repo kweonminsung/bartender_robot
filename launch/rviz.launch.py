@@ -13,7 +13,7 @@ def generate_launch_description():
     with open(urdf_file_path, 'r') as f:
         robot_description = f.read()
 
-    # start joint_state_publisher (provides joint_states for robot model)
+    # Start joint_state_publisher (provides joint_states for robot model)
     if USE_JOINT_STATE_PUBLISHER:
         joint_state_publisher = Node(
             package='joint_state_publisher',
@@ -22,7 +22,7 @@ def generate_launch_description():
             output='screen'
         )
 
-    # start robot_state_publisher so TF is available
+    # Start robot_state_publisher so TF is available
     robot_state_publisher = Node(
         package='robot_state_publisher',
         executable='robot_state_publisher',
@@ -30,7 +30,7 @@ def generate_launch_description():
         parameters=[{'robot_description': robot_description}],
     )
 
-    # start rviz and load the included rviz config if present
+    # Start rviz and load the included rviz config if present
     rviz_config = os.path.join(pkg_path, 'rviz', 'robot.rviz')
     rviz_args = []
     if os.path.exists(rviz_config):

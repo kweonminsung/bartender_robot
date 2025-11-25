@@ -9,6 +9,7 @@ def generate_launch_description():
             name='bartender_robot',
             output='screen',
             parameters=[{
+                'use_dynamixel': True,  # Enable Dynamixel controller
                 'device_name': '/dev/ttyUSB0',
                 'baudrate': 115200,
                 'publish_rate': 50.0,

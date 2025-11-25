@@ -23,6 +23,17 @@
   <depend>rviz2</depend>
   <depend>gazebo_ros</depend>
 
+  <!-- MoveIt2 dependencies -->
+  <depend>moveit_ros_planning_interface</depend>
+  <depend>moveit_ros_move_group</depend>
+  <depend>moveit_kinematics</depend>
+  <depend>moveit_planners_ompl</depend>
+  <depend>moveit_simple_controller_manager</depend>
+  <depend>controller_manager</depend>
+  <depend>joint_state_broadcaster</depend>
+  <depend>joint_trajectory_controller</depend>
+  <depend>tf2_ros</depend>
+
   <export>
     <build_type>ament_cmake</build_type>
   </export>

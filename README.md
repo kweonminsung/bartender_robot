@@ -59,11 +59,13 @@
     ```bash
     # Bind Joint IDs with Real Dynamixel IDs
     $ ros2 run bartender_robot bartender_robot --ros-args \
+      -p use_dynamixel:=true \
       -p joints:="['XL_430_base_Revolute-29','XL_430_shoulder_Revolute-30','XL_430_upper_Revolute-31','XL_430_lower_Revolute-32']" \
       -p dynamixel_ids:="[1,2,3,4]"
 
     # Or launch with more parameters
     $ ros2 run bartender_robot bartender_robot --ros-args \
+      -p use_dynamixel:=true \
       -p joints:="['XL_430_base_Revolute-29','XL_430_shoulder_Revolute-30','XL_430_upper_Revolute-31','XL_430_lower_Revolute-32']" \
       -p dynamixel_ids:="[1,2,3,4]" \
       -p baud_rate:=57600 \
@@ -125,10 +127,10 @@ If you are using WSL2, you may need to set up USB passthrough to access the Dyna
     usbipd list
 
     # Bind the desired USB device (replace '1-2' with your device's bus ID)
-    usbipd bind --busid 1-2
+    usbipd bind --busid 1-9
 
     # Attach the USB device to WSL
-    usbipd attach --wsl --busid 1-2
+    usbipd attach --wsl --busid 1-9
     ```
 
 3. Verify USB device is available in WSL2:

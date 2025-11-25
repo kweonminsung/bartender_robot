@@ -553,4 +553,198 @@
         <child link="horn_lower" />
         <axis xyz="-1.0 4.930380657631324e-32 1.284239679844363e-32" />
     </joint>
+
+    <!-- Gazebo tags -->
+    <!-- <gazebo>
+        <plugin name="control" filename="libgazebo_ros_control.so"/>
+    </gazebo> -->
+
+    <gazebo reference="base_link">
+        <material>silver</material>
+        <mu1>0.2</mu1>
+        <mu2>0.2</mu2>
+        <selfCollide>true</selfCollide>
+        <gravity>true</gravity>
+    </gazebo>
+
+    <gazebo reference="XL_430_base">
+        <material>silver</material>
+        <mu1>0.2</mu1>
+        <mu2>0.2</mu2>
+        <selfCollide>true</selfCollide>
+    </gazebo>
+
+    <gazebo reference="horn_base">
+        <material>silver</material>
+        <mu1>0.2</mu1>
+        <mu2>0.2</mu2>
+        <selfCollide>true</selfCollide>
+    </gazebo>
+
+    <gazebo reference="shoulder_base">
+        <material>silver</material>
+        <mu1>0.2</mu1>
+        <mu2>0.2</mu2>
+        <selfCollide>true</selfCollide>
+    </gazebo>
+
+    <gazebo reference="shoulder_motor">
+        <material>silver</material>
+        <mu1>0.2</mu1>
+        <mu2>0.2</mu2>
+        <selfCollide>true</selfCollide>
+    </gazebo>
+
+    <gazebo reference="shoulder_rotation">
+        <material>silver</material>
+        <mu1>0.2</mu1>
+        <mu2>0.2</mu2>
+        <selfCollide>true</selfCollide>
+    </gazebo>
+
+    <gazebo reference="shoulder_motor_fix">
+        <material>silver</material>
+        <mu1>0.2</mu1>
+        <mu2>0.2</mu2>
+        <selfCollide>true</selfCollide>
+    </gazebo>
+
+    <gazebo reference="XL_430_shoulder">
+        <material>silver</material>
+        <mu1>0.2</mu1>
+        <mu2>0.2</mu2>
+        <selfCollide>true</selfCollide>
+    </gazebo>
+
+    <gazebo reference="horn_shoulder">
+        <material>silver</material>
+        <mu1>0.2</mu1>
+        <mu2>0.2</mu2>
+        <selfCollide>true</selfCollide>
+    </gazebo>
+
+    <gazebo reference="upper_arm_bottom">
+        <material>silver</material>
+        <mu1>0.2</mu1>
+        <mu2>0.2</mu2>
+        <selfCollide>true</selfCollide>
+    </gazebo>
+
+    <gazebo reference="XL_430_upper">
+        <material>silver</material>
+        <mu1>0.2</mu1>
+        <mu2>0.2</mu2>
+        <selfCollide>true</selfCollide>
+    </gazebo>
+
+    <gazebo reference="upper_arm_motor">
+        <material>silver</material>
+        <mu1>0.2</mu1>
+        <mu2>0.2</mu2>
+        <selfCollide>true</selfCollide>
+    </gazebo>
+
+    <gazebo reference="upper_arm_ceiling">
+        <material>silver</material>
+        <mu1>0.2</mu1>
+        <mu2>0.2</mu2>
+        <selfCollide>true</selfCollide>
+    </gazebo>
+
+    <gazebo reference="upper_arm_rotation">
+        <material>silver</material>
+        <mu1>0.2</mu1>
+        <mu2>0.2</mu2>
+        <selfCollide>true</selfCollide>
+    </gazebo>
+
+    <gazebo reference="horn_upper">
+        <material>silver</material>
+        <mu1>0.2</mu1>
+        <mu2>0.2</mu2>
+        <selfCollide>true</selfCollide>
+    </gazebo>
+
+    <gazebo reference="lower_arm1_upper">
+        <material>silver</material>
+        <mu1>0.2</mu1>
+        <mu2>0.2</mu2>
+        <selfCollide>true</selfCollide>
+    </gazebo>
+
+    <gazebo reference="lower_arm2_lower1">
+        <material>silver</material>
+        <mu1>0.2</mu1>
+        <mu2>0.2</mu2>
+        <selfCollide>true</selfCollide>
+    </gazebo>
+
+    <gazebo reference="XL_430_lower">
+        <material>silver</material>
+        <mu1>0.2</mu1>
+        <mu2>0.2</mu2>
+        <selfCollide>true</selfCollide>
+    </gazebo>
+
+    <gazebo reference="horn_lower">
+        <material>silver</material>
+        <mu1>0.2</mu1>
+        <mu2>0.2</mu2>
+        <selfCollide>true</selfCollide>
+    </gazebo>
+
+    <gazebo reference="lower_arm2">
+        <material>silver</material>
+        <mu1>0.2</mu1>
+        <mu2>0.2</mu2>
+        <selfCollide>true</selfCollide>
+    </gazebo>
+
+    <gazebo reference="back1">
+        <material>silver</material>
+        <mu1>0.2</mu1>
+        <mu2>0.2</mu2>
+        <selfCollide>true</selfCollide>
+    </gazebo>
+
+    <gazebo reference="back2">
+        <material>silver</material>
+        <mu1>0.2</mu1>
+        <mu2>0.2</mu2>
+        <selfCollide>true</selfCollide>
+    </gazebo>
+
+    <!-- ROS2 Control -->
+    <ros2_control name="bartender_robot_ros2_control" type="system">
+        <hardware>
+            <plugin>gz_ros2_control/GazeboSimSystem</plugin>
+        </hardware>
+        <joint name="XL_430_base_Revolute-29">
+            <command_interface name="position"/>
+            <state_interface name="position"/>
+            <state_interface name="velocity"/>
+        </joint>
+        <joint name="XL_430_shoulder_Revolute-30">
+            <command_interface name="position"/>
+            <state_interface name="position"/>
+            <state_interface name="velocity"/>
+        </joint>
+        <joint name="XL_430_upper_Revolute-31">
+            <command_interface name="position"/>
+            <state_interface name="position"/>
+            <state_interface name="velocity"/>
+        </joint>
+        <joint name="XL_430_lower_Revolute-32">
+            <command_interface name="position"/>
+            <state_interface name="position"/>
+            <state_interface name="velocity"/>
+        </joint>
+    </ros2_control>
+
+    <gazebo>
+        <plugin filename="gz_ros2_control-system" name="gz_ros2_control::GazeboSimROS2ControlPlugin">
+            <parameters>$(find bartender_robot)/config/controllers.yaml</parameters>
+        </plugin>
+    </gazebo>
+
 </robot>

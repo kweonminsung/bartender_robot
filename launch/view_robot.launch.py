@@ -11,7 +11,7 @@ def generate_launch_description():
     pkg_share = get_package_share_directory('bartender_robot')
     xacro_file = os.path.join(pkg_share, 'urdf', 'bartender_robot.xacro')
 
-    # generate robot_description from xacro at runtime
+    # Generate robot_description from xacro at runtime
     robot_description = {'robot_description': Command(['xacro', ' ', xacro_file])}
 
     if USE_JOINT_STATE_PUBLISHER:

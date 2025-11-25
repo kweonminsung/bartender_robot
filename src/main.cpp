@@ -15,16 +15,28 @@ int main(int argc, char **argv)
     });
     api_thread.detach();
 
-    // Initialize ROS and spin each node
+    // Initialize ROS
     rclcpp::init(argc, argv);
     
+    // Create a temporary node to read parameters
+    auto temp_node = std::make_shared<rclcpp::Node>("temp_param_node");
+    temp_node->declare_parameter<bool>("use_dynamixel", false);
+    bool use_dynamixel = temp_node->get_parameter("use_dynamixel").as_bool();
+    
     auto keyboard_node = std::make_shared<KeyboardJointTeleop>();
-    auto dynamixel_node = std::make_shared<DynamixelController>();
-
-    // Use MultiThreadedExecutor to spin both nodes
+    
     rclcpp::executors::MultiThreadedExecutor executor;
     executor.add_node(keyboard_node);
-    executor.add_node(dynamixel_node);
+    
+    // Conditionally create and add dynamixel node
+    std::shared_ptr<DynamixelController> dynamixel_node = nullptr;
+    if (use_dynamixel) {
+        dynamixel_node = std::make_shared<DynamixelController>();
+        executor.add_node(dynamixel_node);
+        RCLCPP_INFO(rclcpp::get_logger("main"), "Dynamixel controller enabled");
+    } else {
+        RCLCPP_INFO(rclcpp::get_logger("main"), "Dynamixel controller disabled");
+    }
     
     executor.spin();
 

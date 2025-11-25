@@ -1,10 +1,10 @@
 import os
 from launch import LaunchDescription
-from launch.actions import DeclareLaunchArgument, IncludeLaunchDescription, RegisterEventHandler
+from launch.actions import DeclareLaunchArgument, IncludeLaunchDescription, RegisterEventHandler, AppendEnvironmentVariable
 from launch.event_handlers import OnProcessExit
 from launch.launch_description_sources import PythonLaunchDescriptionSource
 from launch_ros.actions import Node
-from launch.substitutions import LaunchConfiguration
+from launch.substitutions import LaunchConfiguration, Command
 from ament_index_python.packages import get_package_share_directory
 
 
@@ -15,10 +15,16 @@ def generate_launch_description():
     pkg_path = get_package_share_directory('bartender_robot')
     urdf_file_path = os.path.join(pkg_path, 'urdf', 'bartender_robot.urdf')
 
-    with open(urdf_file_path, 'r') as f:
-        robot_description = f.read()
+    robot_description = Command(['xacro ', urdf_file_path])
 
-    # start robot_state_publisher so TF is available
+    # Add real Gazebo resource path(installation directory)
+    install_dir = os.path.dirname(pkg_path)
+    gz_resource_path = AppendEnvironmentVariable(
+        name='GZ_SIM_RESOURCE_PATH',
+        value=install_dir
+    )
+
+    # Start robot_state_publisher so TF is available
     robot_state_publisher = Node(
         package='robot_state_publisher',
         executable='robot_state_publisher',
@@ -38,7 +44,7 @@ def generate_launch_description():
         arguments=['joint_trajectory_controller'],
     )
 
-    # spawn entity in running Gazebo (assumes Gazebo is already running)
+    # Spawn entity in running Gazebo (assumes Gazebo is already running)
     spawn_entity = Node(
         package='ros_gz_sim',
         executable='create',
@@ -67,6 +73,7 @@ def generate_launch_description():
     )
 
     return LaunchDescription([
+        gz_resource_path,
         gz,
         RegisterEventHandler(
             event_handler=OnProcessExit(
