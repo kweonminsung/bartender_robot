@@ -4,11 +4,8 @@
             "name": "Linux",
             "includePath": [
                 "${workspaceFolder}/**",
-                "${workspaceFolder}/include",
-                "${workspaceFolder}/install/**/*.hpp",
-                "${workspaceFolder}/install/**/*.h",
-                "${workspaceFolder}/install/**/include",
-                "/opt/ros/humble/include/**"
+                "/opt/ros/humble/include/**",
+                "/usr/include/**"
             ],
             "defines": [],
             "compilerPath": "/usr/bin/gcc",

@@ -1,0 +1,25 @@
+moveit_setup_assistant_config:
+  urdf:
+    package: bartender_robot
+    relative_path: urdf/bartender_robot.urdf
+  srdf:
+    relative_path: config/bartender_robot.srdf
+  package_settings:
+    author_name: tw
+    author_email: tw@gmail.com
+    generated_timestamp: 1764168523
+  control_xacro:
+    command:
+      - position
+    state:
+      - position
+      - velocity
+  modified_urdf:
+    xacros:
+      - control_xacro
+  control_xacro:
+    command:
+      - position
+    state:
+      - position
+      - velocity

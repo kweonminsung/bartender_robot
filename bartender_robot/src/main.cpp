@@ -1,7 +1,6 @@
 #include "api.hpp"
 #include "keyboard_teleop.hpp"
 #include "dynamixel_controller.hpp"
-#include "motion_planning_node.hpp"
 #include <rclcpp/rclcpp.hpp>
 #include <rclcpp/executors/multi_threaded_executor.hpp>
 #include <memory>
@@ -31,17 +30,6 @@ int main(int argc, char **argv)
     rclcpp::executors::MultiThreadedExecutor executor;
     executor.add_node(keyboard_node);
 
-    // Conditionally create and add motion planning node
-    if (use_motion_planning) {
-        rclcpp::NodeOptions node_options;
-        node_options.automatically_declare_parameters_from_overrides(true);
-        auto motion_planning_node = std::make_shared<MotionPlanningNode>(node_options);
-        executor.add_node(motion_planning_node);
-        RCLCPP_INFO(rclcpp::get_logger("main"), "Motion planning enabled");
-    } else {
-        RCLCPP_INFO(rclcpp::get_logger("main"), "Motion planning disabled");
-    }
-    
     // Conditionally create and add dynamixel node
     if (use_dynamixel) {
         auto dynamixel_node = std::make_shared<DynamixelController>();

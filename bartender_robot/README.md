@@ -23,9 +23,6 @@
     # Source ROS 2 installation(adjust for your ROS 2 distribution)
     $ source /opt/ros/humble/setup.bash
 
-    # Source if you have MoveIt 2 workspace
-    $ source ~/ws_moveit2/install/setup.bash
-
     $ cd bartender_robot
     
     # Clean previous builds
@@ -114,7 +111,10 @@ $ sudo apt install \
     ros-$ROS_DISTRO-gz-ros2-control
 
 # Install MoveIt 2 (optional, for motion planning)
-$ sudo apt install ros-$$ROS_DISTRO-moveit-configs-utils
+$ sudo apt install \
+    ros-$ROS_DISTRO-moveit \
+    ros-$ROS_DISTRO-moveit-visual-tools \
+    libeigen3-dev
 ```
 
 ### Dependencies

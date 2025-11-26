@@ -554,11 +554,6 @@
         <axis xyz="-1.0 4.930380657631324e-32 1.284239679844363e-32" />
     </joint>
 
-    <!-- Gazebo tags -->
-    <!-- <gazebo>
-        <plugin name="control" filename="libgazebo_ros_control.so"/>
-    </gazebo> -->
-
     <gazebo reference="base_link">
         <material>silver</material>
         <mu1>0.2</mu1>
@@ -717,8 +712,11 @@
     <!-- ROS2 Control -->
     <ros2_control name="bartender_robot_ros2_control" type="system">
         <hardware>
-            <plugin>gz_ros2_control/GazeboSimSystem</plugin>
+            <plugin>mock_components/GenericSystem</plugin>
         </hardware>
+        <!-- <hardware>
+            <plugin>gz_ros2_control/GazeboSimSystem</plugin>
+        </hardware> -->
         <joint name="XL_430_base_Revolute-29">
             <command_interface name="position"/>
             <state_interface name="position"/>
