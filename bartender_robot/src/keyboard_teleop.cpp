@@ -55,6 +55,10 @@ KeyboardJointTeleop::KeyboardJointTeleop()
   std::string topic = "/" + controller_name_ + "/joint_trajectory";
   trajectory_pub_ = this->create_publisher<trajectory_msgs::msg::JointTrajectory>(topic, 10);
   RCLCPP_INFO(this->get_logger(), "Publishing to topic: %s", topic.c_str());
+  
+  // Create publisher for joint positions (for joint_state_publisher node)
+  joint_position_pub_ = this->create_publisher<std_msgs::msg::Float64MultiArray>(
+      "/joint_positions", 10);
 
   // Debug: Print all joint names
   RCLCPP_INFO(this->get_logger(), "=== DEBUG: Configured Joints ===");
@@ -92,6 +96,11 @@ void KeyboardJointTeleop::publishJointCommand()
   point.time_from_start = rclcpp::Duration::from_seconds(0.1);
   
   msg.points.push_back(point);
+  
+  // Publish joint positions for joint_state_publisher
+  auto joint_pos_msg = std_msgs::msg::Float64MultiArray();
+  joint_pos_msg.data = point.positions;
+  joint_position_pub_->publish(joint_pos_msg);
   
   // Debug
   RCLCPP_INFO(this->get_logger(), "=== Publishing Joint Trajectory ===");

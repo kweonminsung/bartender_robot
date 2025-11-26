@@ -15,6 +15,8 @@ add_executable(bartender_robot
   src/keyboard_teleop.cpp
   src/dynamixel_controller.cpp
   src/api.cpp
+  src/plan_player.cpp
+  src/joint_state_publisher.cpp
 )
 
 target_compile_features(bartender_robot PUBLIC cxx_std_17)

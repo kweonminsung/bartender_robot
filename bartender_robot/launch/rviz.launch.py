@@ -30,16 +30,10 @@ def generate_launch_description():
         parameters=[{'robot_description': robot_description}],
     )
 
-    # Start rviz and load the included rviz config if present
-    # RViz config is now in bartender_moveit_config package
-    try:
-        moveit_config_path = get_package_share_directory('bartender_moveit_config')
-        rviz_config = os.path.join(moveit_config_path, 'rviz', 'robot.rviz')
-    except:
-        rviz_config = None
+    rviz_config = os.path.join(pkg_path, 'rviz', 'robot.rviz')
     
     rviz_args = []
-    if rviz_config and os.path.exists(rviz_config):
+    if os.path.exists(rviz_config):
         rviz_args = ['-d', rviz_config]
 
     rviz = Node(

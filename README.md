@@ -8,7 +8,8 @@
 - `API Server`: Provides HTTP API for robot status and control
 - `Dynamixel Controller`: Controls Dynamixel motors based on received commands
 - `Keyboard Teleop`: Simple keyboard teleoperation for testing
-- `Joint State Publisher`: Publishes joint states (for simulation)
+- `Plan Player`: Loads and executes robot trajectories from CSV files
+- `Joint State Publisher`: Converts joint positions to joint states for RViz visualization
 - `Robot State Publisher`: Publishes robot state to TF (for simulation)
 - `RViz`: Visualization tool
 
@@ -60,20 +61,81 @@
     - Give permission to the USB port: `sudo chmod 666 /dev/ttyUSB0`
 
     ```bash
-    # Bind Joint IDs with Real Dynamixel IDs
+    # Basic usage with Dynamixel
     $ ros2 run bartender_robot bartender_robot --ros-args \
       -p use_dynamixel:=true \
       -p joints:="['XL_430_base_Revolute-29','XL_430_shoulder_Revolute-30','XL_430_upper_Revolute-31','XL_430_lower_Revolute-32']" \
       -p dynamixel_ids:="[1,2,3,4]"
 
-    # Or launch with more parameters
+    # With custom parameters
     $ ros2 run bartender_robot bartender_robot --ros-args \
       -p use_dynamixel:=true \
+      -p publish_joint_states:=true \
       -p joints:="['XL_430_base_Revolute-29','XL_430_shoulder_Revolute-30','XL_430_upper_Revolute-31','XL_430_lower_Revolute-32']" \
       -p dynamixel_ids:="[1,2,3,4]" \
       -p baud_rate:=57600 \
       -p step:=0.5
     ```
+
+6. Execute trajectory from CSV file via HTTP API
+
+    Start the robot node with joint state publishing enabled:
+
+    ```bash
+    $ ros2 run bartender_robot bartender_robot --ros-args \
+      -p publish_joint_states:=true
+    ```
+
+    In another terminal, send HTTP request to execute a trajectory:
+
+    ```bash
+    # Execute with default CSV path
+    $ curl -X POST http://localhost:8080/play_plan \
+      -H "Content-Type: application/json" \
+      -d '{}'
+
+    # Execute with custom CSV path
+    $ curl -X POST http://localhost:8080/play_plan \
+      -H "Content-Type: application/json" \
+      -d '{"csv_path": "/path/to/your/trajectory.csv"}'
+    ```
+
+    Default CSV path: `/home/kevin/bartender_robot/captured_plan_20251127_001513.csv`
+
+## Available Parameters
+
+The `bartender_robot` node accepts the following ROS 2 parameters:
+
+| Parameter | Type | Default | Description |
+|-----------|------|---------|-------------|
+| `use_dynamixel` | bool | `false` | Enable/disable Dynamixel motor control |
+| `publish_joint_states` | bool | `true` | Enable/disable joint states publishing for RViz visualization |
+| `joints` | string[] | `[]` | List of joint names to control |
+| `dynamixel_ids` | int[] | `[]` | List of Dynamixel motor IDs corresponding to joints |
+| `baud_rate` | int | `57600` | Baud rate for Dynamixel communication |
+| `step` | double | `0.05` | Step size for keyboard teleoperation |
+| `controller_name` | string | `"joint_trajectory_controller"` | Name of the trajectory controller |
+
+### Example Configurations
+
+```bash
+# Simulation mode with joint states (for RViz)
+$ ros2 run bartender_robot bartender_robot --ros-args \
+  -p publish_joint_states:=true
+
+# Real robot mode without joint state publishing (Dynamixel handles states)
+$ ros2 run bartender_robot bartender_robot --ros-args \
+  -p use_dynamixel:=true \
+  -p publish_joint_states:=false \
+  -p joints:="['XL_430_base_Revolute-29','XL_430_shoulder_Revolute-30','XL_430_upper_Revolute-31','XL_430_lower_Revolute-32']" \
+  -p dynamixel_ids:="[1,2,3,4]"
+
+# Development mode with all features
+$ ros2 run bartender_robot bartender_robot --ros-args \
+  -p use_dynamixel:=false \
+  -p publish_joint_states:=true \
+  -p step:=0.1
+```
 
 ## System dependencies
 

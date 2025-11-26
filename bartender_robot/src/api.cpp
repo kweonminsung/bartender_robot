@@ -27,17 +27,28 @@ ApiServer::ApiServer()
     // API 엔드포인트 설정
     this->svr->Get("/test", [this](Req &req, Res &res)
                    { this->get_test(req, res); });
+    
+    this->svr->Post("/play_plan", [this](Req &req, Res &res)
+                    { this->post_play_plan(req, res); });
 
-    // 서버 시작
-    int api_port = std::getenv("API_PORT") ? std::atoi(std::getenv("API_PORT")) : 8080;
-    if (api_port <= 0 || api_port > 65535)
+    // 포트 설정
+    api_port_ = std::getenv("API_PORT") ? std::atoi(std::getenv("API_PORT")) : 8080;
+    if (api_port_ <= 0 || api_port_ > 65535)
     {
         std::cerr << "Invalid API_PORT value. Using default port 8080." << std::endl;
-        api_port = 8080;
+        api_port_ = 8080;
     }
+}
 
-    std::cout << "API server listening on port " << api_port << std::endl;
-    this->svr->listen("localhost", api_port);
+void ApiServer::start_listening()
+{
+    std::cout << "API server listening on port " << api_port_ << std::endl;
+    this->svr->listen("localhost", api_port_);
+}
+
+void ApiServer::set_play_plan_callback(std::function<void(const std::string&)> callback)
+{
+    play_plan_callback_ = callback;
 }
 
 void ApiServer::get_test(Req &req, Res &res)
@@ -47,4 +58,32 @@ void ApiServer::get_test(Req &req, Res &res)
 
     res.set_content(response_json.dump(), "application/json");
     res.status = 200;
+}
+
+void ApiServer::post_play_plan(Req &req, Res &res)
+{
+    json response_json;
+    
+    try {
+        json request_json = json::parse(req.body);
+        std::string csv_path = request_json.value("csv_path", "/home/kevin/bartender_robot/captured_plan_20251127_001513.csv");
+        
+        if (play_plan_callback_) {
+            play_plan_callback_(csv_path);
+            response_json["status"] = "success";
+            response_json["message"] = "Plan execution started";
+            response_json["csv_path"] = csv_path;
+            res.status = 200;
+        } else {
+            response_json["status"] = "error";
+            response_json["message"] = "Plan player callback not set";
+            res.status = 500;
+        }
+    } catch (const std::exception& e) {
+        response_json["status"] = "error";
+        response_json["message"] = e.what();
+        res.status = 400;
+    }
+    
+    res.set_content(response_json.dump(), "application/json");
 }

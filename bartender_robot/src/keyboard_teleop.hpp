@@ -2,6 +2,7 @@
 
 #include <rclcpp/rclcpp.hpp>
 #include <trajectory_msgs/msg/joint_trajectory.hpp>
+#include <std_msgs/msg/float64_multi_array.hpp>
 
 #include <string>
 #include <vector>
@@ -23,6 +24,7 @@ private:
 
   std::vector<std::string> joints_;
   rclcpp::Publisher<trajectory_msgs::msg::JointTrajectory>::SharedPtr trajectory_pub_;
+  rclcpp::Publisher<std_msgs::msg::Float64MultiArray>::SharedPtr joint_position_pub_;
   std::map<std::string, double> positions_;
 
   double step_;
