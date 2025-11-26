@@ -8,7 +8,7 @@
                 "${workspaceFolder}/install/**/*.hpp",
                 "${workspaceFolder}/install/**/*.h",
                 "${workspaceFolder}/install/**/include",
-                "/opt/ros/rolling/include/**"
+                "/opt/ros/humble/include/**"
             ],
             "defines": [],
             "compilerPath": "/usr/bin/gcc",

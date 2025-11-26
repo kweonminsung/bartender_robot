@@ -21,7 +21,10 @@
 
     ```bash
     # Source ROS 2 installation(adjust for your ROS 2 distribution)
-    $ source /opt/ros/rolling/setup.bash
+    $ source /opt/ros/humble/setup.bash
+
+    # Source if you have MoveIt 2 workspace
+    $ source ~/ws_moveit2/install/setup.bash
 
     $ cd bartender_robot
     
@@ -77,9 +80,9 @@
 
 ## System dependencies
 
-Install ROS 2 Rolling according to the official instructions:  
+Install ROS 2 Humble according to the official instructions:  
 (or your desired ROS 2 distribution)
-https://docs.ros.org/en/rolling/Installation.html  
+https://docs.ros.org/en/humble/Installation.html  
 
 Install the packages below if they are not already available:  
 (adjust for your ROS 2 distribution)
