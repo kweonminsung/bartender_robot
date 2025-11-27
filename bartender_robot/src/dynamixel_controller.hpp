@@ -37,7 +37,6 @@ public:
 
 private:
   void trajectoryCallback(const trajectory_msgs::msg::JointTrajectory::SharedPtr msg);
-  void publishJointStates();
   
   bool setupDynamixel();
   void shutdownDynamixel();
@@ -52,8 +51,6 @@ private:
 
   // ROS communication
   rclcpp::Subscription<trajectory_msgs::msg::JointTrajectory>::SharedPtr trajectory_sub_;
-  rclcpp::Publisher<sensor_msgs::msg::JointState>::SharedPtr joint_state_pub_;
-  rclcpp::TimerBase::SharedPtr timer_;
 
   // Dynamixel SDK
   std::unique_ptr<dynamixel::PortHandler> port_handler_;
@@ -67,5 +64,4 @@ private:
   // Parameters
   std::string device_name_;
   int baudrate_;
-  double publish_rate_;
 };

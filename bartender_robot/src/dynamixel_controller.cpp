@@ -7,14 +7,12 @@ DynamixelController::DynamixelController()
   // Declare parameters
   this->declare_parameter<std::string>("device_name", DEVICENAME);
   this->declare_parameter<int>("baudrate", BAUDRATE);
-  this->declare_parameter<double>("publish_rate", 50.0);
   this->declare_parameter<std::vector<std::string>>("joints", std::vector<std::string>{});
   this->declare_parameter<std::vector<int64_t>>("dynamixel_ids", std::vector<int64_t>{});
 
   // Get parameters
   device_name_ = this->get_parameter("device_name").as_string();
   baudrate_ = this->get_parameter("baudrate").as_int();
-  publish_rate_ = this->get_parameter("publish_rate").as_double();
   joint_names_ = this->get_parameter("joints").as_string_array();
   auto dynamixel_ids = this->get_parameter("dynamixel_ids").as_integer_array();
 
@@ -47,19 +45,6 @@ DynamixelController::DynamixelController()
     "/joint_trajectory_controller/joint_trajectory",
     10,
     std::bind(&DynamixelController::trajectoryCallback, this, std::placeholders::_1)
-  );
-
-  // Create publisher for joint states
-  joint_state_pub_ = this->create_publisher<sensor_msgs::msg::JointState>(
-    "/joint_states",
-    10
-  );
-
-  // Create timer for publishing joint states
-  auto period = std::chrono::duration<double>(1.0 / publish_rate_);
-  timer_ = this->create_wall_timer(
-    std::chrono::duration_cast<std::chrono::nanoseconds>(period),
-    std::bind(&DynamixelController::publishJointStates, this)
   );
 
   RCLCPP_INFO(this->get_logger(), "DynamixelController initialized successfully");
@@ -267,23 +252,4 @@ void DynamixelController::trajectoryCallback(const trajectory_msgs::msg::JointTr
                    joint_name.c_str(), id, position_rad, position_value);
     }
   }
-}
-
-void DynamixelController::publishJointStates()
-{
-  auto msg = sensor_msgs::msg::JointState();
-  msg.header.stamp = this->now();
-  
-  for (const auto& joint_name : joint_names_) {
-    uint8_t id = joint_id_map_[joint_name];
-    int32_t position_value = getPresentPosition(id);
-    double position_rad = positionToRadian(position_value);
-    
-    msg.name.push_back(joint_name);
-    msg.position.push_back(position_rad);
-    msg.velocity.push_back(0.0);  // TODO: read velocity from Dynamixel
-    msg.effort.push_back(0.0);    // TODO: read current/torque from Dynamixel
-  }
-  
-  joint_state_pub_->publish(msg);
 }

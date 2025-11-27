@@ -1,6 +1,6 @@
 # Bartender Robot
 
-<img src="public/concepts.png" height="212x">
+<img src="public/concepts.png" height="250">
 
 ## Overview
 

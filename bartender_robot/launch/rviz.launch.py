@@ -30,6 +30,7 @@ def generate_launch_description():
         parameters=[{'robot_description': robot_description}],
     )
 
+    print(f'pkg_path: {pkg_path}')
     rviz_config = os.path.join(pkg_path, 'rviz', 'robot.rviz')
     
     rviz_args = []
