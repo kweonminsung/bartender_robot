@@ -14,6 +14,9 @@ JointStatePublisher::JointStatePublisher() : Node("joint_state_publisher")
     publish_joint_states_ = this->get_parameter("publish_joint_states").as_bool();
     joint_names_ = this->get_parameter("joints").as_string_array();
 
+    // Initialize positions to 0
+    current_positions_.resize(joint_names_.size(), 0.0);
+
     if (publish_joint_states_) {
         // Create publisher for joint states
         joint_state_pub_ = this->create_publisher<sensor_msgs::msg::JointState>(
@@ -23,8 +26,13 @@ JointStatePublisher::JointStatePublisher() : Node("joint_state_publisher")
         joint_position_sub_ = this->create_subscription<std_msgs::msg::Float64MultiArray>(
             "/joint_positions", 10,
             std::bind(&JointStatePublisher::jointPositionCallback, this, std::placeholders::_1));
+            
+        // Create timer for continuous publishing (30Hz)
+        timer_ = this->create_wall_timer(
+            std::chrono::milliseconds(33),
+            std::bind(&JointStatePublisher::timerCallback, this));
         
-        RCLCPP_INFO(this->get_logger(), "Joint State Publisher enabled - publishing to /joint_states");
+        RCLCPP_INFO(this->get_logger(), "Joint State Publisher enabled - publishing to /joint_states at 30Hz");
     } else {
         RCLCPP_INFO(this->get_logger(), "Joint State Publisher disabled");
     }
@@ -45,10 +53,20 @@ void JointStatePublisher::jointPositionCallback(const std_msgs::msg::Float64Mult
         return;
     }
 
+    // Update current positions
+    current_positions_ = msg->data;
+}
+
+void JointStatePublisher::timerCallback()
+{
+    if (!publish_joint_states_) {
+        return;
+    }
+
     auto joint_state_msg = sensor_msgs::msg::JointState();
     joint_state_msg.header.stamp = this->now();
     joint_state_msg.name = joint_names_;
-    joint_state_msg.position = msg->data;
+    joint_state_msg.position = current_positions_;
 
     joint_state_pub_->publish(joint_state_msg);
 }

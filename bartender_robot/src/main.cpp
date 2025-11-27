@@ -46,8 +46,9 @@ int main(int argc, char **argv)
     executor.add_node(joint_state_pub_node);
 
     // Conditionally create and add dynamixel node
+    std::shared_ptr<DynamixelController> dynamixel_node;
     if (use_dynamixel) {
-        auto dynamixel_node = std::make_shared<DynamixelController>();
+        dynamixel_node = std::make_shared<DynamixelController>();
         executor.add_node(dynamixel_node);
         RCLCPP_INFO(rclcpp::get_logger("main"), "Dynamixel controller enabled");
     } else {

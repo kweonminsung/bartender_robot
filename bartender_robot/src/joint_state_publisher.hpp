@@ -14,11 +14,14 @@ public:
 
 private:
     void jointPositionCallback(const std_msgs::msg::Float64MultiArray::SharedPtr msg);
+    void timerCallback();
 
     rclcpp::Publisher<sensor_msgs::msg::JointState>::SharedPtr joint_state_pub_;
     rclcpp::Subscription<std_msgs::msg::Float64MultiArray>::SharedPtr joint_position_sub_;
+    rclcpp::TimerBase::SharedPtr timer_;
     
     std::vector<std::string> joint_names_;
+    std::vector<double> current_positions_;
     bool publish_joint_states_;
 };
 

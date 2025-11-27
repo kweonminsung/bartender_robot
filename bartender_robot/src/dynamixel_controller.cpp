@@ -85,14 +85,25 @@ bool DynamixelController::setupDynamixel()
   for (const auto& pair : joint_id_map_) {
     uint8_t id = pair.second;
     
-    // Set operating mode to Position Control (3)
+    // Set operating mode to Extended Position Control Mode (4)
     uint8_t dxl_error = 0;
     int dxl_comm_result = packet_handler_->write1ByteTxRx(
-      port_handler_.get(), id, ADDR_OPERATING_MODE, 3, &dxl_error
+      port_handler_.get(), id, ADDR_OPERATING_MODE, 4, &dxl_error
     );
     
     if (dxl_comm_result != COMM_SUCCESS) {
       RCLCPP_ERROR(this->get_logger(), "Failed to set operating mode for ID %d: %s", 
+                   id, packet_handler_->getTxRxResult(dxl_comm_result));
+      return false;
+    }
+
+    // Set Profile Velocity to 10
+    dxl_comm_result = packet_handler_->write4ByteTxRx(
+      port_handler_.get(), id, ADDR_PROFILE_VELOCITY, 10, &dxl_error
+    );
+
+    if (dxl_comm_result != COMM_SUCCESS) {
+      RCLCPP_ERROR(this->get_logger(), "Failed to set profile velocity for ID %d: %s", 
                    id, packet_handler_->getTxRxResult(dxl_comm_result));
       return false;
     }

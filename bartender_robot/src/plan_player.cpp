@@ -115,6 +115,16 @@ void PlanPlayer::playTrajectoryAsJointPositions(const std::vector<TrajectoryPoin
         auto joint_pos_msg = std_msgs::msg::Float64MultiArray();
         joint_pos_msg.data = point.positions;
         joint_position_pub_->publish(joint_pos_msg);
+
+        // Publish single point trajectory for DynamixelController
+        auto traj_msg = trajectory_msgs::msg::JointTrajectory();
+        traj_msg.header.stamp = this->now();
+        traj_msg.joint_names = joint_names_;
+        trajectory_msgs::msg::JointTrajectoryPoint traj_point;
+        traj_point.positions = point.positions;
+        traj_point.time_from_start = rclcpp::Duration::from_seconds(0);
+        traj_msg.points.push_back(traj_point);
+        trajectory_pub_->publish(traj_msg);
         
         // Sleep until next point
         if (i + 1 < points.size()) {

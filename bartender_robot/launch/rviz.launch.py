@@ -4,7 +4,7 @@ from launch import LaunchDescription
 from launch_ros.actions import Node
 
 # Set false if using real robot
-USE_JOINT_STATE_PUBLISHER = True
+USE_JOINT_STATE_PUBLISHER = False
 
 def generate_launch_description():
     pkg_path = get_package_share_directory('bartender_robot')
