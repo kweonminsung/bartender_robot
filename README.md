@@ -52,7 +52,35 @@
     $ ros2 launch bartender_robot gz_sim.launch.py
     ```
 
-5. Control real Dynamixel motors
+5. Use MoveIt for motion planning
+
+    You can use MoveIt to plan and simulate robot trajectories.
+
+    If you haven't set up the MoveIt configuration yet, run the setup assistant first:
+
+    ```bash
+    $ ros2 launch bartender_moveit_config setup_assistant.launch.py
+    ```
+
+    Then launch MoveIt with RViz and interactively set target poses, visualize planned paths, and execute motions.
+
+    ```bash
+    $ ros2 launch bartender_moveit_config demo.launch.py
+    ```
+
+    When RViz opens, use the 'MotionPlanning' panel to set target poses and click 'Plan' and 'Execute' to move the robot in simulation.
+
+    To save the planned trajectory to a CSV file, run the following script and push the plan button in RViz:
+    ```bash
+    $ python bartender_moveit_config/launch/save_plan.py
+    ```
+
+    To merge the saved trajectory CSV files into a single file, use:
+    ```bash
+    $ python bartender_moveit_config/launch/trajectory_generator.py
+    ```
+
+6. Control real Dynamixel motors
 
     **Important**: Before running, make sure to:
     - Connect Dynamixel motors via USB (e.g., U2D2)
@@ -77,7 +105,7 @@
       -p step:=0.5
     ```
 
-6. Execute trajectory from CSV file via HTTP API
+7. Execute trajectory from CSV file via HTTP API
 
     Start the robot node with joint state publishing enabled:
 
@@ -197,7 +225,7 @@ If you are using WSL2, you may need to set up USB passthrough to access the Dyna
     # List available USB devices
     usbipd list
 
-    # Bind the desired USB device (replace '1-2' with your device's bus ID)
+    # Bind the desired USB device (replace '1-9' with your device's bus ID)
     usbipd bind --busid 1-9
 
     # Attach the USB device to WSL
