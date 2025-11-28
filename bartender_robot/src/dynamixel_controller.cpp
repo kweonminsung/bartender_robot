@@ -85,6 +85,12 @@ bool DynamixelController::setupDynamixel()
   for (const auto& pair : joint_id_map_) {
     uint8_t id = pair.second;
     
+    // Disable torque first to change settings
+    if (!setTorqueEnable(id, false)) {
+      RCLCPP_ERROR(this->get_logger(), "Failed to disable torque for ID %d", id);
+      return false;
+    }
+
     // Set operating mode to Extended Position Control Mode (4)
     uint8_t dxl_error = 0;
     int dxl_comm_result = packet_handler_->write1ByteTxRx(
@@ -97,13 +103,35 @@ bool DynamixelController::setupDynamixel()
       return false;
     }
 
-    // Set Profile Velocity to 10
+    // Set Profile Velocity to 25
     dxl_comm_result = packet_handler_->write4ByteTxRx(
-      port_handler_.get(), id, ADDR_PROFILE_VELOCITY, 10, &dxl_error
+      port_handler_.get(), id, ADDR_PROFILE_VELOCITY, 25, &dxl_error
     );
 
     if (dxl_comm_result != COMM_SUCCESS) {
       RCLCPP_ERROR(this->get_logger(), "Failed to set profile velocity for ID %d: %s", 
+                   id, packet_handler_->getTxRxResult(dxl_comm_result));
+      return false;
+    }
+
+    // Set Position D Gain to 0
+    dxl_comm_result = packet_handler_->write2ByteTxRx(
+      port_handler_.get(), id, ADDR_POSITION_D_GAIN, 0, &dxl_error
+    );
+
+    if (dxl_comm_result != COMM_SUCCESS) {
+      RCLCPP_ERROR(this->get_logger(), "Failed to set position d gain for ID %d: %s", 
+                   id, packet_handler_->getTxRxResult(dxl_comm_result));
+      return false;
+    }
+
+    // Set Position P Gain to 600
+    dxl_comm_result = packet_handler_->write2ByteTxRx(
+      port_handler_.get(), id, ADDR_POSITION_P_GAIN, 600, &dxl_error
+    );
+
+    if (dxl_comm_result != COMM_SUCCESS) {
+      RCLCPP_ERROR(this->get_logger(), "Failed to set position p gain for ID %d: %s", 
                    id, packet_handler_->getTxRxResult(dxl_comm_result));
       return false;
     }

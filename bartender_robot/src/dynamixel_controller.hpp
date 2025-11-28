@@ -13,6 +13,8 @@
 // DYNAMIXEL Control Table Addresses (XL430-W250 기준)
 #define ADDR_OPERATING_MODE         11
 #define ADDR_TORQUE_ENABLE          64
+#define ADDR_POSITION_D_GAIN        80
+#define ADDR_POSITION_P_GAIN        84
 #define ADDR_GOAL_POSITION          116
 #define ADDR_PRESENT_POSITION       132
 #define ADDR_PROFILE_VELOCITY       112
