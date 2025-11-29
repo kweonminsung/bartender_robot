@@ -57,7 +57,7 @@ def generate_bartender_sequence_auto_return(
     # ---------------------------------------------------------
     # Phase 4: 50초 대기 (하강 상태 유지)
     # ---------------------------------------------------------
-    t_wait50 = np.arange(current_time_offset + dt, current_time_offset + 50.05, dt)
+    t_wait50 = np.arange(current_time_offset + dt, current_time_offset + 25.05, dt)
     
     data_wait50 = np.zeros((len(t_wait50), len(cols)))
     data_wait50[:, 0] = t_wait50
